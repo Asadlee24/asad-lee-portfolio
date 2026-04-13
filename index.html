@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,15 +19,14 @@
             --first-color: #22d3ee;
             --second-color: #08080a;
             --whatsapp-color: #25D366;
+            --horia-gold: #d4af37;
         }
 
-        /* Fixed Header Scroll Fix */
         html {
             scroll-padding-top: 80px; 
             scroll-behavior: smooth;
         }
 
-        /* Custom Cyber Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--second-color); }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
@@ -69,11 +68,11 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 1.5rem;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .glass-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02);
             background: rgba(255, 255, 255, 0.05);
             border-color: var(--first-color);
             box-shadow: 0 15px 30px rgba(34, 211, 238, 0.1);
@@ -141,9 +140,6 @@
             </div>
 
             <div class="home__img flex justify-center relative">
-                <svg class="w-full max-w-sm absolute top-0 opacity-20 animate-pulse" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#22d3ee" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.5,90,-16.3,88.5,-0.9C86.9,14.5,81.2,29,72.3,41.4C63.4,53.8,51.3,64,37.7,71.8C24.1,79.6,9.1,84.9,-5.3,84.1C-19.7,83.3,-33.5,76.4,-45.5,67.6C-57.5,58.8,-67.7,48,-74.6,35.4C-81.5,22.8,-85.1,8.3,-83.4,-5.7C-81.8,-19.7,-74.9,-33.2,-64.7,-43.8C-54.5,-54.4,-41.1,-62.1,-27.9,-69.8C-14.7,-77.5,-1.7,-85.2,12.5,-84.4C26.7,-83.6,40.6,-74.3,44.7,-76.4Z" transform="translate(100 100)" />
-                </svg>
                 <img src="https://i.ibb.co/G3fvMHZY/IMG-4886.jpg" alt="Asad Lee" class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-[3rem] z-10 border-4 border-white/5 shadow-2xl rotate-3 hover:rotate-0 transition duration-500">
             </div>
         </section>
@@ -165,8 +161,8 @@
                             <span class="text-[9px] uppercase tracking-widest text-gray-500">Coding Skills</span>
                         </div>
                         <div class="glass-card p-4 flex-1 text-center">
-                            <span class="block text-cyan-400 font-bold text-xl">10+</span>
-                            <span class="text-[9px] uppercase tracking-widest text-gray-500">Custom Projects</span>
+                            <span class="block text-cyan-400 font-bold text-xl">15+</span>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-500">Live Projects</span>
                         </div>
                     </div>
                 </div>
@@ -196,7 +192,7 @@
                         </div>
                         <div class="skills__data">
                             <div class="flex justify-between mb-2 uppercase text-[10px] font-bold tracking-widest">
-                                <span class="flex items-center gap-2"><i class='bx bx-cart text-cyan-500 text-lg'></i> E-Commerce (MDK Standard)</span>
+                                <span class="flex items-center gap-2"><i class='bx bx-cart text-cyan-500 text-lg'></i> E-Commerce (Shopify & Custom)</span>
                                 <span>92%</span>
                             </div>
                             <div class="skills__bar"><span class="skills__percentage w-[92%]"></span></div>
@@ -218,19 +214,28 @@
 
         <section class="py-20 px-6 max-w-6xl mx-auto" id="work">
             <h2 class="section-title">My Work</h2>
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-card p-8 text-center group flex flex-col items-center">
+                    <i class='bx bx-camera-home text-5xl text-yellow-400 mb-4'></i>
+                    <h3 class="text-xl font-bold mb-2">Horia Electronics</h3>
+                    <p class="text-gray-500 text-sm font-light mb-4">Professional Shopify store specializing in high-end surveillance and security technology.</p>
+                    <a href="https://horia-electronics.myshopify.com/" target="_blank" class="mt-auto text-[10px] text-yellow-400 font-bold uppercase tracking-widest border-b border-yellow-400">Visit Live Site</a>
+                </div>
+
                 <div class="glass-card p-8 text-center group flex flex-col items-center">
                     <i class='bx bx-store text-5xl text-cyan-400 mb-4'></i>
                     <h3 class="text-xl font-bold mb-2">MDK Electronics</h3>
                     <p class="text-gray-500 text-sm font-light mb-4">A professional surveillance e-commerce store with secure payment integrations.</p>
                     <a href="https://mdkelectronics.com" target="_blank" class="mt-auto text-[10px] text-cyan-400 font-bold uppercase tracking-widest border-b border-cyan-400">Visit Live Site</a>
                 </div>
+
                 <div class="glass-card p-8 text-center group flex flex-col items-center">
                     <i class='bx bx-brain text-5xl text-purple-400 mb-4'></i>
                     <h3 class="text-xl font-bold mb-2">Kite AI Quiz</h3>
                     <p class="text-gray-500 text-sm font-light mb-4">Interactive AI-driven quiz platform built for the Kite ecosystem.</p>
                     <a href="https://kite-ai-quiz-six.vercel.app" target="_blank" class="mt-auto text-[10px] text-purple-400 font-bold uppercase tracking-widest border-b border-purple-400">View Project</a>
                 </div>
+
                 <div class="glass-card p-8 text-center group flex flex-col items-center">
                     <i class='bx bx-user-check text-5xl text-green-400 mb-4'></i>
                     <h3 class="text-xl font-bold mb-2">CMAI WL Checker</h3>
@@ -286,4 +291,3 @@
     </script>
 </body>
 </html>
-
