@@ -112,7 +112,7 @@
         <section class="min-h-screen flex items-center justify-center pt-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-10" id="home">
             <div class="home__data relative">
                 <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-                    Hi,<br>I'am <span class="text-cyan-400">Asad Lee</span><br>Full-Stack Coder
+                    Hi,<br>I'm <span class="text-cyan-400">Asad Lee</span><br><span id="typing-text" class="text-cyan-300 border-r-2 border-cyan-400 pr-1 animate-pulse">Full-Stack Coder</span>
                 </h1>
                 <p class="text-gray-500 mb-8 max-w-sm font-light">IMSciences Student, Cyber Security Researcher & Professional Web Developer. I build custom HTML/CSS websites and E-commerce solutions.</p>
                 <div class="flex gap-4">
@@ -229,11 +229,58 @@
             </div>
         </section>
 
+        <!-- CYBER SECURITY TERMINAL SECTION -->
+        <section class="py-16 px-6 max-w-6xl mx-auto" id="terminal-section">
+            <div class="text-center mb-8">
+                <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full">Interactive Shell</span>
+                <h2 class="text-3xl font-extrabold text-white mt-3">AsadSec Terminal v1.0</h2>
+            </div>
+            
+            <div class="glass-card overflow-hidden border border-cyan-500/30 shadow-[0_0_30px_rgba(34,211,238,0.1)] font-mono text-sm">
+                <!-- Terminal Header -->
+                <div class="bg-[#12131a] px-4 py-3 border-b border-white/10 flex items-center justify-between flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                        <span class="text-xs text-gray-400 font-sans ml-2">asad@sec-terminal:~</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="runTermCmd('whoami')" class="text-[10px] bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-400 text-gray-300 px-2.5 py-1 rounded border border-white/10 transition">whoami</button>
+                        <button onclick="runTermCmd('skills')" class="text-[10px] bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-400 text-gray-300 px-2.5 py-1 rounded border border-white/10 transition">skills</button>
+                        <button onclick="runTermCmd('projects')" class="text-[10px] bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-400 text-gray-300 px-2.5 py-1 rounded border border-white/10 transition">projects</button>
+                        <button onclick="runTermCmd('clear')" class="text-[10px] bg-red-500/10 hover:bg-red-500/20 text-red-400 px-2.5 py-1 rounded border border-red-500/20 transition">clear</button>
+                    </div>
+                </div>
+                
+                <!-- Terminal Body -->
+                <div id="terminal-output" class="p-6 h-64 overflow-y-auto bg-[#08080c]/90 text-gray-300 space-y-2">
+                    <p class="text-cyan-400 font-bold">Welcome to AsadSec Interactive Terminal v1.0.0 [IMSciences Cyber Security Edition]</p>
+                    <p class="text-gray-500">Type <span class="text-yellow-400 font-bold">'help'</span> or click the quick action buttons above.</p>
+                </div>
+                
+                <!-- Terminal Prompt Input -->
+                <form id="terminal-form" onsubmit="handleTerminalSubmit(event)" class="bg-[#0e0f16] px-4 py-3 border-t border-white/10 flex items-center gap-2">
+                    <span class="text-emerald-400 font-bold">asad@sec:~#</span>
+                    <input type="text" id="terminal-input" placeholder="type 'help', 'whoami', 'skills', 'projects', 'contact'..." class="bg-transparent border-none outline-none text-cyan-300 w-full font-mono text-sm placeholder-gray-600 focus:ring-0" autocomplete="off">
+                </form>
+            </div>
+        </section>
+
         <section class="py-20 px-6 max-w-6xl mx-auto" id="work">
             <h2 class="section-title">My Projects</h2>
+            
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button onclick="filterProjects('all')" class="project-filter-btn active text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full border border-cyan-400 bg-cyan-500/20 text-cyan-400 transition">All</button>
+                <button onclick="filterProjects('web3')" class="project-filter-btn text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full border border-white/10 hover:border-cyan-400/50 bg-white/5 text-gray-400 hover:text-white transition">Web3 & USDC</button>
+                <button onclick="filterProjects('p2p')" class="project-filter-btn text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full border border-white/10 hover:border-cyan-400/50 bg-white/5 text-gray-400 hover:text-white transition">P2P Apps</button>
+                <button onclick="filterProjects('ecommerce')" class="project-filter-btn text-xs font-bold uppercase tracking-widest px-5 py-2 rounded-full border border-white/10 hover:border-cyan-400/50 bg-white/5 text-gray-400 hover:text-white transition">E-Commerce</button>
+            </div>
+
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Arc Pay Card -->
-                <div class="glass-card p-8 text-center group flex flex-col justify-between hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2" data-category="web3">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-credit-card text-5xl text-blue-400 group-hover:scale-110 transition duration-300'></i>
@@ -253,7 +300,7 @@
                 </div>
 
                 <!-- Warp Transfer Card -->
-                <div class="glass-card p-8 text-center group flex flex-col justify-between hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-2" data-category="p2p">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-transfer text-5xl text-cyan-400 group-hover:scale-110 transition duration-300'></i>
@@ -273,7 +320,7 @@
                 </div>
 
                 <!-- ArcShift USDC Bridge Card -->
-                <div class="glass-card p-8 text-center group flex flex-col justify-between hover:border-purple-400 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-purple-400 transition-all duration-300 transform hover:-translate-y-2" data-category="web3">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-git-compare text-5xl text-purple-400 group-hover:scale-110 transition duration-300'></i>
@@ -293,7 +340,7 @@
                 </div>
 
                 <!-- InstaRip Downloader Card -->
-                <div class="glass-card p-8 text-center group flex flex-col justify-between hover:border-pink-400 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-pink-400 transition-all duration-300 transform hover:-translate-y-2" data-category="p2p">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-cloud-download text-5xl text-pink-400 group-hover:scale-110 transition duration-300'></i>
@@ -313,7 +360,7 @@
                 </div>
 
                 <!-- MDK Electronics Card -->
-                <div class="glass-card p-8 text-center group flex flex-col justify-between hover:border-amber-400 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-amber-400 transition-all duration-300 transform hover:-translate-y-2" data-category="ecommerce">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-store text-5xl text-amber-400 group-hover:scale-110 transition duration-300'></i>
@@ -410,6 +457,138 @@
                 });
             }, { threshold: 0.2 });
             observer.observe(statsSection);
+        }
+
+        // DYNAMIC HERO TYPING EFFECT
+        const typingPhrases = [
+            "Full-Stack Coder",
+            "Cyber Security Researcher",
+            "Web3 & USDC Architect",
+            "IMSciences Student",
+            "E-Commerce Specialist"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById("typing-text");
+
+        function typeEffect() {
+            if (!typingElement) return;
+            const currentPhrase = typingPhrases[phraseIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+                speed = 500;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+        typeEffect();
+
+        // INTERACTIVE CYBER TERMINAL
+        const terminalOutput = document.getElementById("terminal-output");
+        const terminalInput = document.getElementById("terminal-input");
+
+        const termCommands = {
+            help: `Available commands:
+  - <span class="text-yellow-400 font-bold">whoami</span>   : Developer & Cyber Security profile details
+  - <span class="text-yellow-400 font-bold">skills</span>   : Technical stack & expert competencies
+  - <span class="text-yellow-400 font-bold">projects</span> : Highlighted Web3, P2P & E-Commerce apps
+  - <span class="text-yellow-400 font-bold">contact</span>  : Get in touch via WhatsApp & Socials
+  - <span class="text-yellow-400 font-bold">clear</span>    : Clear terminal screen`,
+            whoami: `<span class="text-cyan-400 font-bold">ASAD LEE</span> | Full-Stack Developer & Cyber Security Researcher
+IMSciences Student & Founder of MDK Electronics.
+Specializing in clean HTML/JS architectures, Web3 USDC integrations, and security testing.`,
+            skills: `Technical Stack:
+  [✔] HTML5 / CSS3 / Tailwind CSS (98%)
+  [✔] JavaScript / React / Next.js (95%)
+  [✔] Web3 & USDC Payment Gateways (Circle API)
+  [✔] WebRTC P2P Data Channels
+  [✔] Cyber Security & Vulnerability Auditing (80%)`,
+            projects: `Live Projects:
+  1. Arc Pay Platform (https://arc-pay-inky.vercel.app)
+  2. Warp P2P Transfer (https://warp-transfer.vercel.app)
+  3. ArcShift USDC Bridge (https://arcshift-usdc-bridge.vercel.app)
+  4. InstaRip Downloader (https://insta-delta-three.vercel.app)
+  5. MDK Electronics (https://mdkelectronics.com)`,
+            contact: `Contact Options:
+  - WhatsApp: +92 340 0194591
+  - Instagram: @asadlee24
+  - Twitter/X: @asadleo416
+  - LinkedIn: Asad Ali`
+        };
+
+        function runTermCmd(cmd) {
+            if (!terminalOutput) return;
+            cmd = cmd.trim().toLowerCase();
+            
+            if (cmd === 'clear') {
+                terminalOutput.innerHTML = `<p class="text-cyan-400 font-bold">Screen cleared. Type 'help' for available commands.</p>`;
+                return;
+            }
+            
+            const pCmd = document.createElement('p');
+            pCmd.className = 'text-emerald-400 font-bold';
+            pCmd.innerHTML = `asad@sec:~# ${cmd}`;
+            terminalOutput.appendChild(pCmd);
+
+            const pAns = document.createElement('div');
+            pAns.className = 'text-gray-300 leading-relaxed pl-2 border-l-2 border-cyan-500/40 my-1';
+            
+            if (termCommands[cmd]) {
+                pAns.innerHTML = termCommands[cmd].replace(/\n/g, '<br>');
+            } else {
+                pAns.innerHTML = `<span class="text-red-400">Command not found: '${cmd}'. Type <span class="text-yellow-400 font-bold">'help'</span> for valid commands.</span>`;
+            }
+            
+            terminalOutput.appendChild(pAns);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+
+        function handleTerminalSubmit(e) {
+            e.preventDefault();
+            if (!terminalInput) return;
+            const val = terminalInput.value;
+            if (val) {
+                runTermCmd(val);
+                terminalInput.value = '';
+            }
+        }
+
+        // PROJECT CATEGORY FILTERING
+        function filterProjects(cat) {
+            const cards = document.querySelectorAll('.project-card');
+            const btns = document.querySelectorAll('.project-filter-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('border-cyan-400', 'bg-cyan-500/20', 'text-cyan-400');
+                btn.classList.add('border-white/10', 'bg-white/5', 'text-gray-400');
+                if (btn.getAttribute('onclick').includes(`'${cat}'`)) {
+                    btn.classList.add('border-cyan-400', 'bg-cyan-500/20', 'text-cyan-400');
+                    btn.classList.remove('border-white/10', 'bg-white/5', 'text-gray-400');
+                }
+            });
+
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-category') === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
