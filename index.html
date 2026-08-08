@@ -355,99 +355,77 @@
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Arc Pay Card -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2" data-category="web3">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" data-category="web3" onclick="openModal('arcpay')">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-credit-card text-5xl text-blue-400 group-hover:scale-110 transition duration-300'></i>
                         </div>
                         <span class="text-[9px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1 rounded-full uppercase tracking-widest font-bold inline-block mb-3">Fintech & USDC</span>
                         <h3 class="text-xl font-bold mb-2 text-white">Arc Pay Platform</h3>
-                        <p class="text-gray-400 text-sm font-light mb-6 leading-relaxed">Open-source no-code USDC payment layer built for merchants on Arc Network with Circle API integration.</p>
+                        <p class="text-gray-400 text-sm font-light mb-4 leading-relaxed">Open-source no-code USDC payment layer built for merchants on Arc Network with Circle API integration.</p>
                     </div>
-                    <div class="flex justify-center gap-4 pt-4 border-t border-white/5">
-                        <a href="https://arc-pay-inky.vercel.app" target="_blank" class="text-[10px] text-cyan-400 hover:text-white font-bold uppercase tracking-widest flex items-center gap-1">
-                            <i class='bx bx-link-external'></i> Live Demo
-                        </a>
-                        <a href="https://github.com/Asadlee24/arc-pay" target="_blank" class="text-[10px] text-gray-400 hover:text-white font-bold uppercase tracking-widest flex items-center gap-1">
-                            <i class='bx bxl-github'></i> Code
-                        </a>
+                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
+                        <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-1"><i class='bx bx-search-alt'></i> View Details</span>
                     </div>
                 </div>
 
                 <!-- Warp Transfer Card -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-2" data-category="p2p">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" data-category="p2p" onclick="openModal('warp')">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-transfer text-5xl text-cyan-400 group-hover:scale-110 transition duration-300'></i>
                         </div>
                         <span class="text-[9px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-3 py-1 rounded-full uppercase tracking-widest font-bold inline-block mb-3">WebRTC P2P</span>
                         <h3 class="text-xl font-bold mb-2 text-white">Warp P2P Transfer</h3>
-                        <p class="text-gray-400 text-sm font-light mb-6 leading-relaxed">Browser-to-browser instant P2P file transfer over WebRTC. Zero server storage and no size limits.</p>
+                        <p class="text-gray-400 text-sm font-light mb-4 leading-relaxed">Browser-to-browser instant P2P file transfer over WebRTC. Zero server storage and no size limits.</p>
                     </div>
-                    <div class="flex justify-center gap-4 pt-4 border-t border-white/5">
-                        <a href="https://warp-transfer.vercel.app" target="_blank" class="text-[10px] text-cyan-400 hover:text-white font-bold uppercase tracking-widest flex items-center gap-1">
-                            <i class='bx bx-link-external'></i> Live Demo
-                        </a>
-                        <a href="https://github.com/Asadlee24/warp-transfer" target="_blank" class="text-[10px] text-gray-400 hover:text-white font-bold uppercase tracking-widest flex items-center gap-1">
-                            <i class='bx bxl-github'></i> Code
-                        </a>
+                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
+                        <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-1"><i class='bx bx-search-alt'></i> View Details</span>
                     </div>
                 </div>
 
                 <!-- ArcShift USDC Bridge Card -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-purple-400 transition-all duration-300 transform hover:-translate-y-2" data-category="web3">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-purple-400 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" data-category="web3" onclick="openModal('arcshift')">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-git-compare text-5xl text-purple-400 group-hover:scale-110 transition duration-300'></i>
                         </div>
                         <span class="text-[9px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-3 py-1 rounded-full uppercase tracking-widest font-bold inline-block mb-3">Web3 & Bridge</span>
                         <h3 class="text-xl font-bold mb-2 text-white">ArcShift Bridge</h3>
-                        <p class="text-gray-400 text-sm font-light mb-6 leading-relaxed">Cross-chain USDC liquidity bridge & asset transfer protocol engineered for Arc Network.</p>
+                        <p class="text-gray-400 text-sm font-light mb-4 leading-relaxed">Cross-chain USDC liquidity bridge & asset transfer protocol engineered for Arc Network.</p>
                     </div>
-                    <div class="flex justify-center gap-4 pt-4 border-t border-white/5">
-                        <a href="https://arcshift-usdc-bridge.vercel.app" target="_blank" class="text-[10px] text-cyan-400 hover:text-white font-bold uppercase tracking-widest flex items-center gap-1">
-                            <i class='bx bx-link-external'></i> Live Demo
-                        </a>
-                        <a href="https://github.com/Asadlee24/arcshift-usdc-bridge" target="_blank" class="text-[10px] text-gray-400 hover:text-white font-bold uppercase tracking-widest flex items-center gap-1">
-                            <i class='bx bxl-github'></i> Code
-                        </a>
+                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
+                        <span class="text-[10px] text-purple-400 font-bold uppercase tracking-widest flex items-center gap-1"><i class='bx bx-search-alt'></i> View Details</span>
                     </div>
                 </div>
 
                 <!-- InstaRip Downloader Card -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-pink-400 transition-all duration-300 transform hover:-translate-y-2" data-category="p2p">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-pink-400 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" data-category="p2p" onclick="openModal('instarip')">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-cloud-download text-5xl text-pink-400 group-hover:scale-110 transition duration-300'></i>
                         </div>
                         <span class="text-[9px] bg-pink-500/10 text-pink-400 border border-pink-500/20 px-3 py-1 rounded-full uppercase tracking-widest font-bold inline-block mb-3">Web App</span>
                         <h3 class="text-xl font-bold mb-2 text-white">InstaRip Downloader</h3>
-                        <p class="text-gray-400 text-sm font-light mb-6 leading-relaxed">High-performance watermark-free Instagram Reel & TikTok HD video downloader built with Next.js.</p>
+                        <p class="text-gray-400 text-sm font-light mb-4 leading-relaxed">High-performance watermark-free Instagram Reel & TikTok HD video downloader built with Next.js.</p>
                     </div>
-                    <div class="flex justify-center gap-4 pt-4 border-t border-white/5">
-                        <a href="https://insta-delta-three.vercel.app" target="_blank" class="text-[10px] text-cyan-400 hover:text-white font-bold uppercase tracking-widest flex items-center gap-1">
-                            <i class='bx bx-link-external'></i> Live Demo
-                        </a>
-                        <a href="https://github.com/Asadlee24/insta" target="_blank" class="text-[10px] text-gray-400 hover:text-white font-bold uppercase tracking-widest flex items-center gap-1">
-                            <i class='bx bxl-github'></i> Code
-                        </a>
+                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
+                        <span class="text-[10px] text-pink-400 font-bold uppercase tracking-widest flex items-center gap-1"><i class='bx bx-search-alt'></i> View Details</span>
                     </div>
                 </div>
 
                 <!-- MDK Electronics Card -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-amber-400 transition-all duration-300 transform hover:-translate-y-2" data-category="ecommerce">
+                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between hover:border-amber-400 transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" data-category="ecommerce" onclick="openModal('mdk')">
                     <div>
                         <div class="flex justify-center mb-4">
                             <i class='bx bx-store text-5xl text-amber-400 group-hover:scale-110 transition duration-300'></i>
                         </div>
                         <span class="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full uppercase tracking-widest font-bold inline-block mb-3">E-Commerce</span>
                         <h3 class="text-xl font-bold mb-2 text-white">MDK Electronics</h3>
-                        <p class="text-gray-400 text-sm font-light mb-6 leading-relaxed">A professional surveillance e-commerce store with secure payment integrations.</p>
+                        <p class="text-gray-400 text-sm font-light mb-4 leading-relaxed">A professional surveillance e-commerce store with secure payment integrations.</p>
                     </div>
-                    <div class="flex justify-center gap-4 pt-4 border-t border-white/5">
-                        <a href="https://mdkelectronics.com" target="_blank" class="text-[10px] text-cyan-400 hover:text-white font-bold uppercase tracking-widest flex items-center gap-1">
-                            <i class='bx bx-link-external'></i> Live Site
-                        </a>
+                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
+                        <span class="text-[10px] text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1"><i class='bx bx-search-alt'></i> View Details</span>
                     </div>
                 </div>
             </div>
@@ -468,6 +446,64 @@
             </div>
         </section>
     </main>
+
+    <!-- ===== PROJECT MODAL LIGHTBOX ===== -->
+    <div id="project-modal" onclick="handleModalBackdrop(event)" class="fixed inset-0 z-[999] hidden items-center justify-center p-4 sm:p-8" style="background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);">
+        <div id="modal-box" class="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-3xl border border-cyan-500/30 shadow-[0_0_60px_rgba(34,211,238,0.2)] bg-[#0c0d12] flex flex-col" onclick="event.stopPropagation()">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-8 py-5 border-b border-white/10 sticky top-0 bg-[#0c0d12] z-10 rounded-t-3xl">
+                <div class="flex items-center gap-4">
+                    <div id="modal-icon" class="text-4xl"></div>
+                    <div>
+                        <div id="modal-badge" class="text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border inline-block mb-1"></div>
+                        <h2 id="modal-title" class="text-2xl font-extrabold text-white"></h2>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="p-2 rounded-xl bg-white/5 hover:bg-red-500/20 text-gray-400 hover:text-red-400 border border-white/10 transition text-xl cursor-pointer">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="grid md:grid-cols-2 gap-0 flex-1">
+                <!-- Left: Info Panel -->
+                <div class="p-8 border-r border-white/5">
+                    <p id="modal-desc" class="text-gray-300 leading-relaxed mb-6"></p>
+
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-3 flex items-center gap-2"><i class='bx bx-check-circle'></i> Key Features</h4>
+                    <ul id="modal-features" class="space-y-2 mb-6"></ul>
+
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-cyan-400 mb-3 flex items-center gap-2"><i class='bx bx-code-alt'></i> Tech Stack</h4>
+                    <div id="modal-stack" class="flex flex-wrap gap-2 mb-8"></div>
+
+                    <div class="flex gap-3 flex-wrap">
+                        <a id="modal-live-btn" href="#" target="_blank" class="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-6 py-3 rounded-xl uppercase text-xs tracking-widest transition shadow-lg shadow-cyan-500/30">
+                            <i class='bx bx-link-external'></i> Live Demo
+                        </a>
+                        <a id="modal-github-btn" href="#" target="_blank" class="flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white font-bold px-6 py-3 rounded-xl uppercase text-xs tracking-widest border border-white/15 transition">
+                            <i class='bx bxl-github'></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Live Preview -->
+                <div class="flex flex-col">
+                    <div class="px-6 pt-6 pb-2">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                            <span id="modal-live-url" class="text-xs text-gray-400 ml-2 font-mono truncate"></span>
+                        </div>
+                    </div>
+                    <div class="flex-1 px-6 pb-6">
+                        <iframe id="modal-iframe" src="about:blank" class="w-full h-72 md:h-80 rounded-2xl border border-white/10 bg-[#0a0a0f]" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                        <p class="text-[10px] text-gray-500 text-center mt-2 italic">Note: Some sites may block iframe preview. Click Live Demo to open directly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="py-12 bg-[#050507] text-center border-t border-white/5">
         <p class="text-xl font-extrabold italic text-cyan-400 mb-4">Asad Lee</p>
@@ -703,6 +739,168 @@ Specializing in clean HTML/JS architectures, Web3 USDC integrations, and securit
             card.addEventListener('mouseleave', () => {
                 card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)`;
             });
+        });
+
+        // ===== PROJECT MODAL LOGIC =====
+        const projectData = {
+            arcpay: {
+                icon: "<i class='bx bx-credit-card text-blue-400'></i>",
+                badge: "Fintech & USDC",
+                badgeClass: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+                title: "Arc Pay Platform",
+                desc: "Arc Pay is an open-source, no-code USDC payment layer built for merchants on the Arc Network. It integrates directly with Circle's APIs to enable instant, on-chain USDC settlement with zero transaction friction. Built for the next generation of payment infrastructure.",
+                features: [
+                    "No-code merchant onboarding dashboard",
+                    "Circle API integration for real USDC settlement",
+                    "Instant payment confirmation & QR checkout",
+                    "Multi-wallet support (MetaMask, Phantom)",
+                    "On-chain transaction history & export"
+                ],
+                stack: ["Next.js", "Circle API", "USDC", "Web3.js", "Tailwind CSS", "Vercel"],
+                live: "https://arc-pay-inky.vercel.app",
+                github: "https://github.com/Asadlee24/arc-pay",
+                stackColors: ["blue","cyan","purple","green","blue","gray"]
+            },
+            warp: {
+                icon: "<i class='bx bx-transfer text-cyan-400'></i>",
+                badge: "WebRTC P2P",
+                badgeClass: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
+                title: "Warp P2P Transfer",
+                desc: "Warp is a blazing-fast, browser-native peer-to-peer file transfer app built entirely on WebRTC data channels. No server ever touches your files — everything flows directly between browsers. Supports multi-file sessions, QR code auto-connect, and real-time transfer speed indicators.",
+                features: [
+                    "100% serverless P2P via WebRTC DataChannels",
+                    "QR code scanner for instant peer pairing",
+                    "Multi-file batch transfer in a single session",
+                    "Real-time progress bar & transfer speed stats",
+                    "TURN/STUN fallback for NAT traversal",
+                    "Download All button — saves files individually"
+                ],
+                stack: ["Next.js", "WebRTC", "QR Scanner", "Node.js", "Tailwind CSS", "Vercel"],
+                live: "https://warp-transfer.vercel.app",
+                github: "https://github.com/Asadlee24/warp-transfer",
+                stackColors: ["cyan","blue","green","yellow","blue","gray"]
+            },
+            arcshift: {
+                icon: "<i class='bx bx-git-compare text-purple-400'></i>",
+                badge: "Web3 & Bridge",
+                badgeClass: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+                title: "ArcShift USDC Bridge",
+                desc: "ArcShift is a cross-chain USDC liquidity bridge and asset transfer protocol engineered for Arc Network. It enables users to move USDC seamlessly across blockchain networks with minimal gas overhead and cryptographic finality guarantees.",
+                features: [
+                    "Cross-chain USDC liquidity bridging",
+                    "Asset transfer protocol for Arc Network",
+                    "Minimal gas fee optimization engine",
+                    "Cryptographic finality & transaction proofs",
+                    "Wallet connect with multi-chain support",
+                    "Real-time bridge status & explorer"
+                ],
+                stack: ["Next.js", "Solidity", "USDC", "Ethers.js", "Arc Network", "Vercel"],
+                live: "https://arcshift-usdc-bridge.vercel.app",
+                github: "https://github.com/Asadlee24/arcshift-usdc-bridge",
+                stackColors: ["purple","yellow","blue","purple","cyan","gray"]
+            },
+            instarip: {
+                icon: "<i class='bx bx-cloud-download text-pink-400'></i>",
+                badge: "Web App",
+                badgeClass: "bg-pink-500/10 text-pink-400 border-pink-500/30",
+                title: "InstaRip Downloader",
+                desc: "InstaRip is a high-performance, watermark-free Instagram Reel & TikTok HD video downloader built with Next.js. Supports batch downloads, audio extraction, and HD quality output — no login required.",
+                features: [
+                    "Instagram Reels & TikTok HD download",
+                    "100% watermark-free output",
+                    "Audio-only extraction (MP3)",
+                    "No account login required",
+                    "Batch URL download support",
+                    "Server-side processing for speed"
+                ],
+                stack: ["Next.js", "Node.js", "FFmpeg", "yt-dlp", "Tailwind CSS", "Vercel"],
+                live: "https://insta-delta-three.vercel.app",
+                github: "https://github.com/Asadlee24/insta",
+                stackColors: ["pink","yellow","red","orange","blue","gray"]
+            },
+            mdk: {
+                icon: "<i class='bx bx-store text-amber-400'></i>",
+                badge: "E-Commerce",
+                badgeClass: "bg-amber-500/10 text-amber-400 border-amber-500/30",
+                title: "MDK Electronics",
+                desc: "MDK Electronics is a professional surveillance & electronics e-commerce store designed and developed by Asad Lee. Features a full product catalog, secure payment gateway, and performance-optimized WordPress architecture for fast load times.",
+                features: [
+                    "Full surveillance product catalog",
+                    "Secure payment gateway integration",
+                    "Custom WordPress theme (MDK Standard)",
+                    "SEO-optimized product pages",
+                    "Mobile-responsive design",
+                    "Admin order & inventory management"
+                ],
+                stack: ["WordPress", "WooCommerce", "PHP", "MySQL", "Custom CSS", "cPanel"],
+                live: "https://mdkelectronics.com",
+                github: null,
+                stackColors: ["blue","green","purple","orange","cyan","gray"]
+            }
+        };
+
+        function openModal(id) {
+            const p = projectData[id];
+            if (!p) return;
+            document.getElementById('modal-icon').innerHTML = p.icon;
+            const badge = document.getElementById('modal-badge');
+            badge.textContent = p.badge;
+            badge.className = `text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border inline-block mb-1 ${p.badgeClass}`;
+            document.getElementById('modal-title').textContent = p.title;
+            document.getElementById('modal-desc').textContent = p.desc;
+
+            const featuresList = document.getElementById('modal-features');
+            featuresList.innerHTML = p.features.map(f =>
+                `<li class="flex items-start gap-2 text-sm text-gray-300"><i class='bx bxs-check-circle text-cyan-400 mt-0.5 shrink-0'></i>${f}</li>`
+            ).join('');
+
+            const stackDiv = document.getElementById('modal-stack');
+            const stackColors = ['bg-blue-500/10 text-blue-300 border-blue-500/20', 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20', 'bg-purple-500/10 text-purple-300 border-purple-500/20', 'bg-green-500/10 text-green-300 border-green-500/20', 'bg-yellow-500/10 text-yellow-300 border-yellow-500/20', 'bg-gray-500/10 text-gray-300 border-gray-500/20'];
+            stackDiv.innerHTML = p.stack.map((s, i) =>
+                `<span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border ${stackColors[i % stackColors.length]}">${s}</span>`
+            ).join('');
+
+            const liveBtn = document.getElementById('modal-live-btn');
+            liveBtn.href = p.live;
+            document.getElementById('modal-live-url').textContent = p.live.replace('https://', '');
+
+            const ghBtn = document.getElementById('modal-github-btn');
+            if (p.github) {
+                ghBtn.href = p.github;
+                ghBtn.style.display = 'flex';
+            } else {
+                ghBtn.style.display = 'none';
+            }
+
+            const iframe = document.getElementById('modal-iframe');
+            iframe.src = p.live;
+
+            const modal = document.getElementById('project-modal');
+            modal.style.display = 'flex';
+            requestAnimationFrame(() => {
+                modal.style.opacity = '0';
+                modal.style.transition = 'opacity 0.3s ease';
+                requestAnimationFrame(() => { modal.style.opacity = '1'; });
+            });
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.getElementById('modal-iframe').src = 'about:blank';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        function handleModalBackdrop(e) {
+            if (e.target === document.getElementById('project-modal')) closeModal();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
         });
     </script>
 </body>
