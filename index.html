@@ -9,21 +9,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
+            --bg-color: #08080a;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --nav-bg: rgba(8, 8, 10, 0.85);
             --first-color: #22d3ee;
-            --second-color: #08080a;
+            --header-text: #ffffff;
             --whatsapp-color: #25D366;
+            --card-hover-bg: rgba(255, 255, 255, 0.06);
         }
+
+        body.light-theme {
+            --bg-color: #f1f5f9;
+            --text-color: #0f172a;
+            --text-muted: #475569;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(148, 163, 184, 0.25);
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --first-color: #0284c7;
+            --header-text: #0f172a;
+            --card-hover-bg: #ffffff;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--second-color);
-            color: #f8fafc;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             scroll-behavior: smooth;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
+
         .glass-nav {
-            background: rgba(8, 8, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            transition: background 0.4s ease, border-color 0.4s ease;
         }
+
         .section-title {
             position: relative;
             font-size: 2.5rem;
@@ -32,6 +56,7 @@
             margin-bottom: 3rem;
             text-align: center;
             text-transform: uppercase;
+            color: var(--header-text);
         }
         .section-title::after {
             content: '';
@@ -42,20 +67,48 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
+            border-radius: 2px;
         }
+
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 1.5rem;
-            transition: 0.4s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         .glass-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-8px) scale(1.02);
+            background: var(--card-hover-bg);
             border-color: var(--first-color);
+            box-shadow: 0 20px 40px -15px rgba(34, 211, 238, 0.25);
         }
+
+        /* LIGHT MODE OVERRIDES */
+        body.light-theme .text-white {
+            color: #0f172a !important;
+        }
+        body.light-theme .text-gray-400, 
+        body.light-theme .text-gray-500 {
+            color: #475569 !important;
+        }
+        body.light-theme .text-gray-300 {
+            color: #1e293b !important;
+        }
+        body.light-theme .bg-\[\#12131a\],
+        body.light-theme .bg-\[\#0e0f16\] {
+            background-color: #cbd5e1 !important;
+        }
+        body.light-theme .bg-\[\#08080c\]\/90 {
+            background-color: #f8fafc !important;
+            color: #0f172a !important;
+        }
+        body.light-theme .bg-[#050507] {
+            background-color: #e2e8f0 !important;
+        }
+
         .home__blob { fill: var(--first-color); opacity: 0.2; position: absolute; z-index: -1; }
-        .skills__bar { height: 5px; background-color: rgba(255,255,255,0.1); border-radius: 5px; position: relative; }
+        .skills__bar { height: 5px; background-color: rgba(148, 163, 184, 0.2); border-radius: 5px; position: relative; }
         .skills__percentage { height: 5px; background-color: var(--first-color); border-radius: 5px; display: block; }
         
         #form-status-success { display: none; background: rgba(34, 211, 238, 0.1); border: 1px solid var(--first-color); color: var(--first-color); padding: 1rem; border-radius: 1rem; margin-bottom: 1.5rem; text-align: center; font-weight: 600; }
@@ -96,50 +149,66 @@
             <div>
                 <a href="#" class="text-xl font-extrabold tracking-tighter italic text-cyan-400">@ASADLEO416</a>
             </div>
-            <div class="hidden md:block">
-                <ul class="flex gap-8 text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">
+            <div class="flex items-center gap-6">
+                <ul class="hidden md:flex gap-8 text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">
                     <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
                     <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
                     <li><a href="#skills" class="hover:text-cyan-400 transition">Skills</a></li>
                     <li><a href="#work" class="hover:text-cyan-400 transition">Work</a></li>
                     <li><a href="#contact" class="hover:text-cyan-400 transition">Contact</a></li>
                 </ul>
+                <button id="theme-toggle" onclick="toggleTheme()" class="p-2.5 rounded-full bg-white/10 hover:bg-cyan-500/20 text-cyan-400 border border-white/10 transition flex items-center justify-center cursor-pointer shadow-lg" aria-label="Toggle Theme">
+                    <i id="theme-icon" class='bx bx-sun text-xl'></i>
+                </button>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="min-h-screen flex items-center justify-center pt-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-10" id="home">
+        <section class="min-h-screen flex items-center justify-center pt-24 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12" id="home">
             <div class="home__data relative">
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
-                    Hi,<br>I'm <span class="text-cyan-400">Asad Lee</span><br><span id="typing-text" class="text-cyan-300 border-r-2 border-cyan-400 pr-1 animate-pulse">Full-Stack Coder</span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+                    Hi,<br>I'm <span class="text-cyan-400">Asad Lee</span><br>
+                    <span class="block text-2xl sm:text-3xl md:text-4xl text-cyan-300 mt-2 font-bold min-h-[48px]">
+                        <span id="typing-text" class="border-r-4 border-cyan-400 pr-1">Full-Stack Coder</span>
+                    </span>
                 </h1>
-                <p class="text-gray-500 mb-8 max-w-sm font-light">IMSciences Student, Cyber Security Researcher & Professional Web Developer. I build custom HTML/CSS websites and E-commerce solutions.</p>
+                <p class="text-gray-400 mb-8 max-w-sm font-light leading-relaxed">IMSciences Student, Cyber Security Researcher & Professional Web Developer. I build custom HTML/CSS websites and E-commerce solutions.</p>
                 <div class="flex gap-4">
-                    <a href="https://wa.me/923400194591" class="inline-block bg-cyan-500 text-black px-10 py-4 rounded-xl font-bold hover:bg-white transition uppercase text-xs tracking-widest">Hire Me</a>
+                    <a href="https://wa.me/923400194591" class="inline-block bg-cyan-500 text-black px-10 py-4 rounded-xl font-bold hover:bg-white transition uppercase text-xs tracking-widest shadow-lg shadow-cyan-500/30">Hire Me</a>
                     <a href="#work" class="inline-block border border-white/20 text-white px-10 py-4 rounded-xl font-bold hover:bg-white/10 transition uppercase text-xs tracking-widest">Portfolio</a>
                 </div>
                 
                 <div class="flex gap-6 mt-12 text-2xl text-gray-500 home__social">
-                    <a href="https://www.linkedin.com/in/asad-ali-3355273ba" class="hover:text-cyan-400"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://x.com/asadleo416?s=21" class="hover:text-cyan-400"><i class='bx bxl-twitter' ></i></a>
-                    <a href="https://www.instagram.com/asadlee24" class="hover:text-cyan-400"><i class='bx bxl-instagram' ></i></a>
+                    <a href="https://www.linkedin.com/in/asad-ali-3355273ba" class="hover:text-cyan-400 transition"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://x.com/asadleo416?s=21" class="hover:text-cyan-400 transition"><i class='bx bxl-twitter' ></i></a>
+                    <a href="https://www.instagram.com/asadlee24" class="hover:text-cyan-400 transition"><i class='bx bxl-instagram' ></i></a>
                 </div>
             </div>
 
-            <div class="home__img flex justify-center relative">
-                <svg class="w-full max-w-sm absolute top-0 opacity-20 animate-pulse" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#22d3ee" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.5,90,-16.3,88.5,-0.9C86.9,14.5,81.2,29,72.3,41.4C63.4,53.8,51.3,64,37.7,71.8C24.1,79.6,9.1,84.9,-5.3,84.1C-19.7,83.3,-33.5,76.4,-45.5,67.6C-57.5,58.8,-67.7,48,-74.6,35.4C-81.5,22.8,-85.1,8.3,-83.4,-5.7C-81.8,-19.7,-74.9,-33.2,-64.7,-43.8C-54.5,-54.4,-41.1,-62.1,-27.9,-69.8C-14.7,-77.5,-1.7,-85.2,12.5,-84.4C26.7,-83.6,40.6,-74.3,44.7,-76.4Z" transform="translate(100 100)" />
-                </svg>
-                <img src="https://i.ibb.co/pvLJXwCW/41ee5f18-72a3-450c-a1e7-b23067becf65.png" alt="Asad Lee" class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-[3rem] z-10 border-4 border-white/5 shadow-2xl rotate-3 hover:rotate-0 transition duration-500">
+            <!-- PERFECT 3D GLOW PROFILE AVATAR CONTAINER -->
+            <div class="home__img flex justify-center items-center relative group py-4">
+                <!-- 3D Gradient Aura -->
+                <div class="absolute w-72 h-80 sm:w-80 sm:h-96 rounded-[3.5rem] bg-gradient-to-tr from-cyan-500 via-blue-500 to-purple-600 blur-2xl opacity-40 group-hover:opacity-80 transition duration-700 animate-pulse"></div>
+                
+                <!-- Frame Container -->
+                <div class="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[420px] rounded-[3rem] p-2.5 bg-[#0e1017] border-2 border-cyan-400/40 shadow-[0_10px_40px_rgba(34,211,238,0.25)] backdrop-blur-xl transform transition-all duration-500 group-hover:scale-[1.03] group-hover:-rotate-1 group-hover:border-cyan-400 overflow-hidden">
+                    <img src="https://i.ibb.co/pvLJXwCW/41ee5f18-72a3-450c-a1e7-b23067becf65.png" alt="Asad Lee" class="w-full h-full object-cover object-top rounded-[2.3rem]">
+                    
+                    <!-- Overlay Badge -->
+                    <div class="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md border border-cyan-400/30 rounded-2xl p-3 text-center shadow-xl transform transition group-hover:translate-y-[-2px]">
+                        <p class="text-xs font-extrabold text-cyan-400 uppercase tracking-widest">Asad Lee</p>
+                        <p class="text-[9px] text-gray-300 uppercase tracking-wider font-semibold">Web Developer & Cyber Researcher</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section class="py-20 px-6 max-w-6xl mx-auto" id="about">
             <h2 class="section-title">About Me</h2>
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="glass-card p-4 about__img">
-                    <img src="https://i.ibb.co/pvLJXwCW/41ee5f18-72a3-450c-a1e7-b23067becf65.png" alt="" class="rounded-2xl opacity-80">
+                <div class="glass-card p-3 about__img relative group overflow-hidden border border-cyan-400/30">
+                    <img src="https://i.ibb.co/pvLJXwCW/41ee5f18-72a3-450c-a1e7-b23067becf65.png" alt="Asad Lee" class="rounded-2xl w-full h-96 object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition duration-500">
                 </div>
                 <div class="about__text">
                     <h2 class="text-3xl font-bold mb-4">I'm Asad Lee</h2>
@@ -590,6 +659,45 @@ Specializing in clean HTML/JS architectures, Web3 USDC integrations, and securit
                 }
             });
         }
+
+        // THEME TOGGLE (DARK / LIGHT MODE)
+        function initTheme() {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            const themeIcon = document.getElementById('theme-icon');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                if (themeIcon) themeIcon.className = 'bx bx-moon text-xl';
+            } else {
+                document.body.classList.remove('light-theme');
+                if (themeIcon) themeIcon.className = 'bx bx-sun text-xl';
+            }
+        }
+
+        function toggleTheme() {
+            const themeIcon = document.getElementById('theme-icon');
+            document.body.classList.toggle('light-theme');
+            if (document.body.classList.contains('light-theme')) {
+                localStorage.setItem('portfolio-theme', 'light');
+                if (themeIcon) themeIcon.className = 'bx bx-moon text-xl';
+            } else {
+                localStorage.setItem('portfolio-theme', 'dark');
+                if (themeIcon) themeIcon.className = 'bx bx-sun text-xl';
+            }
+        }
+        initTheme();
+
+        // 3D TILT EFFECT ON CARDS
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                card.style.transform = `perspective(1000px) rotateX(${-y / 25}deg) rotateY(${x / 25}deg) translateY(-8px) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)`;
+            });
+        });
     </script>
 </body>
 </html>
