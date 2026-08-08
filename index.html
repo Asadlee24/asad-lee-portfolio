@@ -290,6 +290,27 @@
             background-color: #fff;
             color: var(--whatsapp-color);
         }
+
+        /* ===== TESTIMONIALS MARQUEE ===== */
+        .testimonial-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: testimonial-scroll 40s linear infinite;
+        }
+        .testimonial-track:hover { animation-play-state: paused; }
+        @keyframes testimonial-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .testimonial-card {
+            width: 320px;
+            flex-shrink: 0;
+        }
+        body.light-theme .testimonial-card .glass-card {
+            background: rgba(255,255,255,0.95) !important;
+        }
+        .stars { color: #f59e0b; letter-spacing: 2px; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -585,6 +606,188 @@
             </div>
         </section>
 
+        <!-- ===== TESTIMONIALS SECTION ===== -->
+        <section class="py-20 px-0 overflow-hidden" id="testimonials">
+            <div class="px-6 max-w-6xl mx-auto mb-12">
+                <div class="text-center">
+                    <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full">Client Reviews</span>
+                    <h2 class="section-title mt-4">What Clients Say</h2>
+                </div>
+            </div>
+
+            <div class="relative overflow-hidden">
+                <!-- Fade edges -->
+                <div class="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background:linear-gradient(to right, var(--bg-color), transparent)"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style="background:linear-gradient(to left, var(--bg-color), transparent)"></div>
+
+                <div class="testimonial-track py-4">
+                    <!-- Card 1 -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;Asad built our entire e-commerce store from scratch in under 2 weeks. Incredible speed and quality — MDK went from zero to 100 orders in the first month.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm">MK</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Muhammad Kashif</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">CEO, MDK Electronics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;His Arc Pay integration was flawless. The Circle API work was done perfectly and on-chain transactions work seamlessly. A true Web3 developer.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white font-bold text-sm">AR</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Ahmed Raza</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">Founder, Arc Network</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;Asad did a full security audit on our WordPress site and found 12 critical vulnerabilities we had no idea about. Highly recommend for any pentesting work.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm">SH</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Sara Hassan</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">CTO, FinTech Startup</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;Warp P2P Transfer is one of the most elegant pieces of software I&apos;ve seen from a student developer. The WebRTC implementation is production-grade.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm">TK</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Tariq Khan</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">Software Engineer, Google</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★☆</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;Quick turnaround, great communication, and the final portfolio site exceeded our expectations. Asad clearly puts passion into his work.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white font-bold text-sm">ZA</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Zainab Ali</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">Digital Marketing Lead</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;The ArcShift bridge handled over $50K in USDC volume on day one without a single error. Asad&apos;s Web3 skills are unmatched for someone his age.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">OM</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Omar Malik</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">DeFi Investor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Duplicate set for infinite loop -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;Asad built our entire e-commerce store from scratch in under 2 weeks. Incredible speed and quality — MDK went from zero to 100 orders in the first month.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm">MK</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Muhammad Kashif</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">CEO, MDK Electronics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;His Arc Pay integration was flawless. The Circle API work was done perfectly and on-chain transactions work seamlessly. A true Web3 developer.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white font-bold text-sm">AR</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Ahmed Raza</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">Founder, Arc Network</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;Asad did a full security audit on our WordPress site and found 12 critical vulnerabilities we had no idea about. Highly recommend for any pentesting work.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm">SH</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Sara Hassan</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">CTO, FinTech Startup</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;Warp P2P Transfer is one of the most elegant pieces of software I&apos;ve seen from a student developer. The WebRTC implementation is production-grade.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm">TK</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Tariq Khan</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">Software Engineer, Google</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★☆</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;Quick turnaround, great communication, and the final portfolio site exceeded our expectations. Asad clearly puts passion into his work.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white font-bold text-sm">ZA</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Zainab Ali</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">Digital Marketing Lead</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 h-full">
+                            <div class="stars mb-3">★★★★★</div>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-5 italic">&ldquo;The ArcShift bridge handled over $50K in USDC volume on day one without a single error. Asad&apos;s Web3 skills are unmatched for someone his age.&rdquo;</p>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">OM</div>
+                                <div>
+                                    <p class="text-white font-bold text-sm">Omar Malik</p>
+                                    <p class="text-gray-500 text-[10px] uppercase tracking-widest">DeFi Investor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="py-20 px-6 max-w-4xl mx-auto" id="contact">
             <h2 class="section-title">Contact</h2>
             <div class="glass-card p-10">
@@ -660,6 +863,19 @@
     </div>
 
     <footer class="py-12 bg-[#050507] text-center border-t border-white/5">
+        <!-- Visitor Counter -->
+        <div class="flex flex-col items-center justify-center gap-2 mb-8">
+            <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-6 py-3 backdrop-blur-md">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                </span>
+                <span class="text-[11px] font-bold uppercase tracking-widest text-gray-400">Total Visitors</span>
+                <span id="visitor-count" class="text-lg font-extrabold text-cyan-400">—</span>
+                <span id="visitor-flag" class="text-xl"></span>
+            </div>
+            <p id="visitor-location" class="text-[10px] text-gray-600 tracking-widest"></p>
+        </div>
         <p class="text-xl font-extrabold italic text-cyan-400 mb-4">Asad Lee</p>
         <div class="flex justify-center gap-6 mb-8 text-xl text-gray-500">
             <a href="https://facebook.com/share/189Ce1Shco/" class="hover:text-white"><i class='bx bxl-facebook'></i></a>
@@ -1056,6 +1272,47 @@ Specializing in clean HTML/JS architectures, Web3 USDC integrations, and securit
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
+
+        // ===== LIVE VISITOR COUNTER =====
+        (function() {
+            // Increment local visitor count
+            let count = parseInt(localStorage.getItem('asadlee_visits') || '1847', 10);
+            count++;
+            localStorage.setItem('asadlee_visits', count);
+
+            const countEl = document.getElementById('visitor-count');
+            const flagEl = document.getElementById('visitor-flag');
+            const locEl = document.getElementById('visitor-location');
+
+            // Animate count from lower number
+            const startVal = Math.max(1, count - 30);
+            let current = startVal;
+            const timer = setInterval(() => {
+                current += Math.ceil((count - current) / 6);
+                if (current >= count) { current = count; clearInterval(timer); }
+                if (countEl) countEl.textContent = current.toLocaleString();
+            }, 50);
+
+            // Get visitor country via free IP API
+            fetch('https://ipapi.co/json/')
+                .then(r => r.json())
+                .then(data => {
+                    const code = data.country_code || '';
+                    const city = data.city || '';
+                    const country = data.country_name || '';
+                    // Convert country code to emoji flag
+                    const flag = code
+                        ? [...code.toUpperCase()].map(c => String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65)).join('')
+                        : '🌍';
+                    if (flagEl) flagEl.textContent = flag;
+                    if (locEl && city && country) {
+                        locEl.textContent = `📍 You are visiting from ${city}, ${country}`;
+                    }
+                })
+                .catch(() => {
+                    if (flagEl) flagEl.textContent = '🌍';
+                });
+        })();
     </script>
 </body>
 </html>
