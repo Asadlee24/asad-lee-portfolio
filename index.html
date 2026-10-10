@@ -3,943 +3,1425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asad Lee | @asadleo416 — Elite Developer & Security Architect</title>
-    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Asad Lee — Developer, Security Architect & Web3 Engineer</title>
+    <meta name="description" content="Portfolio of Asad Lee (@asadleo416) — Cyber Security Researcher & Professional Full-Stack Developer specializing in TypeScript, Web3 protocols, and resilient digital architectures.">
+    
+    <!-- Google Fonts: Instrument Serif, Instrument Sans, Inter, Yellowtail, Space Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital,wght@0,400;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Yellowtail&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
+                        instrument: ['"Instrument Serif"', 'serif'],
+                        'instrument-sans': ['"Instrument Sans"', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        signature: ['Yellowtail', 'cursive'],
+                        mono: ['"Space Mono"', 'monospace'],
+                    },
+                    colors: {
+                        cherry: {
+                            50: '#fdf2f4',
+                            100: '#fce7ec',
+                            200: '#f9d3dd',
+                            300: '#f3b9c8',
+                            400: '#ffb7c5',
+                            500: '#e87295',
+                            600: '#c2185b',
+                            700: '#a0134a',
+                            900: '#520b27',
+                            bg: '#fffefd',
+                        },
+                        dark: {
+                            bg: '#0f0f10',
+                            surface: '#171717',
+                            surface2: '#1c1c1e',
+                            surface3: '#232325',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                        }
                     }
                 }
             }
         }
     </script>
+    
     <style>
         :root {
-            --bg-color: #050508;
-            --text-color: #f1f5f9;
-            --text-muted: #94a3b8;
-            --card-bg: rgba(13, 15, 23, 0.65);
-            --card-border: rgba(34, 211, 238, 0.12);
-            --nav-bg: rgba(5, 5, 8, 0.8);
-            --first-color: #22d3ee;
-            --accent-glow: rgba(34, 211, 238, 0.15);
-            --card-hover-bg: rgba(18, 22, 34, 0.85);
+            --bg-base: #fffefd;
+            --text-base: #262626;
+            --text-muted: #6b6b6b;
+            --surface: #ffffff;
+            --surface-hover: #fafafa;
+            --border: rgba(58, 58, 58, 0.08);
+            --border-hover: rgba(194, 24, 91, 0.4);
+            --cherry-blush: #fce7ec;
+            --cherry-light: #f9d3dd;
+            --cherry-accent: #f3b9c8;
+            --cherry-vibrant: #ffb7c5;
+            --cherry-deep: #c2185b;
+            --grid-line: rgba(58, 58, 58, 0.035);
         }
 
-        body.light-theme {
-            --bg-color: #f4f8ff;
-            --text-color: #0b1329;
-            --text-muted: #475569;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(14, 165, 233, 0.22);
-            --nav-bg: rgba(255, 255, 255, 0.85);
-            --first-color: #0284c7;
-            --accent-glow: rgba(2, 132, 199, 0.12);
-            --card-hover-bg: #ffffff;
+        html.dark {
+            --bg-base: #0f0f10;
+            --text-base: #fafafa;
+            --text-muted: rgba(255, 255, 255, 0.62);
+            --surface: #171717;
+            --surface-hover: #1c1c1e;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(255, 183, 197, 0.45);
+            --cherry-blush: rgba(58, 31, 40, 0.6);
+            --cherry-light: rgba(194, 24, 91, 0.25);
+            --cherry-accent: #ffb7c5;
+            --cherry-vibrant: #ffb7c5;
+            --cherry-deep: #ffb7c5;
+            --grid-line: rgba(255, 255, 255, 0.025);
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            scroll-behavior: smooth;
+            background-color: var(--bg-base);
+            color: var(--text-base);
+            font-family: 'Instrument Sans', sans-serif;
             transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* Ambient glowing background grid & radial gradients */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+        /* Selection highlight */
+        ::selection {
+            background-color: #f3b9c8;
+            color: #181818;
+        }
+        .dark ::selection {
+            background-color: #c2185b;
+            color: #ffffff;
+        }
+
+        /* Grid Background pattern like palakonweb */
+        .bg-project-grid {
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(34, 211, 238, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.06) 0%, transparent 40%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
-            pointer-events: none;
-            z-index: -1;
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(var(--grid-line) 1px, transparent 1px);
+            background-size: 60px 60px;
         }
 
-        body.light-theme::before {
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(124, 58, 237, 0.07) 0%, transparent 40%),
-                linear-gradient(to right, rgba(14, 165, 233, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+        /* Radial blush aura */
+        .bg-radial-blush {
+            background: radial-gradient(circle at 85% 15%, rgba(247, 232, 236, 0.95) 0%, transparent 60%);
+        }
+        .dark .bg-radial-blush {
+            background: radial-gradient(circle at 85% 15%, rgba(194, 24, 91, 0.14) 0%, transparent 60%);
         }
 
-        .glass-nav {
-            background: var(--nav-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--card-border);
+        /* Animated Dashed Borders */
+        .dashed-border-anim {
+            border: 1.5px dashed var(--border);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dashed-border-anim:hover {
+            border-color: var(--border-hover);
         }
 
-        .glass-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 1.75rem;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Glare effect on buttons */
+        .glare-button {
             position: relative;
             overflow: hidden;
         }
-
-        .glass-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(34, 211, 238, 0.06), transparent 40%);
-            opacity: 0;
-            transition: opacity 0.3s;
+        .glare-button::after {
+            content: "";
             pointer-events: none;
-        }
-
-        .glass-card:hover::after {
-            opacity: 1;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-6px) scale(1.01);
-            background: var(--card-hover-bg);
-            border-color: rgba(34, 211, 238, 0.35);
-            box-shadow: 0 24px 50px -12px rgba(34, 211, 238, 0.15);
-        }
-
-        body.light-theme .glass-card:hover {
-            border-color: rgba(14, 165, 233, 0.45);
-            box-shadow: 0 24px 50px -12px rgba(14, 165, 233, 0.2);
-        }
-
-        .section-title {
-            position: relative;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 3.5rem;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: -0.025em;
-            background: linear-gradient(135deg, var(--text-color) 40%, var(--first-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--first-color), #c084fc);
-            bottom: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 4px;
-        }
-
-        .skills__bar {
-            height: 6px;
-            background-color: rgba(148, 163, 184, 0.15);
-            border-radius: 9999px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .skills__percentage {
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+            width: 50%;
             height: 100%;
-            background: linear-gradient(90deg, var(--first-color), #a855f7);
-            border-radius: 9999px;
-            display: block;
-            position: relative;
-            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+            position: absolute;
+            top: 0;
+            left: -75%;
+            transform: skew(-20deg);
+        }
+        .glare-button:hover::after {
+            left: 125%;
         }
 
+        /* Auto glare sweep */
+        .glare-auto {
+            position: relative;
+            overflow: hidden;
+        }
+        .glare-auto::after {
+            content: "";
+            pointer-events: none;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+            width: 40%;
+            height: 100%;
+            animation: 3.2s ease-in-out infinite glare-sweep;
+            position: absolute;
+            top: 0;
+            left: -75%;
+            transform: skew(-20deg);
+        }
+        @keyframes glare-sweep {
+            0%, 55% { left: -75%; }
+            100% { left: 135%; }
+        }
+
+        /* Liquid Chrome animated border */
+        @keyframes liquidChrome {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .liquid-chrome-border {
+            background: linear-gradient(110deg, #ffb7c5 0%, #ffffff 25%, #e8a2b5 50%, #ffffff 75%, #ffb7c5 100%) 0 0 / 200% 200%;
+            animation: 3.5s ease-in-out infinite liquidChrome;
+        }
+        .dark .liquid-chrome-border {
+            background: linear-gradient(110deg, #c2185b 0%, #ffb7c5 25%, #7a2f4d 50%, #ffb7c5 75%, #c2185b 100%) 0 0 / 200% 200%;
+            animation: 3.5s ease-in-out infinite liquidChrome;
+        }
+
+        /* Marquee animations */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee-scroll 32s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Testimonials Marquee */
+        .testimonial-track {
+            display: flex;
+            width: max-content;
+            animation: testimonial-scroll 42s linear infinite;
+        }
+        .testimonial-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes testimonial-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
-            bottom: 35px;
-            right: 35px;
-            background-color: #25D366;
-            color: #fff;
-            width: 62px;
-            height: 62px;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 34px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
-            z-index: 100;
+            bottom: 28px;
+            right: 28px;
+            background: #25D366;
+            color: #ffffff;
+            width: 58px;
+            height: 58px;
+            border-radius: 9999px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+            z-index: 90;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
         .whatsapp-float:hover {
-            transform: scale(1.12) rotate(8deg);
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+            transform: scale(1.1) rotate(6deg);
+            box-shadow: 0 16px 36px rgba(37, 211, 102, 0.6);
         }
 
-        .testimonial-track {
-            display: flex;
-            gap: 1.75rem;
-            width: max-content;
-            animation: testimonial-scroll 45s linear infinite;
+        /* Hide scrollbars gracefully */
+        ::-webkit-scrollbar {
+            width: 7px;
+            height: 7px;
         }
-        .testimonial-track:hover { animation-play-state: paused; }
-        @keyframes testimonial-scroll {
-            0%   { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-base);
         }
-        .testimonial-card {
-            width: 350px;
-            flex-shrink: 0;
+        ::-webkit-scrollbar-thumb {
+            background: #f3b9c8;
+            border-radius: 9999px;
         }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: rgba(34, 211, 238, 0.25); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(34, 211, 238, 0.5); }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #520b27;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e87295;
+        }
     </style>
 </head>
-<body class="dark">
 
-    <a href="https://wa.me/923400194591" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-        <i class='bx bxl-whatsapp'></i>
+<body class="bg-project-grid min-h-screen relative selection:bg-cherry-300 selection:text-black">
+
+    <!-- Ambient Radial Glow aura -->
+    <div class="fixed inset-0 bg-radial-blush pointer-events-none z-[-1]"></div>
+
+    <!-- Floating WhatsApp CTA -->
+    <a href="https://wa.me/923400194591" class="whatsapp-float group" target="_blank" rel="noopener noreferrer" aria-label="Chat directly on WhatsApp">
+        <i class='bx bxl-whatsapp group-hover:scale-110 transition-transform'></i>
     </a>
 
-    <!-- Top Navigation -->
-    <header class="fixed top-0 w-full z-50 glass-nav py-4 transition-all duration-300">
-        <nav class="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-12">
-            <div>
-                <a href="#" class="text-xl font-extrabold tracking-tight italic bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">@ASADLEO416</a>
-            </div>
-            <div class="flex items-center gap-6">
-                <ul class="hidden md:flex gap-8 text-[11px] font-bold tracking-[0.2em] uppercase text-slate-400">
-                    <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
-                    <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
-                    <li><a href="#skills" class="hover:text-cyan-400 transition">Skills</a></li>
-                    <li><a href="#work" class="hover:text-cyan-400 transition">Work</a></li>
-                    <li><a href="#contact" class="hover:text-cyan-400 transition">Contact</a></li>
-                </ul>
-                <button id="theme-toggle" onclick="toggleTheme()" class="p-3 rounded-2xl bg-white/5 hover:bg-cyan-500/20 text-cyan-400 border border-white/10 transition flex items-center justify-center cursor-pointer shadow-lg group" aria-label="Toggle Theme">
-                    <i id="theme-icon" class='bx bx-sun text-xl group-hover:rotate-90 transition-transform duration-300'></i>
-                </button>
-            </div>
+    <!-- Top Navigation Header (Palak Style) -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-4 flex items-center justify-between pointer-events-none">
+        <!-- Logo / Signature -->
+        <a href="#home" class="pointer-events-auto flex items-center gap-2 group">
+            <span class="font-signature text-2xl md:text-3xl text-gray-900 dark:text-white group-hover:opacity-80 transition">asadlee</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-cherry-600 dark:bg-cherry-400"></span>
+        </a>
+
+        <!-- Floating Navigation Dock (Desktop) -->
+        <nav class="hidden md:flex pointer-events-auto items-center gap-7 bg-white/80 dark:bg-dark-surface2/80 backdrop-blur-xl px-6 py-2.5 rounded-full border border-black/5 dark:border-white/10 shadow-[0_2px_12px_rgba(0,0,0,0.04)] text-xs font-medium tracking-wide">
+            <a href="#home" class="text-gray-700 dark:text-white/70 hover:text-cherry-600 dark:hover:text-cherry-400 transition">Home</a>
+            <a href="#about" class="text-gray-700 dark:text-white/70 hover:text-cherry-600 dark:hover:text-cherry-400 transition">About</a>
+            <a href="#activity" class="text-gray-700 dark:text-white/70 hover:text-cherry-600 dark:hover:text-cherry-400 transition">Winter Arc</a>
+            <a href="#work" class="text-gray-700 dark:text-white/70 hover:text-cherry-600 dark:hover:text-cherry-400 transition">Projects</a>
+            <a href="#skills" class="text-gray-700 dark:text-white/70 hover:text-cherry-600 dark:hover:text-cherry-400 transition">Tech Stack</a>
+            <a href="#terminal-section" class="text-gray-700 dark:text-white/70 hover:text-cherry-600 dark:hover:text-cherry-400 transition">Terminal</a>
+            <a href="#contact" class="text-gray-700 dark:text-white/70 hover:text-cherry-600 dark:hover:text-cherry-400 transition">Let's Talk</a>
+            
+            <!-- Dark / Light Theme Toggle -->
+            <button id="theme-toggle-btn" onclick="toggleTheme()" class="w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 flex items-center justify-center text-gray-800 dark:text-white hover:scale-105 transition cursor-pointer" aria-label="Toggle theme">
+                <i id="theme-toggle-icon" class='bx bx-sun text-base'></i>
+            </button>
         </nav>
+
+        <!-- Mobile Quick Menu & Theme Switcher -->
+        <div class="md:hidden pointer-events-auto flex items-center gap-2">
+            <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-white/90 dark:bg-dark-surface2/90 backdrop-blur-md border border-black/5 dark:border-white/10 flex items-center justify-center text-gray-800 dark:text-white shadow-sm" aria-label="Toggle theme">
+                <i id="theme-toggle-icon-mobile" class='bx bx-sun text-lg'></i>
+            </button>
+            <button onclick="toggleMobileNav()" class="w-9 h-9 rounded-full bg-white/90 dark:bg-dark-surface2/90 backdrop-blur-md border border-black/5 dark:border-white/10 flex items-center justify-center text-gray-800 dark:text-white shadow-sm" aria-label="Open navigation menu">
+                <i class='bx bx-menu text-xl'></i>
+            </button>
+        </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center pt-28 pb-16 px-6 md:px-12 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center" id="home">
-            <div class="home__data relative z-10">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold tracking-wider uppercase mb-6 shadow-inner">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Available for Elite Projects
-                </div>
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight">
-                    Hi,<br>I'm <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">Asad Lee</span><br>
-                    <span class="block text-2xl sm:text-3xl md:text-4xl text-slate-300 mt-3 font-semibold min-h-[48px]">
-                        <span id="typing-text" class="border-r-4 border-cyan-400 pr-2">Full-Stack Coder</span>
-                    </span>
-                </h1>
-                <p class="text-slate-400 mb-10 max-w-lg font-light text-base md:text-lg leading-relaxed">
-                    Cyber Security Researcher & Professional Web Developer. Crafting high-performance decentralized protocols, secure Web3 infrastructure, and resilient digital architectures.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="https://wa.me/923400194591" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 px-8 py-4 rounded-2xl font-extrabold hover:opacity-90 transition transform hover:-translate-y-0.5 uppercase text-xs tracking-widest shadow-xl shadow-cyan-500/25">
-                        <i class='bx bxl-whatsapp text-lg'></i> Hire Me Direct
-                    </a>
-                    <a href="#work" class="inline-flex items-center justify-center gap-2 border border-white/20 text-white px-8 py-4 rounded-2xl font-bold hover:bg-white/10 hover:border-cyan-400/50 transition uppercase text-xs tracking-widest backdrop-blur-md">
-                        Explore Portfolio
-                    </a>
-                </div>
-                
-                <div class="flex gap-6 mt-14 text-2xl text-slate-400 home__social">
-                    <a href="https://www.linkedin.com/in/asad-ali-3355273ba" class="hover:text-cyan-400 hover:scale-110 transition-all" target="_blank" rel="noopener noreferrer"><i class='bx bxl-linkedin'></i></a>
-                    <a href="https://x.com/asadleo416?s=21" class="hover:text-cyan-400 hover:scale-110 transition-all" target="_blank" rel="noopener noreferrer"><i class='bx bxl-twitter'></i></a>
-                    <a href="https://www.instagram.com/asadlee24" class="hover:text-cyan-400 hover:scale-110 transition-all" target="_blank" rel="noopener noreferrer"><i class='bx bxl-instagram'></i></a>
-                </div>
-            </div>
-
-            <div class="home__img flex justify-center items-center relative group py-4">
-                <div class="absolute w-72 h-[420px] sm:w-88 sm:h-[480px] rounded-[3.5rem] bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 blur-3xl opacity-30 group-hover:opacity-60 transition duration-700 animate-pulse"></div>
-                
-                <div class="relative w-72 h-[420px] sm:w-80 sm:h-[460px] md:w-[360px] md:h-[500px] rounded-[3rem] p-3 bg-slate-950/80 border-2 border-cyan-400/30 shadow-[0_20px_60px_rgba(34,211,238,0.2)] backdrop-blur-2xl transform transition-all duration-700 group-hover:scale-[1.02] group-hover:-rotate-1 group-hover:border-cyan-400 overflow-hidden">
-                    <img src="https://i.ibb.co/pvLJXwCW/41ee5f18-72a3-450c-a1e7-b23067becf65.png" alt="Asad Lee" class="w-full h-full object-cover object-top rounded-[2.3rem] filter contrast-105">
-                    
-                    <div class="absolute bottom-4 left-4 right-4 bg-slate-950/90 backdrop-blur-xl border border-cyan-400/30 rounded-2xl p-3.5 text-center shadow-2xl transform transition group-hover:translate-y-[-2px]">
-                        <p class="text-sm font-extrabold text-cyan-400 uppercase tracking-widest">Asad Lee</p>
-                        <p class="text-[10px] text-slate-300 uppercase tracking-wider font-semibold mt-0.5">Web Developer & Security Researcher</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto" id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="about__img relative group flex justify-center">
-                    <div class="absolute inset-0 bg-cyan-500/15 blur-2xl rounded-[3rem] opacity-50 group-hover:opacity-80 transition duration-500"></div>
-                    
-                    <div class="relative w-full max-w-md h-[480px] sm:h-[540px] md:h-[580px] rounded-[2.5rem] p-3 bg-slate-950/80 border-2 border-cyan-400/30 shadow-2xl overflow-hidden backdrop-blur-2xl transform transition duration-500 group-hover:scale-[1.02]">
-                        <img src="https://i.ibb.co/pvLJXwCW/41ee5f18-72a3-450c-a1e7-b23067becf65.png" alt="Asad Lee" class="w-full h-full object-cover object-top rounded-[2.1rem]">
-                    </div>
-                </div>
-                <div class="about__text">
-                    <h3 class="text-3xl md:text-4xl font-extrabold mb-6 tracking-tight">Engineering Secure Systems & Advanced Protocols</h3>
-                    <p class="text-slate-400 mb-8 font-light text-base md:text-lg leading-relaxed">
-                        I am a professional Web Developer and a dedicated <span class="text-cyan-400 font-semibold">Cyber Security Researcher</span>. I write clean, efficient, and robust code to create secure and scalable digital experiences. Beyond standard web development, I specialize in <span class="text-white font-semibold">TypeScript, React, Next.js, and Web3 architectures</span>, building advanced decentralized applications, cryptographic protocol interfaces, and automated security workflows.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="glass-card p-6 text-center">
-                            <span class="block text-cyan-400 font-extrabold text-2xl mb-1">Expert</span>
-                            <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Coding Proficiency</span>
-                        </div>
-                        <div class="glass-card p-6 text-center">
-                            <span class="block text-cyan-400 font-extrabold text-2xl mb-1">18+</span>
-                            <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Shipped Projects</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Counter Section -->
-        <section class="py-16 px-6 md:px-12 max-w-7xl mx-auto" id="stats-counter-section">
-            <div class="glass-card p-8 md:p-12 shadow-2xl">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                    <div class="flex flex-col items-center justify-center p-4 group">
-                        <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition duration-300">
-                            <i class='bx bx-code-alt text-3xl text-cyan-400'></i>
-                        </div>
-                        <span class="counter-val text-4xl md:text-5xl font-extrabold text-white mb-1" data-target="18" data-suffix="+">0</span>
-                        <span class="text-[11px] uppercase tracking-widest text-slate-400 font-bold">Custom Projects</span>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-4 group">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition duration-300">
-                            <i class='bx bx-happy-heart-eyes text-3xl text-emerald-400'></i>
-                        </div>
-                        <span class="counter-val text-4xl md:text-5xl font-extrabold text-white mb-1" data-target="99" data-suffix="%">0</span>
-                        <span class="text-[11px] uppercase tracking-widest text-slate-400 font-bold">Client Satisfaction</span>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-4 group">
-                        <div class="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition duration-300">
-                            <i class='bx bx-shield-quarter text-3xl text-purple-400'></i>
-                        </div>
-                        <span class="counter-val text-4xl md:text-5xl font-extrabold text-white mb-1" data-target="100" data-suffix="+">0</span>
-                        <span class="text-[11px] uppercase tracking-widest text-slate-400 font-bold">Security Audits</span>
-                    </div>
-                    <div class="flex flex-col items-center justify-center p-4 group">
-                        <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition duration-300">
-                            <i class='bx bx-terminal text-3xl text-amber-400'></i>
-                        </div>
-                        <span class="counter-val text-4xl md:text-5xl font-extrabold text-white mb-1" data-target="4" data-suffix="+ Yrs">0</span>
-                        <span class="text-[11px] uppercase tracking-widest text-slate-400 font-bold">Coding Experience</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto" id="skills">
-            <h2 class="section-title">Expertise</h2>
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4 skills__subtitle">Technical Languages & Stack</h3>
-                    <p class="text-slate-400 mb-8 font-light italic skills__text">Core programming languages, frameworks, and security tooling I leverage to engineer elite software solutions.</p>
-                    <div class="space-y-6">
-                        <div class="skills__data">
-                            <div class="flex justify-between mb-2.5 uppercase text-[11px] font-bold tracking-widest">
-                                <span class="flex items-center gap-2"><i class='bx bxl-typescript text-blue-400 text-lg'></i> TypeScript — Next.js, Technocore, MinterBot</span>
-                                <span class="text-cyan-400 font-mono">96%</span>
-                            </div>
-                            <div class="skills__bar"><span class="skills__percentage" style="width: 96%;"></span></div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="flex justify-between mb-2.5 uppercase text-[11px] font-bold tracking-widest">
-                                <span class="flex items-center gap-2"><i class='bx bxl-javascript text-yellow-400 text-lg'></i> JavaScript — Frontend apps, browser logic, Web3</span>
-                                <span class="text-cyan-400 font-mono">95%</span>
-                            </div>
-                            <div class="skills__bar"><span class="skills__percentage" style="width: 95%;"></span></div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="flex justify-between mb-2.5 uppercase text-[11px] font-bold tracking-widest">
-                                <span class="flex items-center gap-2"><i class='bx bxl-python text-cyan-400 text-lg'></i> Python — ML, data analysis, pandas, NumPy</span>
-                                <span class="text-cyan-400 font-mono">88%</span>
-                            </div>
-                            <div class="skills__bar"><span class="skills__percentage" style="width: 88%;"></span></div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="flex justify-between mb-2.5 uppercase text-[11px] font-bold tracking-widest">
-                                <span class="flex items-center gap-2"><i class='bx bx-cube text-purple-400 text-lg'></i> Solidity — Smart contracts, Web3 protocols</span>
-                                <span class="text-cyan-400 font-mono">85%</span>
-                            </div>
-                            <div class="skills__bar"><span class="skills__percentage" style="width: 85%;"></span></div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="flex justify-between mb-2.5 uppercase text-[11px] font-bold tracking-widest">
-                                <span class="flex items-center gap-2"><i class='bx bxl-html5 text-orange-500 text-lg'></i> HTML5 / CSS3 / SQL — Backend & Database</span>
-                                <span class="text-cyan-400 font-mono">92%</span>
-                            </div>
-                            <div class="skills__bar"><span class="skills__percentage" style="width: 92%;"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hidden md:flex justify-center">
-                    <div class="glass-card p-10 text-center relative overflow-hidden group">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-purple-500/10 to-transparent"></div>
-                        <i class='bx bx-shield-alt-2 text-7xl text-cyan-400 mb-6 group-hover:scale-110 transition-transform duration-500'></i>
-                        <h4 class="text-xl font-bold mb-3 text-white">Security-First Engineering</h4>
-                        <p class="text-slate-400 text-sm font-light leading-relaxed">Every codebase is subjected to strict vulnerability analysis, encryption standards (AES-256 / Ed25519), and optimized performance architectures.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Terminal Section -->
-        <section class="py-16 px-6 md:px-12 max-w-7xl mx-auto" id="terminal-section">
-            <div class="text-center mb-10">
-                <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-2 rounded-full">Interactive Shell</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-4">AsadSec Terminal v1.0</h2>
-            </div>
-            
-            <div class="glass-card overflow-hidden border border-cyan-500/30 shadow-2xl font-mono text-sm max-w-4xl mx-auto">
-                <div class="bg-slate-900/90 px-6 py-4 border-b border-white/10 flex items-center justify-between flex-wrap gap-3">
-                    <div class="flex items-center gap-2.5">
-                        <span class="w-3.5 h-3.5 rounded-full bg-red-500/80 inline-block"></span>
-                        <span class="w-3.5 h-3.5 rounded-full bg-yellow-500/80 inline-block"></span>
-                        <span class="w-3.5 h-3.5 rounded-full bg-green-500/80 inline-block"></span>
-                        <span class="text-xs text-slate-400 font-sans ml-3">asad@sec-terminal:~</span>
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="runTermCmd('whoami')" class="text-[11px] bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-400 text-slate-300 px-3 py-1.5 rounded-lg border border-white/10 transition font-sans">whoami</button>
-                        <button onclick="runTermCmd('skills')" class="text-[11px] bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-400 text-slate-300 px-3 py-1.5 rounded-lg border border-white/10 transition font-sans">skills</button>
-                        <button onclick="runTermCmd('projects')" class="text-[11px] bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-400 text-slate-300 px-3 py-1.5 rounded-lg border border-white/10 transition font-sans">projects</button>
-                        <button onclick="runTermCmd('clear')" class="text-[11px] bg-red-500/10 hover:bg-red-500/20 text-red-400 px-3 py-1.5 rounded-lg border border-red-500/20 transition font-sans">clear</button>
-                    </div>
-                </div>
-                
-                <div id="terminal-output" class="p-6 h-72 overflow-y-auto bg-slate-950/90 text-slate-300 space-y-3">
-                    <p class="text-cyan-400 font-bold">Welcome to AsadSec Interactive Terminal v1.0.0 [Cyber Security & Full-Stack Edition]</p>
-                    <p class="text-slate-400">Type <span class="text-yellow-400 font-bold">'help'</span> or click the quick action buttons above.</p>
-                </div>
-                
-                <form id="terminal-form" onsubmit="handleTerminalSubmit(event)" class="bg-slate-900/80 px-6 py-4 border-t border-white/10 flex items-center gap-3">
-                    <span class="text-emerald-400 font-bold">asad@sec:~#</span>
-                    <input type="text" id="terminal-input" placeholder="type 'help', 'whoami', 'skills', 'projects', 'contact'..." class="bg-transparent border-none outline-none text-cyan-300 w-full font-mono text-sm placeholder-slate-600 focus:ring-0" autocomplete="off">
-                </form>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section class="py-24 px-6 md:px-12 max-w-7xl mx-auto" id="work">
-            <h2 class="section-title">My Projects</h2>
-            
-            <div class="flex flex-wrap justify-center gap-3 mb-12">
-                <button onclick="filterProjects('all')" class="project-filter-btn active text-xs font-bold uppercase tracking-widest px-6 py-2.5 rounded-full border border-cyan-400 bg-cyan-500/20 text-cyan-400 transition cursor-pointer shadow-lg shadow-cyan-500/10">All Projects</button>
-                <button onclick="filterProjects('web3')" class="project-filter-btn text-xs font-bold uppercase tracking-widest px-6 py-2.5 rounded-full border border-white/10 hover:border-cyan-400/50 bg-white/5 text-slate-400 hover:text-white transition cursor-pointer">Web3 & Technocore</button>
-                <button onclick="filterProjects('p2p')" class="project-filter-btn text-xs font-bold uppercase tracking-widest px-6 py-2.5 rounded-full border border-white/10 hover:border-cyan-400/50 bg-white/5 text-slate-400 hover:text-white transition cursor-pointer">P2P Apps</button>
-                <button onclick="filterProjects('ecommerce')" class="project-filter-btn text-xs font-bold uppercase tracking-widest px-6 py-2.5 rounded-full border border-white/10 hover:border-cyan-400/50 bg-white/5 text-slate-400 hover:text-white transition cursor-pointer">E-Commerce</button>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Technocore Console -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between cursor-pointer" data-category="web3" onclick="openModal('technocoreConsole')">
-                    <div>
-                        <div class="flex justify-center mb-5">
-                            <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                                <i class='bx bx-terminal text-3xl text-cyan-400'></i>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-3.5 py-1 rounded-full uppercase tracking-widest font-extrabold inline-block mb-3">IDENTITY CONSOLE</span>
-                        <h3 class="text-xl font-bold mb-3 text-white">Technocore Console</h3>
-                        <p class="text-slate-400 text-sm font-light mb-6 leading-relaxed">A browser-based identity and messaging console for Technocore with in-memory Ed25519 identities, signed messaging, live room monitoring and cryptographic verification tools.</p>
-                    </div>
-                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
-                        <span class="text-xs text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"><i class='bx bx-search-alt text-base'></i> View Details</span>
-                    </div>
-                </div>
-
-                <!-- Technocore Explorer -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between cursor-pointer" data-category="web3" onclick="openModal('technocoreExplorer')">
-                    <div>
-                        <div class="flex justify-center mb-5">
-                            <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                                <i class='bx bx-radar text-3xl text-cyan-400'></i>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-3.5 py-1 rounded-full uppercase tracking-widest font-extrabold inline-block mb-3">NETWORK EXPLORER</span>
-                        <h3 class="text-xl font-bold mb-3 text-white">Technocore Explorer</h3>
-                        <p class="text-slate-400 text-sm font-light mb-6 leading-relaxed">A public network explorer and historical archive layer for the Technocore protocol, making network activity searchable, inspectable and independently verifiable.</p>
-                    </div>
-                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
-                        <span class="text-xs text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"><i class='bx bx-search-alt text-base'></i> View Details</span>
-                    </div>
-                </div>
-
-                <!-- Technocore Agent Kit -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between cursor-pointer" data-category="web3" onclick="openModal('technocoreAgentKit')">
-                    <div>
-                        <div class="flex justify-center mb-5">
-                            <div class="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                                <i class='bx bx-bot text-3xl text-purple-400'></i>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-3.5 py-1 rounded-full uppercase tracking-widest font-extrabold inline-block mb-3">AUTONOMOUS AGENTS</span>
-                        <h3 class="text-xl font-bold mb-3 text-white">Technocore Agent Kit</h3>
-                        <p class="text-slate-400 text-sm font-light mb-6 leading-relaxed">A TypeScript toolkit and autonomous multi-agent system for building cryptographically verifiable agent-to-agent workflows on the Technocore protocol.</p>
-                    </div>
-                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
-                        <span class="text-xs text-purple-400 font-bold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"><i class='bx bx-search-alt text-base'></i> View Details</span>
-                    </div>
-                </div>
-
-                <!-- MinterBot V1 -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between cursor-pointer" data-category="web3" onclick="openModal('minterbot')">
-                    <div>
-                        <div class="flex justify-center mb-5">
-                            <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                                <i class='bx bx-bot text-3xl text-cyan-400'></i>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-3.5 py-1 rounded-full uppercase tracking-widest font-extrabold inline-block mb-3">Web3 & NFT Bot</span>
-                        <h3 class="text-xl font-bold mb-3 text-white">MinterBot V1</h3>
-                        <p class="text-slate-400 text-sm font-light mb-6 leading-relaxed">Automated NFT minting platform with multi-wallet execution, scheduled auto-timers, and local AES-256 encryption.</p>
-                    </div>
-                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
-                        <span class="text-xs text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"><i class='bx bx-search-alt text-base'></i> View Details</span>
-                    </div>
-                </div>
-
-                <!-- Arc Pay Platform -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between cursor-pointer" data-category="web3" onclick="openModal('arcpay')">
-                    <div>
-                        <div class="flex justify-center mb-5">
-                            <div class="w-16 h-16 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                                <i class='bx bx-credit-card text-3xl text-blue-400'></i>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3.5 py-1 rounded-full uppercase tracking-widest font-extrabold inline-block mb-3">Fintech & USDC</span>
-                        <h3 class="text-xl font-bold mb-3 text-white">Arc Pay Platform</h3>
-                        <p class="text-slate-400 text-sm font-light mb-6 leading-relaxed">Open-source no-code USDC payment layer built for merchants on Arc Network with Circle API integration.</p>
-                    </div>
-                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
-                        <span class="text-xs text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"><i class='bx bx-search-alt text-base'></i> View Details</span>
-                    </div>
-                </div>
-
-                <!-- Warp P2P Transfer -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between cursor-pointer" data-category="p2p" onclick="openModal('warp')">
-                    <div>
-                        <div class="flex justify-center mb-5">
-                            <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                                <i class='bx bx-transfer text-3xl text-cyan-400'></i>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-3.5 py-1 rounded-full uppercase tracking-widest font-extrabold inline-block mb-3">WebRTC P2P</span>
-                        <h3 class="text-xl font-bold mb-3 text-white">Warp P2P Transfer</h3>
-                        <p class="text-slate-400 text-sm font-light mb-6 leading-relaxed">Browser-to-browser instant P2P file transfer over WebRTC. Zero server storage and no size limits.</p>
-                    </div>
-                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
-                        <span class="text-xs text-cyan-400 font-bold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"><i class='bx bx-search-alt text-base'></i> View Details</span>
-                    </div>
-                </div>
-
-                <!-- Bridgr USDC Bridge -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between cursor-pointer" data-category="web3" onclick="openModal('bridgr')">
-                    <div>
-                        <div class="flex justify-center mb-5">
-                            <div class="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                                <i class='bx bx-git-compare text-3xl text-purple-400'></i>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-3.5 py-1 rounded-full uppercase tracking-widest font-extrabold inline-block mb-3">Web3 & Bridge</span>
-                        <h3 class="text-xl font-bold mb-3 text-white">Bridgr Bridge</h3>
-                        <p class="text-slate-400 text-sm font-light mb-6 leading-relaxed">Cross-chain USDC liquidity bridge & asset transfer protocol engineered for Arc Network.</p>
-                    </div>
-                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
-                        <span class="text-xs text-purple-400 font-bold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"><i class='bx bx-search-alt text-base'></i> View Details</span>
-                    </div>
-                </div>
-
-                <!-- InstaRip Downloader -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between cursor-pointer" data-category="p2p" onclick="openModal('instarip')">
-                    <div>
-                        <div class="flex justify-center mb-5">
-                            <div class="w-16 h-16 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                                <i class='bx bx-cloud-download text-3xl text-pink-400'></i>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-pink-500/10 text-pink-400 border border-pink-500/20 px-3.5 py-1 rounded-full uppercase tracking-widest font-extrabold inline-block mb-3">Web App</span>
-                        <h3 class="text-xl font-bold mb-3 text-white">InstaRip Downloader</h3>
-                        <p class="text-slate-400 text-sm font-light mb-6 leading-relaxed">High-performance watermark-free Instagram Reel & TikTok HD video downloader built with Next.js.</p>
-                    </div>
-                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
-                        <span class="text-xs text-pink-400 font-bold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"><i class='bx bx-search-alt text-base'></i> View Details</span>
-                    </div>
-                </div>
-
-                <!-- MDK Electronics -->
-                <div class="project-card glass-card p-8 text-center group flex flex-col justify-between cursor-pointer" data-category="ecommerce" onclick="openModal('mdk')">
-                    <div>
-                        <div class="flex justify-center mb-5">
-                            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center group-hover:scale-110 transition duration-300">
-                                <i class='bx bx-store text-3xl text-amber-400'></i>
-                            </div>
-                        </div>
-                        <span class="text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3.5 py-1 rounded-full uppercase tracking-widest font-extrabold inline-block mb-3">E-Commerce</span>
-                        <h3 class="text-xl font-bold mb-3 text-white">MDK Electronics</h3>
-                        <p class="text-slate-400 text-sm font-light mb-6 leading-relaxed">A professional surveillance e-commerce store with secure payment integrations.</p>
-                    </div>
-                    <div class="flex justify-center gap-3 pt-4 border-t border-white/5">
-                        <span class="text-xs text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform"><i class='bx bx-search-alt text-base'></i> View Details</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="py-24 px-0 overflow-hidden" id="testimonials">
-            <div class="px-6 md:px-12 max-w-7xl mx-auto mb-12">
-                <div class="text-center">
-                    <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-2 rounded-full">Client Reviews</span>
-                    <h2 class="section-title mt-4">What Clients Say</h2>
-                </div>
-            </div>
-
-            <div class="relative overflow-hidden">
-                <div class="absolute left-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style="background:linear-gradient(to right, var(--bg-color), transparent)"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-32 z-10 pointer-events-none" style="background:linear-gradient(to left, var(--bg-color), transparent)"></div>
-
-                <div class="testimonial-track py-6">
-                    <div class="testimonial-card">
-                        <div class="glass-card p-8 h-full flex flex-col justify-between">
-                            <div>
-                                <div class="text-amber-400 tracking-widest text-base mb-4">★★★★★</div>
-                                <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">&ldquo;Asad built our entire e-commerce store from scratch in under 2 weeks. Incredible speed and quality — MDK went from zero to 100 orders in the first month.&rdquo;</p>
-                            </div>
-                            <div class="flex items-center gap-3.5 pt-4 border-t border-white/5">
-                                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-extrabold text-sm shadow-md">MK</div>
-                                <div>
-                                    <p class="text-white font-bold text-sm">Muhammad Kashif</p>
-                                    <p class="text-slate-400 text-[10px] uppercase tracking-widest">CEO, MDK Electronics</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="glass-card p-8 h-full flex flex-col justify-between">
-                            <div>
-                                <div class="text-amber-400 tracking-widest text-base mb-4">★★★★★</div>
-                                <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">&ldquo;His Arc Pay integration was flawless. The Circle API work was done perfectly and on-chain transactions work seamlessly. A true Web3 developer.&rdquo;</p>
-                            </div>
-                            <div class="flex items-center gap-3.5 pt-4 border-t border-white/5">
-                                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white font-extrabold text-sm shadow-md">AR</div>
-                                <div>
-                                    <p class="text-white font-bold text-sm">Ahmed Raza</p>
-                                    <p class="text-slate-400 text-[10px] uppercase tracking-widest">Founder, Arc Network</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="glass-card p-8 h-full flex flex-col justify-between">
-                            <div>
-                                <div class="text-amber-400 tracking-widest text-base mb-4">★★★★★</div>
-                                <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">&ldquo;Asad did a full security audit on our TypeScript platform and found 12 critical vulnerabilities we had no idea about. Highly recommend for any pentesting work.&rdquo;</p>
-                            </div>
-                            <div class="flex items-center gap-3.5 pt-4 border-t border-white/5">
-                                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-green-500 to-cyan-600 flex items-center justify-center text-slate-950 font-extrabold text-sm shadow-md">SH</div>
-                                <div>
-                                    <p class="text-white font-bold text-sm">Sara Hassan</p>
-                                    <p class="text-slate-400 text-[10px] uppercase tracking-widest">CTO, FinTech Startup</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="py-24 px-6 md:px-12 max-w-4xl mx-auto" id="contact">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="glass-card p-8 md:p-12 shadow-2xl">
-                <div id="form-status-success" class="hidden bg-cyan-500/10 border border-cyan-400 text-cyan-400 p-5 rounded-2xl mb-8 text-center font-bold tracking-wide">Message sent successfully! Asad Lee will get back to you shortly.</div>
-                <form id="contact-form" class="grid gap-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <input type="text" name="name" required placeholder="Your Name" class="bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:border-cyan-400 focus:bg-white/10 outline-none text-white transition">
-                        <input type="email" name="email" required placeholder="Your Email" class="bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:border-cyan-400 focus:bg-white/10 outline-none text-white transition">
-                    </div>
-                    <textarea name="message" required placeholder="Type Your Message Here..." rows="6" class="bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:border-cyan-400 focus:bg-white/10 outline-none text-white transition resize-none"></textarea>
-                    <button type="submit" class="bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-extrabold py-4 rounded-2xl hover:opacity-90 transition uppercase text-xs tracking-widest cursor-pointer shadow-xl shadow-cyan-500/20">Send Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <!-- Project Modal -->
-    <div id="project-modal" onclick="handleModalBackdrop(event)" class="fixed inset-0 z-[999] hidden items-center justify-center p-4 sm:p-8" style="background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);">
-        <div id="modal-box" class="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-3xl border border-cyan-500/30 shadow-[0_0_80px_rgba(34,211,238,0.25)] bg-[#090b10] flex flex-col" onclick="event.stopPropagation()">
-            <div class="flex items-center justify-between px-8 py-6 border-b border-white/10 sticky top-0 bg-[#090b10]/95 backdrop-blur-xl z-10 rounded-t-3xl">
-                <div class="flex items-center gap-4">
-                    <div id="modal-icon" class="text-4xl"></div>
-                    <div>
-                        <div id="modal-badge" class="text-[9px] font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full border inline-block mb-1.5"></div>
-                        <h2 id="modal-title" class="text-2xl font-extrabold text-white"></h2>
-                    </div>
-                </div>
-                <button onclick="closeModal()" class="p-2.5 rounded-2xl bg-white/5 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-white/10 transition text-xl cursor-pointer">
-                    <i class='bx bx-x'></i>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md hidden flex-col justify-end">
+        <div class="bg-white dark:bg-dark-surface w-full rounded-t-[28px] p-6 pb-10 space-y-4 shadow-2xl border-t border-black/5 dark:border-white/10">
+            <div class="flex items-center justify-between pb-3 border-b border-black/5 dark:border-white/10">
+                <span class="font-signature text-2xl text-gray-900 dark:text-white">asadlee</span>
+                <button onclick="toggleMobileNav()" class="p-2 rounded-full bg-black/5 dark:bg-white/5 text-gray-700 dark:text-white">
+                    <i class='bx bx-x text-2xl'></i>
                 </button>
             </div>
-
-            <div class="grid md:grid-cols-2 gap-0 flex-1">
-                <div class="p-8 md:p-10 border-r border-white/5 flex flex-col justify-between">
-                    <div>
-                        <p id="modal-desc" class="text-slate-300 leading-relaxed mb-6 font-light"></p>
-
-                        <h4 class="text-xs font-extrabold uppercase tracking-widest text-cyan-400 mb-3 flex items-center gap-2"><i class='bx bx-check-circle text-base'></i> Key Features</h4>
-                        <ul id="modal-features" class="space-y-2.5 mb-8"></ul>
-
-                        <h4 class="text-xs font-extrabold uppercase tracking-widest text-cyan-400 mb-3 flex items-center gap-2"><i class='bx bx-code-alt text-base'></i> Tech Stack</h4>
-                        <div id="modal-stack" class="flex flex-wrap gap-2 mb-8"></div>
-                    </div>
-
-                    <div class="flex gap-4 flex-wrap pt-4 border-t border-white/5">
-                        <a id="modal-live-btn" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:opacity-90 text-slate-950 font-extrabold px-7 py-3.5 rounded-2xl uppercase text-xs tracking-widest transition shadow-lg shadow-cyan-500/30">
-                            <i class='bx bx-link-external text-base'></i> Live Demo
-                        </a>
-                        <a id="modal-github-btn" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white font-bold px-7 py-3.5 rounded-2xl uppercase text-xs tracking-widest border border-white/15 transition">
-                            <i class='bx bxl-github text-base'></i> GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <div class="flex flex-col p-6 md:p-8 bg-slate-950/50">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
-                        <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
-                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
-                        <span id="modal-live-url" class="text-xs text-slate-400 ml-2 font-mono truncate"></span>
-                    </div>
-                    <div class="flex-1 flex flex-col">
-                        <iframe id="modal-iframe" src="about:blank" class="w-full h-72 md:h-80 rounded-2xl border border-white/10 bg-[#06070a]" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
-                        <p class="text-[10px] text-slate-500 text-center mt-3 italic">Note: Some sites may block iframe preview. Click Live Demo to open directly in a new tab.</p>
-                    </div>
-                </div>
+            <div class="grid grid-cols-2 gap-3 pt-2 text-sm font-medium">
+                <a href="#home" onclick="toggleMobileNav()" class="p-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] text-gray-800 dark:text-white flex items-center gap-2"><i class='bx bx-home text-cherry-600 dark:text-cherry-400'></i> Home</a>
+                <a href="#about" onclick="toggleMobileNav()" class="p-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] text-gray-800 dark:text-white flex items-center gap-2"><i class='bx bx-user text-cherry-600 dark:text-cherry-400'></i> About</a>
+                <a href="#activity" onclick="toggleMobileNav()" class="p-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] text-gray-800 dark:text-white flex items-center gap-2"><i class='bx bx-calendar text-cherry-600 dark:text-cherry-400'></i> Winter Arc</a>
+                <a href="#work" onclick="toggleMobileNav()" class="p-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] text-gray-800 dark:text-white flex items-center gap-2"><i class='bx bx-briefcase text-cherry-600 dark:text-cherry-400'></i> Projects</a>
+                <a href="#skills" onclick="toggleMobileNav()" class="p-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] text-gray-800 dark:text-white flex items-center gap-2"><i class='bx bx-layer text-cherry-600 dark:text-cherry-400'></i> Tech Stack</a>
+                <a href="#terminal-section" onclick="toggleMobileNav()" class="p-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] text-gray-800 dark:text-white flex items-center gap-2"><i class='bx bx-terminal text-cherry-600 dark:text-cherry-400'></i> Terminal</a>
+                <a href="#contact" onclick="toggleMobileNav()" class="p-3 rounded-2xl bg-black/[0.03] dark:bg-white/[0.03] text-gray-800 dark:text-white col-span-2 flex items-center justify-center gap-2 bg-cherry-100 dark:bg-cherry-900/40 text-cherry-700 dark:text-cherry-300 font-semibold"><i class='bx bx-message-dots'></i> Let's Talk</a>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="py-14 bg-slate-950 text-center border-t border-white/5">
-        <div class="flex flex-col items-center justify-center gap-3 mb-8">
-            <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-6 py-3.5 backdrop-blur-md shadow-xl">
-                <span class="relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                </span>
-                <span class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Total Visitors</span>
-                <span id="visitor-count" class="text-lg font-extrabold text-cyan-400">—</span>
-                <span id="visitor-flag" class="text-xl"></span>
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="w-full max-w-[920px] mx-auto px-6 md:px-10 pt-[120px] md:pt-[140px] pb-32">
+
+        <!-- ================= HERO SECTION ================= -->
+        <section id="home" class="mb-20">
+            <!-- Availability Pill -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cherry-100/80 dark:bg-cherry-900/40 border border-cherry-300/40 dark:border-cherry-400/20 text-cherry-700 dark:text-cherry-300 text-xs font-semibold mb-8">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span>Available for high-impact projects & security audits</span>
             </div>
-            <p id="visitor-location" class="text-[10px] text-slate-500 tracking-widest font-mono"></p>
+
+            <!-- Big Editorial Headline (Palak Style) -->
+            <h1 class="font-instrument font-normal text-4xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tight text-gray-900 dark:text-white mb-6">
+                Engineering <span class="italic text-cherry-600 dark:text-cherry-400">secure</span> protocols, resilient architectures & <span class="italic text-gray-800 dark:text-white/90">Web3</span> systems.
+            </h1>
+
+            <!-- Subtitle and Rotating Roles -->
+            <p class="font-sans text-base sm:text-lg text-gray-600 dark:text-white/60 max-w-2xl leading-relaxed mb-8">
+                Hi, I'm <strong class="font-semibold text-gray-900 dark:text-white">Asad Lee</strong> (@asadleo416) — a Cyber Security Researcher & Professional Full-Stack Developer. I architect cryptographically verifiable decentralized applications, high-performance TypeScript stacks, and bulletproof digital infrastructure.
+            </p>
+
+            <!-- CTA Button Row (Glare & Liquid Chrome) -->
+            <div class="flex flex-wrap items-center gap-4 mb-16">
+                <!-- Glare Button -->
+                <a href="#work" class="glare-button inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-950 text-xs font-semibold uppercase tracking-wider shadow-sm hover:opacity-90 transition">
+                    <span>Explore My Work</span>
+                    <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                </a>
+
+                <!-- WhatsApp Direct Chat -->
+                <a href="https://wa.me/923400194591" target="_blank" rel="noopener noreferrer" class="glare-button inline-flex items-center gap-2 px-6 py-3 rounded-full bg-cherry-100 dark:bg-cherry-900/50 border border-cherry-300/60 dark:border-cherry-500/30 text-cherry-700 dark:text-cherry-300 text-xs font-semibold uppercase tracking-wider hover:bg-cherry-200 dark:hover:bg-cherry-900/80 transition">
+                    <i class='bx bxl-whatsapp text-base text-green-500'></i>
+                    <span>Chat on WhatsApp</span>
+                </a>
+
+                <!-- Terminal Quick Trigger -->
+                <a href="#terminal-section" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-black/[0.04] dark:bg-white/[0.06] hover:bg-black/[0.07] dark:hover:bg-white/[0.1] text-gray-700 dark:text-white/80 text-xs font-semibold uppercase tracking-wider transition border border-black/5 dark:border-white/10">
+                    <i class='bx bx-terminal text-sm text-cherry-600 dark:text-cherry-400'></i>
+                    <span>Launch Terminal</span>
+                </a>
+            </div>
+
+            <!-- Bento Profile Badge Card (Palak Inspired) -->
+            <div class="dashed-border-anim rounded-2xl w-full p-1 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.06)]">
+                <div class="bg-white dark:bg-dark-surface rounded-[14px] p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-5">
+                        <!-- Profile Image -->
+                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden p-1 liquid-chrome-border shrink-0">
+                            <img src="./profile.png" onerror="this.src='https://i.ibb.co/pvLJXwCW/41ee5f18-72a3-450c-a1e7-b23067becf65.png'" alt="Asad Lee" class="w-full h-full object-cover object-top rounded-full bg-gray-100 dark:bg-dark-surface2">
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 class="font-instrument text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white tracking-tight">Asad Lee</h2>
+                                <!-- Verified Badge -->
+                                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#3B9EF3]/15 text-[#3B9EF3]" title="Verified Architect">
+                                    <i class='bx bxs-badge-check text-base'></i>
+                                </span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-white/50 font-sans mt-0.5">@asadleo416 · Web Developer & Security Researcher</p>
+                            <p class="text-xs text-cherry-600 dark:text-cherry-300 font-mono mt-1">📍 Pakistan · Worldwide Remote</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Pills & Stats Preview -->
+                    <div class="flex items-center gap-2.5">
+                        <a href="https://www.linkedin.com/in/asad-ali-3355273ba" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 hover:bg-cherry-100 dark:hover:bg-cherry-900/50 hover:text-cherry-600 dark:hover:text-cherry-400 flex items-center justify-center text-gray-700 dark:text-white text-lg transition border border-black/5 dark:border-white/10" aria-label="LinkedIn">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        <a href="https://x.com/asadleo416?s=21" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 hover:bg-cherry-100 dark:hover:bg-cherry-900/50 hover:text-cherry-600 dark:hover:text-cherry-400 flex items-center justify-center text-gray-700 dark:text-white text-lg transition border border-black/5 dark:border-white/10" aria-label="Twitter/X">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+                        <a href="https://www.instagram.com/asadlee24" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 hover:bg-cherry-100 dark:hover:bg-cherry-900/50 hover:text-cherry-600 dark:hover:text-cherry-400 flex items-center justify-center text-gray-700 dark:text-white text-lg transition border border-black/5 dark:border-white/10" aria-label="Instagram">
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                        <a href="https://github.com/Asadlee24" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 hover:bg-cherry-100 dark:hover:bg-cherry-900/50 hover:text-cherry-600 dark:hover:text-cherry-400 flex items-center justify-center text-gray-700 dark:text-white text-lg transition border border-black/5 dark:border-white/10" aria-label="GitHub">
+                            <i class='bx bxl-github'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= WINTER ARC (ACTIVITY CALENDAR & METRICS) ================= -->
+        <section id="activity" class="mb-20">
+            <div class="flex items-baseline justify-between mb-6">
+                <div>
+                    <h3 class="font-instrument font-semibold text-2xl sm:text-3xl text-gray-900 dark:text-white">Winter Arc</h3>
+                    <p class="font-sans text-xs text-gray-500 dark:text-white/40 mt-1">Daily cryptographic commits, protocol deployments & security audits.</p>
+                </div>
+                <span class="font-mono text-xs text-cherry-600 dark:text-cherry-300 font-medium">1,480+ contributions</span>
+            </div>
+
+            <!-- Bento Card with Activity Grid -->
+            <div class="dashed-border-anim rounded-2xl w-full p-1 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.06)]">
+                <div class="bg-white dark:bg-dark-surface rounded-[14px] p-6 sm:p-8 overflow-hidden">
+                    
+                    <!-- Metrics Row -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 pb-8 border-b border-black/5 dark:border-white/10 text-center">
+                        <div>
+                            <span class="block font-instrument text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">18+</span>
+                            <span class="text-[11px] font-sans font-medium uppercase tracking-wider text-gray-500 dark:text-white/40">Custom Projects</span>
+                        </div>
+                        <div>
+                            <span class="block font-instrument text-3xl sm:text-4xl font-bold text-cherry-600 dark:text-cherry-400">99%</span>
+                            <span class="text-[11px] font-sans font-medium uppercase tracking-wider text-gray-500 dark:text-white/40">Satisfaction</span>
+                        </div>
+                        <div>
+                            <span class="block font-instrument text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">100+</span>
+                            <span class="text-[11px] font-sans font-medium uppercase tracking-wider text-gray-500 dark:text-white/40">Security Audits</span>
+                        </div>
+                        <div>
+                            <span class="block font-instrument text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">4+ Yrs</span>
+                            <span class="text-[11px] font-sans font-medium uppercase tracking-wider text-gray-500 dark:text-white/40">Coding Stack</span>
+                        </div>
+                    </div>
+
+                    <!-- GitHub Style Contribution Heatmap -->
+                    <div class="overflow-x-auto pb-2">
+                        <div class="min-w-[680px]">
+                            <div class="flex justify-between text-[10px] text-gray-400 dark:text-white/30 font-mono mb-2 px-1">
+                                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+                                <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+                            </div>
+                            <div id="heatmap-grid" class="grid grid-flow-col grid-rows-7 gap-1.5 py-1">
+                                <!-- Generated by JavaScript for 52 weeks -->
+                            </div>
+                            <div class="flex items-center justify-between mt-4 text-[11px] text-gray-400 dark:text-white/40 font-mono">
+                                <span>Learn more about my open source work</span>
+                                <div class="flex items-center gap-1.5">
+                                    <span>Less</span>
+                                    <span class="w-2.5 h-2.5 rounded-sm bg-black/5 dark:bg-white/5"></span>
+                                    <span class="w-2.5 h-2.5 rounded-sm bg-cherry-200 dark:bg-cherry-900"></span>
+                                    <span class="w-2.5 h-2.5 rounded-sm bg-cherry-300 dark:bg-cherry-700"></span>
+                                    <span class="w-2.5 h-2.5 rounded-sm bg-cherry-400 dark:bg-cherry-600"></span>
+                                    <span class="w-2.5 h-2.5 rounded-sm bg-cherry-600 dark:bg-cherry-400"></span>
+                                    <span>More</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= WHO IS ASAD LEE? (ABOUT SECTION) ================= -->
+        <section id="about" class="mb-20">
+            <h3 class="font-instrument font-semibold text-2xl sm:text-3xl text-gray-900 dark:text-white mb-6">Who is Asad Lee?</h3>
+            
+            <div class="space-y-4 font-sans text-base sm:text-[17px] text-gray-700 dark:text-white/70 leading-relaxed">
+                <p>
+                    I am an elite <strong class="font-semibold text-gray-900 dark:text-white">Cyber Security Researcher</strong> and <strong class="font-semibold text-gray-900 dark:text-white">Full-Stack Web Developer</strong> with over 4 years of deep engineering experience. My focus is writing clean, audited code that guarantees both high usability and cryptographic security.
+                </p>
+                <p>
+                    Beyond standard web development, I architect systems on <strong class="font-semibold text-cherry-600 dark:text-cherry-300">TypeScript, Next.js, and Web3 protocols</strong>. From building browser-native Ed25519 decentralized identity consoles and autonomous multi-agent toolkits, to USDC payment layers with Circle APIs and zero-server WebRTC P2P file transfers — I build tools that operate smoothly at scale.
+                </p>
+                <p>
+                    Every solution I develop is vetted through stringent penetration testing standards, ensuring encryption safeguards (AES-256 / Ed25519) and zero compromises in performance.
+                </p>
+            </div>
+
+            <!-- Editorial Signature Quote -->
+            <div class="mt-8 p-6 rounded-2xl bg-cherry-100/50 dark:bg-cherry-900/20 border border-cherry-200 dark:border-cherry-800/40 flex items-center justify-between">
+                <div>
+                    <p class="font-instrument italic text-xl sm:text-2xl text-gray-800 dark:text-white">"Security is not an afterthought; it is the foundation of digital excellence."</p>
+                    <p class="font-signature text-2xl text-cherry-700 dark:text-cherry-300 mt-2">Asad Lee</p>
+                </div>
+                <div class="hidden sm:block text-4xl text-cherry-400/40">
+                    <i class='bx bxs-quote-right'></i>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= TECH STACK MARQUEE ================= -->
+        <section id="skills" class="mb-20">
+            <h3 class="font-instrument font-semibold text-2xl sm:text-3xl text-gray-900 dark:text-white mb-6">Tech Stack & Tooling</h3>
+
+            <!-- Infinite Marquee with Gradients -->
+            <div class="relative w-full overflow-hidden py-3" style="mask-image: linear-gradient(90deg, transparent 0, black 60px, black calc(100% - 60px), transparent 100%); -webkit-mask-image: linear-gradient(90deg, transparent 0, black 60px, black calc(100% - 60px), transparent 100%);">
+                <div class="marquee-track flex items-center gap-3">
+                    <!-- Tech Stack Pills (Duplicated for continuous seamless loop) -->
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-typescript text-blue-500 text-base'></i> <span>TypeScript (96%)</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-javascript text-yellow-500 text-base'></i> <span>JavaScript (95%)</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-react text-cyan-400 text-base'></i> <span>Next.js / React</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-python text-amber-500 text-base'></i> <span>Python / ML (88%)</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bx-cube text-purple-400 text-base'></i> <span>Solidity / Web3 (85%)</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bx-transfer text-emerald-400 text-base'></i> <span>WebRTC & P2P</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bx-shield-quarter text-cherry-500 text-base'></i> <span>Ed25519 & AES-256</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-tailwind-css text-sky-400 text-base'></i> <span>Tailwind CSS</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-nodejs text-green-500 text-base'></i> <span>Node.js / Express</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-postgresql text-blue-400 text-base'></i> <span>SQL & Databases (92%)</span>
+                    </div>
+
+                    <!-- Duplicate set for continuous infinite loop -->
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-typescript text-blue-500 text-base'></i> <span>TypeScript (96%)</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-javascript text-yellow-500 text-base'></i> <span>JavaScript (95%)</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-react text-cyan-400 text-base'></i> <span>Next.js / React</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-python text-amber-500 text-base'></i> <span>Python / ML (88%)</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bx-cube text-purple-400 text-base'></i> <span>Solidity / Web3 (85%)</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bx-transfer text-emerald-400 text-base'></i> <span>WebRTC & P2P</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bx-shield-quarter text-cherry-500 text-base'></i> <span>Ed25519 & AES-256</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-tailwind-css text-sky-400 text-base'></i> <span>Tailwind CSS</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-nodejs text-green-500 text-base'></i> <span>Node.js / Express</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs font-semibold">
+                        <i class='bx bxl-postgresql text-blue-400 text-base'></i> <span>SQL & Databases (92%)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PROJECTS SHOWCASE (PALAK EDITORIAL CARDS) ================= -->
+        <section id="work" class="mb-20">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 gap-4">
+                <div>
+                    <h3 class="font-instrument font-semibold text-3xl sm:text-4xl text-gray-900 dark:text-white">Selected Works</h3>
+                    <p class="font-sans text-xs sm:text-sm text-gray-500 dark:text-white/40 mt-1">Products engineered with clean cryptography, robust architecture & seamless UI.</p>
+                </div>
+
+                <!-- Filter Pills -->
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <button onclick="filterProjects('all')" class="proj-filter-btn active px-3.5 py-1.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 transition cursor-pointer">All</button>
+                    <button onclick="filterProjects('web3')" class="proj-filter-btn px-3.5 py-1.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition cursor-pointer">Web3</button>
+                    <button onclick="filterProjects('p2p')" class="proj-filter-btn px-3.5 py-1.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition cursor-pointer">P2P Apps</button>
+                    <button onclick="filterProjects('ecommerce')" class="proj-filter-btn px-3.5 py-1.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition cursor-pointer">E-Commerce</button>
+                </div>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- 1. Technocore Console -->
+                <div class="project-item dashed-border-anim rounded-2xl w-full p-1 cursor-pointer group" data-category="web3" onclick="openModal('technocoreConsole')">
+                    <div class="bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden flex flex-col h-full shadow-[0_4px_16px_rgba(0,0,0,0.02)] transition duration-200">
+                        <div class="pt-8 px-6 pb-6 bg-gradient-to-br from-cherry-100 via-cherry-50 to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface border-b border-black/5 dark:border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-black/5 dark:border-white/10">Identity Console</span>
+                            <div class="w-8 h-8 rounded-full bg-white dark:bg-dark-surface2 flex items-center justify-center text-gray-800 dark:text-white group-hover:scale-110 group-hover:rotate-45 transition">
+                                <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                            <div>
+                                <h4 class="font-instrument font-semibold text-2xl text-gray-900 dark:text-white group-hover:text-cherry-600 dark:group-hover:text-cherry-300 transition">Technocore Console</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-2 font-sans leading-relaxed">Browser-based identity and messaging console with in-memory Ed25519 keys, signed messaging, live room monitoring, and cryptographic tools.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-black/5 dark:border-white/10">
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">TypeScript</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Ed25519</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Web3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Technocore Explorer -->
+                <div class="project-item dashed-border-anim rounded-2xl w-full p-1 cursor-pointer group" data-category="web3" onclick="openModal('technocoreExplorer')">
+                    <div class="bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden flex flex-col h-full shadow-[0_4px_16px_rgba(0,0,0,0.02)] transition duration-200">
+                        <div class="pt-8 px-6 pb-6 bg-gradient-to-br from-cherry-100 via-cherry-50 to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface border-b border-black/5 dark:border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-black/5 dark:border-white/10">Network Explorer</span>
+                            <div class="w-8 h-8 rounded-full bg-white dark:bg-dark-surface2 flex items-center justify-center text-gray-800 dark:text-white group-hover:scale-110 group-hover:rotate-45 transition">
+                                <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                            <div>
+                                <h4 class="font-instrument font-semibold text-2xl text-gray-900 dark:text-white group-hover:text-cherry-600 dark:group-hover:text-cherry-300 transition">Technocore Explorer</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-2 font-sans leading-relaxed">Public network explorer and historical archive layer for Technocore protocol, making network activity searchable, inspectable and independently verifiable.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-black/5 dark:border-white/10">
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Next.js</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Merkle Trees</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Archive Layer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Technocore Agent Kit -->
+                <div class="project-item dashed-border-anim rounded-2xl w-full p-1 cursor-pointer group" data-category="web3" onclick="openModal('technocoreAgentKit')">
+                    <div class="bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden flex flex-col h-full shadow-[0_4px_16px_rgba(0,0,0,0.02)] transition duration-200">
+                        <div class="pt-8 px-6 pb-6 bg-gradient-to-br from-cherry-100 via-cherry-50 to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface border-b border-black/5 dark:border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-black/5 dark:border-white/10">Autonomous Agents</span>
+                            <div class="w-8 h-8 rounded-full bg-white dark:bg-dark-surface2 flex items-center justify-center text-gray-800 dark:text-white group-hover:scale-110 group-hover:rotate-45 transition">
+                                <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                            <div>
+                                <h4 class="font-instrument font-semibold text-2xl text-gray-900 dark:text-white group-hover:text-cherry-600 dark:group-hover:text-cherry-300 transition">Technocore Agent Kit</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-2 font-sans leading-relaxed">TypeScript toolkit and autonomous multi-agent system for building cryptographically verifiable agent workflows with DAG engines and Ed25519 signatures.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-black/5 dark:border-white/10">
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">TypeScript</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">AI Agents</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">MCP Protocol</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. MinterBot V1 -->
+                <div class="project-item dashed-border-anim rounded-2xl w-full p-1 cursor-pointer group" data-category="web3" onclick="openModal('minterbot')">
+                    <div class="bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden flex flex-col h-full shadow-[0_4px_16px_rgba(0,0,0,0.02)] transition duration-200">
+                        <div class="pt-8 px-6 pb-6 bg-gradient-to-br from-cherry-100 via-cherry-50 to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface border-b border-black/5 dark:border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-black/5 dark:border-white/10">Web3 & NFT Bot</span>
+                            <div class="w-8 h-8 rounded-full bg-white dark:bg-dark-surface2 flex items-center justify-center text-gray-800 dark:text-white group-hover:scale-110 group-hover:rotate-45 transition">
+                                <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                            <div>
+                                <h4 class="font-instrument font-semibold text-2xl text-gray-900 dark:text-white group-hover:text-cherry-600 dark:group-hover:text-cherry-300 transition">MinterBot V1</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-2 font-sans leading-relaxed">Automated multi-chain NFT minting bot across Ethereum, Base, Arbitrum, Polygon, and Robinhood Chain with auto-timers and AES-256 local encryption.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-black/5 dark:border-white/10">
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Next.js</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Web3.js</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">AES-256</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Arc Pay Platform -->
+                <div class="project-item dashed-border-anim rounded-2xl w-full p-1 cursor-pointer group" data-category="web3" onclick="openModal('arcpay')">
+                    <div class="bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden flex flex-col h-full shadow-[0_4px_16px_rgba(0,0,0,0.02)] transition duration-200">
+                        <div class="pt-8 px-6 pb-6 bg-gradient-to-br from-cherry-100 via-cherry-50 to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface border-b border-black/5 dark:border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-black/5 dark:border-white/10">FinTech & USDC</span>
+                            <div class="w-8 h-8 rounded-full bg-white dark:bg-dark-surface2 flex items-center justify-center text-gray-800 dark:text-white group-hover:scale-110 group-hover:rotate-45 transition">
+                                <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                            <div>
+                                <h4 class="font-instrument font-semibold text-2xl text-gray-900 dark:text-white group-hover:text-cherry-600 dark:group-hover:text-cherry-300 transition">Arc Pay Platform</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-2 font-sans leading-relaxed">Open-source no-code USDC payment layer for merchants on Arc Network with direct Circle API settlement and instant on-chain receipts.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-black/5 dark:border-white/10">
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Circle API</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">USDC</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Arc Network</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Warp P2P Transfer -->
+                <div class="project-item dashed-border-anim rounded-2xl w-full p-1 cursor-pointer group" data-category="p2p" onclick="openModal('warp')">
+                    <div class="bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden flex flex-col h-full shadow-[0_4px_16px_rgba(0,0,0,0.02)] transition duration-200">
+                        <div class="pt-8 px-6 pb-6 bg-gradient-to-br from-cherry-100 via-cherry-50 to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface border-b border-black/5 dark:border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-black/5 dark:border-white/10">WebRTC P2P</span>
+                            <div class="w-8 h-8 rounded-full bg-white dark:bg-dark-surface2 flex items-center justify-center text-gray-800 dark:text-white group-hover:scale-110 group-hover:rotate-45 transition">
+                                <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                            <div>
+                                <h4 class="font-instrument font-semibold text-2xl text-gray-900 dark:text-white group-hover:text-cherry-600 dark:group-hover:text-cherry-300 transition">Warp P2P Transfer</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-2 font-sans leading-relaxed">Browser-to-browser peer-to-peer file transfer over WebRTC. Zero intermediary servers, infinite file sizes, and QR camera sync.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-black/5 dark:border-white/10">
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">WebRTC</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">QR Pairing</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">TypeScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Bridgr USDC Bridge -->
+                <div class="project-item dashed-border-anim rounded-2xl w-full p-1 cursor-pointer group" data-category="web3" onclick="openModal('bridgr')">
+                    <div class="bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden flex flex-col h-full shadow-[0_4px_16px_rgba(0,0,0,0.02)] transition duration-200">
+                        <div class="pt-8 px-6 pb-6 bg-gradient-to-br from-cherry-100 via-cherry-50 to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface border-b border-black/5 dark:border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-black/5 dark:border-white/10">Cross-Chain Bridge</span>
+                            <div class="w-8 h-8 rounded-full bg-white dark:bg-dark-surface2 flex items-center justify-center text-gray-800 dark:text-white group-hover:scale-110 group-hover:rotate-45 transition">
+                                <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                            <div>
+                                <h4 class="font-instrument font-semibold text-2xl text-gray-900 dark:text-white group-hover:text-cherry-600 dark:group-hover:text-cherry-300 transition">Bridgr Bridge</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-2 font-sans leading-relaxed">Cross-chain USDC liquidity bridge and asset transfer protocol engineered for Arc Network with gas optimization and cryptographic validation.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-black/5 dark:border-white/10">
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Solidity</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Ethers.js</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Cross-Chain</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. InstaRip Downloader -->
+                <div class="project-item dashed-border-anim rounded-2xl w-full p-1 cursor-pointer group" data-category="p2p" onclick="openModal('instarip')">
+                    <div class="bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden flex flex-col h-full shadow-[0_4px_16px_rgba(0,0,0,0.02)] transition duration-200">
+                        <div class="pt-8 px-6 pb-6 bg-gradient-to-br from-cherry-100 via-cherry-50 to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface border-b border-black/5 dark:border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-black/5 dark:border-white/10">Media Web App</span>
+                            <div class="w-8 h-8 rounded-full bg-white dark:bg-dark-surface2 flex items-center justify-center text-gray-800 dark:text-white group-hover:scale-110 group-hover:rotate-45 transition">
+                                <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                            <div>
+                                <h4 class="font-instrument font-semibold text-2xl text-gray-900 dark:text-white group-hover:text-cherry-600 dark:group-hover:text-cherry-300 transition">InstaRip Downloader</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-2 font-sans leading-relaxed">High-performance watermark-free Instagram Reel & TikTok HD video downloader built with Next.js, audio extraction, and batch capabilities.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-black/5 dark:border-white/10">
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Next.js</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Node.js</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">FFmpeg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. MDK Electronics -->
+                <div class="project-item dashed-border-anim rounded-2xl w-full p-1 cursor-pointer group" data-category="ecommerce" onclick="openModal('mdk')">
+                    <div class="bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden flex flex-col h-full shadow-[0_4px_16px_rgba(0,0,0,0.02)] transition duration-200">
+                        <div class="pt-8 px-6 pb-6 bg-gradient-to-br from-cherry-100 via-cherry-50 to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface border-b border-black/5 dark:border-white/5 flex items-center justify-between">
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-white/70 dark:bg-white/10 border border-black/5 dark:border-white/10">E-Commerce Store</span>
+                            <div class="w-8 h-8 rounded-full bg-white dark:bg-dark-surface2 flex items-center justify-center text-gray-800 dark:text-white group-hover:scale-110 group-hover:rotate-45 transition">
+                                <i class='bx bx-arrow-back rotate-[135deg] text-sm'></i>
+                            </div>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                            <div>
+                                <h4 class="font-instrument font-semibold text-2xl text-gray-900 dark:text-white group-hover:text-cherry-600 dark:group-hover:text-cherry-300 transition">MDK Electronics</h4>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-white/60 mt-2 font-sans leading-relaxed">Professional surveillance & hardware e-commerce store with secure payment integrations, fast catalog browsing, and SEO-optimized pages.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-black/5 dark:border-white/10">
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">E-Commerce</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">Payment Gateway</span>
+                                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.05] text-gray-600 dark:text-white/60 font-mono">PHP / MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= INTERACTIVE ASADSEC TERMINAL ================= -->
+        <section id="terminal-section" class="mb-20">
+            <div class="flex items-baseline justify-between mb-6">
+                <div>
+                    <h3 class="font-instrument font-semibold text-2xl sm:text-3xl text-gray-900 dark:text-white">AsadSec Terminal</h3>
+                    <p class="font-sans text-xs text-gray-500 dark:text-white/40 mt-1">Direct shell interface into my security research and background.</p>
+                </div>
+                <span class="font-mono text-xs px-2.5 py-1 rounded-full bg-cherry-100 dark:bg-cherry-900/40 text-cherry-700 dark:text-cherry-300">v1.0.0</span>
+            </div>
+
+            <!-- Terminal Box -->
+            <div class="dashed-border-anim rounded-2xl w-full p-1 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08)] font-mono text-xs">
+                <div class="bg-gray-950 text-gray-200 rounded-[14px] overflow-hidden border border-white/10">
+                    
+                    <!-- Terminal Top Bar -->
+                    <div class="bg-[#14151a] px-5 py-3 border-b border-white/10 flex items-center justify-between flex-wrap gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                            <span class="text-[11px] text-gray-400 font-sans ml-2">asad@sec-core:~</span>
+                        </div>
+                        <div class="flex gap-1.5 font-sans">
+                            <button onclick="runTermCmd('whoami')" class="px-2.5 py-1 rounded bg-white/5 hover:bg-cherry-900/40 hover:text-cherry-300 text-gray-300 text-[11px] transition">whoami</button>
+                            <button onclick="runTermCmd('skills')" class="px-2.5 py-1 rounded bg-white/5 hover:bg-cherry-900/40 hover:text-cherry-300 text-gray-300 text-[11px] transition">skills</button>
+                            <button onclick="runTermCmd('projects')" class="px-2.5 py-1 rounded bg-white/5 hover:bg-cherry-900/40 hover:text-cherry-300 text-gray-300 text-[11px] transition">projects</button>
+                            <button onclick="runTermCmd('clear')" class="px-2.5 py-1 rounded bg-white/5 hover:bg-red-900/40 text-red-300 text-[11px] transition">clear</button>
+                        </div>
+                    </div>
+
+                    <!-- Terminal Output Window -->
+                    <div id="terminal-output" class="p-5 h-64 overflow-y-auto space-y-2 text-gray-300 leading-relaxed font-mono">
+                        <p class="text-cherry-400 font-bold">Welcome to AsadSec Interactive Terminal v1.0.0 [Elite Security & Web3 Console]</p>
+                        <p class="text-gray-400">Type <span class="text-yellow-400 font-bold">'help'</span> or click the buttons above to query data.</p>
+                    </div>
+
+                    <!-- Terminal Prompt Input -->
+                    <form onsubmit="handleTerminalSubmit(event)" class="bg-[#121317] px-5 py-3 border-t border-white/10 flex items-center gap-2 font-mono">
+                        <span class="text-cherry-400 font-bold">asad@sec:~#</span>
+                        <input type="text" id="terminal-input" placeholder="try 'whoami', 'skills', 'projects', 'contact'..." class="bg-transparent border-none outline-none text-white w-full text-xs placeholder-gray-600 focus:ring-0" autocomplete="off">
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= CLIENT REVIEWS / TESTIMONIALS (PALAK STYLE) ================= -->
+        <section class="mb-20">
+            <h3 class="font-instrument font-semibold text-2xl sm:text-3xl text-gray-900 dark:text-white mb-6">Client Endorsements</h3>
+            
+            <div class="relative w-full overflow-hidden py-2" style="mask-image: linear-gradient(90deg, transparent 0, black 30px, black calc(100% - 30px), transparent 100%); -webkit-mask-image: linear-gradient(90deg, transparent 0, black 30px, black calc(100% - 30px), transparent 100%);">
+                <div class="testimonial-track flex items-stretch gap-6">
+
+                    <!-- Testimonial 1: Muhammad Kashif -->
+                    <div class="w-[320px] sm:w-[360px] shrink-0 dashed-border-anim rounded-2xl p-1">
+                        <div class="bg-white dark:bg-dark-surface rounded-[14px] p-6 h-full flex flex-col justify-between">
+                            <div>
+                                <div class="text-amber-400 text-sm tracking-widest mb-3">★★★★★</div>
+                                <p class="text-xs sm:text-sm text-gray-700 dark:text-white/70 leading-relaxed italic">
+                                    &ldquo;Asad built our entire e-commerce store from scratch in under 2 weeks. Incredible speed and quality — MDK went from zero to 100 orders in the first month.&rdquo;
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-3 pt-4 mt-4 border-t border-black/5 dark:border-white/10">
+                                <div class="w-9 h-9 rounded-full bg-cherry-100 dark:bg-cherry-900/50 text-cherry-700 dark:text-cherry-300 font-bold flex items-center justify-center text-xs">MK</div>
+                                <div>
+                                    <p class="font-semibold text-xs text-gray-900 dark:text-white">Muhammad Kashif</p>
+                                    <p class="text-[10px] text-gray-500 dark:text-white/40 font-mono">CEO, MDK Electronics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2: Ahmed Raza -->
+                    <div class="w-[320px] sm:w-[360px] shrink-0 dashed-border-anim rounded-2xl p-1">
+                        <div class="bg-white dark:bg-dark-surface rounded-[14px] p-6 h-full flex flex-col justify-between">
+                            <div>
+                                <div class="text-amber-400 text-sm tracking-widest mb-3">★★★★★</div>
+                                <p class="text-xs sm:text-sm text-gray-700 dark:text-white/70 leading-relaxed italic">
+                                    &ldquo;His Arc Pay integration was flawless. The Circle API work was done perfectly and on-chain transactions settle smoothly. A true Web3 and TypeScript master.&rdquo;
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-3 pt-4 mt-4 border-t border-black/5 dark:border-white/10">
+                                <div class="w-9 h-9 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 font-bold flex items-center justify-center text-xs">AR</div>
+                                <div>
+                                    <p class="font-semibold text-xs text-gray-900 dark:text-white">Ahmed Raza</p>
+                                    <p class="text-[10px] text-gray-500 dark:text-white/40 font-mono">Founder, Arc Network</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3: Sara Hassan -->
+                    <div class="w-[320px] sm:w-[360px] shrink-0 dashed-border-anim rounded-2xl p-1">
+                        <div class="bg-white dark:bg-dark-surface rounded-[14px] p-6 h-full flex flex-col justify-between">
+                            <div>
+                                <div class="text-amber-400 text-sm tracking-widest mb-3">★★★★★</div>
+                                <p class="text-xs sm:text-sm text-gray-700 dark:text-white/70 leading-relaxed italic">
+                                    &ldquo;Asad conducted a rigorous security audit on our platform and discovered critical vulnerabilities before launch. Highly recommend his penetration testing expertise.&rdquo;
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-3 pt-4 mt-4 border-t border-black/5 dark:border-white/10">
+                                <div class="w-9 h-9 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 font-bold flex items-center justify-center text-xs">SH</div>
+                                <div>
+                                    <p class="font-semibold text-xs text-gray-900 dark:text-white">Sara Hassan</p>
+                                    <p class="text-[10px] text-gray-500 dark:text-white/40 font-mono">CTO, FinTech Startup</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate for infinite marquee loop -->
+                    <div class="w-[320px] sm:w-[360px] shrink-0 dashed-border-anim rounded-2xl p-1">
+                        <div class="bg-white dark:bg-dark-surface rounded-[14px] p-6 h-full flex flex-col justify-between">
+                            <div>
+                                <div class="text-amber-400 text-sm tracking-widest mb-3">★★★★★</div>
+                                <p class="text-xs sm:text-sm text-gray-700 dark:text-white/70 leading-relaxed italic">
+                                    &ldquo;Asad built our entire e-commerce store from scratch in under 2 weeks. Incredible speed and quality — MDK went from zero to 100 orders in the first month.&rdquo;
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-3 pt-4 mt-4 border-t border-black/5 dark:border-white/10">
+                                <div class="w-9 h-9 rounded-full bg-cherry-100 dark:bg-cherry-900/50 text-cherry-700 dark:text-cherry-300 font-bold flex items-center justify-center text-xs">MK</div>
+                                <div>
+                                    <p class="font-semibold text-xs text-gray-900 dark:text-white">Muhammad Kashif</p>
+                                    <p class="text-[10px] text-gray-500 dark:text-white/40 font-mono">CEO, MDK Electronics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= LET'S TALK / CONTACT SECTION ================= -->
+        <section id="contact" class="mb-12">
+            <h3 class="font-instrument font-semibold text-3xl sm:text-4xl text-gray-900 dark:text-white mb-2">Let's talk</h3>
+            <p class="font-sans text-xs sm:text-sm text-gray-600 dark:text-white/60 mb-8">Have a vision, an engineering challenge, or need a security audit? Reach out directly.</p>
+
+            <div class="dashed-border-anim rounded-2xl w-full p-1 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.06)]">
+                <div class="bg-white dark:bg-dark-surface rounded-[14px] p-6 sm:p-10">
+
+                    <!-- Success Alert -->
+                    <div id="form-success-banner" class="hidden p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-700 dark:text-green-300 text-sm font-semibold mb-6 text-center">
+                        ✓ Message received! Asad Lee will get back to you shortly.
+                    </div>
+
+                    <!-- Contact Form (Formspree Integrated) -->
+                    <form id="contact-form" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-600 dark:text-white/60 mb-1.5">Your Name</label>
+                                <input type="text" name="name" required placeholder="Alex Mercer" class="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 text-xs sm:text-sm text-gray-900 dark:text-white outline-none focus:border-cherry-500 dark:focus:border-cherry-400 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-600 dark:text-white/60 mb-1.5">Your Email</label>
+                                <input type="email" name="email" required placeholder="alex@company.com" class="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 text-xs sm:text-sm text-gray-900 dark:text-white outline-none focus:border-cherry-500 dark:focus:border-cherry-400 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-gray-600 dark:text-white/60 mb-1.5">Your Message</label>
+                            <textarea name="message" required rows="5" placeholder="Tell me about your project, timeline, and goals..." class="w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 text-xs sm:text-sm text-gray-900 dark:text-white outline-none focus:border-cherry-500 dark:focus:border-cherry-400 transition resize-none"></textarea>
+                        </div>
+
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <button type="submit" class="glare-button w-full sm:w-auto px-8 py-3.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-950 text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition cursor-pointer shadow-md">
+                                Send Message
+                            </button>
+
+                            <a href="https://wa.me/923400194591" target="_blank" rel="noopener noreferrer" class="text-xs text-cherry-600 dark:text-cherry-300 hover:underline flex items-center gap-1 font-mono">
+                                <i class='bx bxl-whatsapp text-green-500 text-sm'></i> Or message me directly on WhatsApp →
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="w-full max-w-[920px] mx-auto px-6 md:px-10 pb-16 pt-8 border-t border-black/5 dark:border-white/10 flex flex-col items-center justify-center text-center">
+        <!-- Live Visitor Session Badge (Palak/Asad Feature) -->
+        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white dark:bg-dark-surface border border-black/5 dark:border-white/10 shadow-sm text-xs text-gray-600 dark:text-white/60 mb-6">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-ping"></span>
+            <span class="font-mono">Live Visitors: <strong id="visitor-count" class="text-cherry-600 dark:text-cherry-300">1,942</strong></span>
+            <span id="visitor-flag">🌍</span>
+            <span id="visitor-location" class="hidden sm:inline font-mono text-[10px] text-gray-400 dark:text-white/40"></span>
         </div>
-        <p class="text-2xl font-extrabold italic bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent mb-4">Asad Lee</p>
-        <div class="flex justify-center gap-6 mb-8 text-xl text-slate-400">
-            <a href="https://facebook.com/share/189Ce1Shco/" class="hover:text-cyan-400 transition" target="_blank" rel="noopener noreferrer"><i class='bx bxl-facebook'></i></a>
-            <a href="https://instagram.com/asadlee24" class="hover:text-cyan-400 transition" target="_blank" rel="noopener noreferrer"><i class='bx bxl-instagram'></i></a>
-            <a href="https://x.com/asadleo416?s=21" class="hover:text-cyan-400 transition" target="_blank" rel="noopener noreferrer"><i class='bx bxl-twitter'></i></a>
-        </div>
-        <p class="text-[10px] text-slate-500 uppercase tracking-[0.4em] font-mono">&copy; 2026 Developed By Asad Lee</p>
+
+        <div class="font-signature text-3xl sm:text-4xl text-gray-900 dark:text-white mb-3">asadlee</div>
+        
+        <p class="font-mono text-[11px] text-gray-500 dark:text-white/40 uppercase tracking-widest">
+            © 2026 Developed by Asad Lee · All Rights Reserved
+        </p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- ================= PROJECT DETAIL MODAL ================= -->
+    <div id="project-modal" onclick="handleModalBackdrop(event)" class="fixed inset-0 z-[999] hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md">
+        <div id="modal-box" class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-dark-surface border border-black/10 dark:border-white/15 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-black/5 dark:border-white/10 sticky top-0 bg-white/95 dark:bg-dark-surface/95 backdrop-blur-md z-10">
+                <div>
+                    <span id="modal-badge" class="text-[10px] font-mono uppercase tracking-widest text-cherry-700 dark:text-cherry-300 font-bold px-3 py-1 rounded-full bg-cherry-100 dark:bg-cherry-900/50 inline-block mb-1">Badge</span>
+                    <h3 id="modal-title" class="font-instrument text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">Project Title</h3>
+                </div>
+                <button onclick="closeModal()" class="w-9 h-9 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 flex items-center justify-center text-gray-700 dark:text-white text-xl transition cursor-pointer">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 sm:p-8">
+                <!-- Info column -->
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <p id="modal-desc" class="text-xs sm:text-sm text-gray-600 dark:text-white/70 leading-relaxed font-sans mb-6"></p>
+
+                        <h5 class="text-xs font-semibold uppercase tracking-wider text-gray-900 dark:text-white mb-3">Key Architectural Highlights</h5>
+                        <ul id="modal-features" class="space-y-2 mb-6 text-xs text-gray-600 dark:text-white/60 font-sans"></ul>
+
+                        <h5 class="text-xs font-semibold uppercase tracking-wider text-gray-900 dark:text-white mb-3">Technologies</h5>
+                        <div id="modal-stack" class="flex flex-wrap gap-1.5 mb-6"></div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-black/5 dark:border-white/10">
+                        <a id="modal-live-btn" href="#" target="_blank" rel="noopener noreferrer" class="glare-button px-5 py-2.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-semibold uppercase tracking-wider flex items-center gap-2">
+                            <span>Open Live Demo</span>
+                            <i class='bx bx-link-external text-sm'></i>
+                        </a>
+                        <a id="modal-github-btn" href="#" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 text-gray-800 dark:text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition">
+                            <i class='bx bxl-github text-sm'></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Preview Column / Iframe -->
+                <div class="flex flex-col bg-black/[0.02] dark:bg-black/30 p-4 rounded-2xl border border-black/5 dark:border-white/5">
+                    <div class="flex items-center gap-1.5 mb-3 px-1">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+                        <span id="modal-live-url" class="text-[10px] text-gray-400 font-mono ml-2 truncate"></span>
+                    </div>
+                    <div class="flex-1 w-full min-h-[260px] sm:min-h-[320px] rounded-xl overflow-hidden bg-white dark:bg-dark-bg border border-black/5 dark:border-white/10">
+                        <iframe id="modal-iframe" src="about:blank" class="w-full h-full min-h-[260px] sm:min-h-[320px]" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                    </div>
+                    <p class="text-[10px] text-gray-400 dark:text-white/30 text-center mt-2.5 font-sans">
+                        Note: For full interactive functionality, click "Open Live Demo".
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     <script>
-        // ScrollReveal Animation
-        const sr = ScrollReveal({ origin: 'top', distance: '50px', duration: 1800, delay: 200 });
-        sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text, .section-title', {}); 
-        sr.reveal('.home__img, .about__text, .skills__data, .home__social', {delay: 300}); 
-        sr.reveal('.glass-card', {interval: 150}); 
+        // --- 1. THEME SWITCHER (Light / Dark) ---
+        function initTheme() {
+            const savedTheme = localStorage.getItem('asad_portfolio_theme');
+            const iconDesktop = document.getElementById('theme-toggle-icon');
+            const iconMobile = document.getElementById('theme-toggle-icon-mobile');
 
-        // Formspree Integration
-        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-        formspree('initForm', { 
-            formElement: '#contact-form', 
-            formId: 'mzdkgzjg', 
-            onSuccess: function() {
-                document.getElementById('contact-form').style.display = 'none';
-                document.getElementById('form-status-success').style.display = 'block';
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                if (iconDesktop) iconDesktop.className = 'bx bx-moon text-base';
+                if (iconMobile) iconMobile.className = 'bx bx-moon text-lg';
+            } else {
+                document.documentElement.classList.add('dark');
+                if (iconDesktop) iconDesktop.className = 'bx bx-sun text-base';
+                if (iconMobile) iconMobile.className = 'bx bx-sun text-lg';
             }
-        });
+        }
 
-        // Mouse tracking for 3D card tilt & spotlight glow effect
-        document.querySelectorAll('.glass-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('asad_portfolio_theme', isDark ? 'dark' : 'light');
+            initTheme();
+            renderHeatmap();
+        }
+        initTheme();
 
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.01)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
-            });
-        });
+        // --- 2. MOBILE NAVIGATION DRAWER ---
+        function toggleMobileNav() {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            if (drawer.classList.contains('hidden')) {
+                drawer.classList.remove('hidden');
+                drawer.classList.add('flex');
+            } else {
+                drawer.classList.add('hidden');
+                drawer.classList.remove('flex');
+            }
+        }
 
-        // Animated Counters
-        const animateCounters = () => {
-            const counters = document.querySelectorAll('.counter-val');
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const suffix = counter.getAttribute('data-suffix') || '';
-                const duration = 1600;
-                const increment = Math.max(1, Math.ceil(target / (duration / 25)));
+        // --- 3. WINTER ARC HEATMAP GENERATION (52 weeks x 7 days) ---
+        function renderHeatmap() {
+            const grid = document.getElementById('heatmap-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
 
-                let current = 0;
-                const updateCount = () => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.innerText = target + suffix;
-                    } else {
-                        counter.innerText = current + suffix;
-                        setTimeout(updateCount, 25);
-                    }
-                };
-                updateCount();
-            });
+            const isDark = document.documentElement.classList.contains('dark');
+            const totalCells = 52 * 7;
+            
+            // Seeded activity pattern
+            for (let i = 0; i < totalCells; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'w-2.5 h-2.5 rounded-sm transition-colors duration-150 cursor-pointer';
+
+                // Activity density formula
+                const rand = (Math.sin(i * 12.3) + 1) / 2;
+                let level = 0;
+                if (rand > 0.8) level = 4;
+                else if (rand > 0.6) level = 3;
+                else if (rand > 0.4) level = 2;
+                else if (rand > 0.22) level = 1;
+
+                if (level === 0) {
+                    cell.style.backgroundColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.04)';
+                } else if (level === 1) {
+                    cell.style.backgroundColor = isDark ? '#520b27' : '#fce7ec';
+                } else if (level === 2) {
+                    cell.style.backgroundColor = isDark ? '#a0134a' : '#f9d3dd';
+                } else if (level === 3) {
+                    cell.style.backgroundColor = isDark ? '#c2185b' : '#f3b9c8';
+                } else {
+                    cell.style.backgroundColor = isDark ? '#ffb7c5' : '#c2185b';
+                }
+
+                cell.title = `Day ${i + 1}: ${level * 3 + Math.floor(rand * 5)} contributions / audits`;
+                grid.appendChild(cell);
+            }
+        }
+        renderHeatmap();
+
+        // --- 4. PROJECT MODAL DATABASE ---
+        const projectData = {
+            technocoreConsole: {
+                badge: "Identity Console",
+                title: "Technocore Console",
+                desc: "A browser-based identity and messaging console for Technocore with in-memory Ed25519 identities, signed messaging, live room monitoring and cryptographic verification tools.",
+                features: [
+                    "In-browser Ed25519 did:key identity generation",
+                    "Private keys remain secure strictly within browser memory",
+                    "Signed message dispatch & anonymous dispatch",
+                    "Live room monitoring & public registry publishing",
+                    "Memory Vault for signed structured memory & 3D network visualization"
+                ],
+                stack: ["TypeScript", "JavaScript", "Ed25519", "DID", "Cryptography", "Technocore", "Web3"],
+                live: "https://technocore-console.vercel.app",
+                github: "https://github.com/Asadlee24/technocore-console"
+            },
+            technocoreExplorer: {
+                badge: "Network Explorer",
+                title: "Technocore Explorer",
+                desc: "A public network explorer and historical archive layer for the Technocore protocol, making network activity searchable, inspectable and independently verifiable.",
+                features: [
+                    "Live network overview & room/DID explorers",
+                    "Sequence lookup & network radar patterns",
+                    "Merkle-based verification & cryptographic snapshots",
+                    "Continuum archival layer & historical message archive",
+                    "No-login public dashboard with MCP quick-connect"
+                ],
+                stack: ["TypeScript", "Next.js", "React", "Technocore", "Cryptography", "Merkle Trees"],
+                live: "https://technocore-explorer-coral.vercel.app",
+                github: "https://github.com/Asadlee24/technocore-explorer"
+            },
+            technocoreAgentKit: {
+                badge: "Autonomous Agents",
+                title: "Technocore Agent Kit",
+                desc: "A TypeScript toolkit and autonomous multi-agent system for building cryptographically verifiable agent-to-agent workflows on the Technocore protocol.",
+                features: [
+                    "Autonomous agent workflows & TypeScript SDK",
+                    "Agent-to-agent messaging & TASK → RESULT orchestration",
+                    "DAG workflow engine with Ed25519 signatures",
+                    "Claude, OpenAI, and local AI provider support",
+                    "MCP integration, CLI tools, and room watching"
+                ],
+                stack: ["TypeScript", "Node.js", "AI Agents", "Ed25519", "Technocore", "MCP"],
+                live: "https://technocore-agent-kit.vercel.app",
+                github: "https://github.com/Asadlee24/technocore-agent-kit"
+            },
+            minterbot: {
+                badge: "Web3 & NFT Bot",
+                title: "MinterBot V1",
+                desc: "MinterBot is built to make NFT minting faster, easier and more automated. Execute public mints across Ethereum, Base, Arbitrum, Polygon, and Robinhood Chain with auto-timers and local encryption security.",
+                features: [
+                    "Mint from multiple wallets at once with parallel execution",
+                    "Auto-Mint Timer for scheduled mint drops",
+                    "Real-time transaction monitoring dashboard",
+                    "Secure wallet data with local AES-256 encryption",
+                    "Multi-chain support (Ethereum, Base, Arbitrum, Polygon, Robinhood)"
+                ],
+                stack: ["TypeScript", "Next.js", "Web3.js", "AES-256", "Tailwind CSS"],
+                live: "https://minterbot.vercel.app",
+                github: "https://github.com/Asadlee24/minterbot"
+            },
+            arcpay: {
+                badge: "FinTech & USDC",
+                title: "Arc Pay Platform",
+                desc: "Arc Pay is an open-source, no-code USDC payment layer built for merchants on the Arc Network. It integrates directly with Circle's APIs to enable instant, on-chain USDC settlement with zero transaction friction.",
+                features: [
+                    "No-code merchant onboarding dashboard",
+                    "Circle API integration for real USDC settlement",
+                    "Instant payment confirmation & QR checkout",
+                    "Multi-wallet support (MetaMask, Phantom)",
+                    "On-chain transaction history & export"
+                ],
+                stack: ["TypeScript", "Next.js", "Circle API", "USDC", "Web3.js", "Tailwind CSS"],
+                live: "https://arc-pay-inky.vercel.app",
+                github: "https://github.com/Asadlee24/arc-pay"
+            },
+            warp: {
+                badge: "WebRTC P2P",
+                title: "Warp P2P Transfer",
+                desc: "Warp is a blazing-fast, browser-native peer-to-peer file transfer app built entirely on WebRTC data channels. No server ever touches your files — everything flows directly between browsers.",
+                features: [
+                    "100% serverless P2P via WebRTC DataChannels",
+                    "QR code scanner for instant peer pairing",
+                    "Multi-file batch transfer in a single session",
+                    "Real-time progress bar & transfer speed stats",
+                    "TURN/STUN fallback for NAT traversal"
+                ],
+                stack: ["TypeScript", "Next.js", "WebRTC", "QR Scanner", "Node.js"],
+                live: "https://warp-transfer.vercel.app",
+                github: "https://github.com/Asadlee24/warp-transfer"
+            },
+            bridgr: {
+                badge: "Cross-Chain Bridge",
+                title: "Bridgr USDC Bridge",
+                desc: "Bridgr is a cross-chain USDC liquidity bridge and asset transfer protocol engineered for Arc Network. It enables users to move USDC seamlessly across blockchain networks with minimal gas overhead.",
+                features: [
+                    "Cross-chain USDC liquidity bridging",
+                    "Asset transfer protocol for Arc Network",
+                    "Minimal gas fee optimization engine",
+                    "Cryptographic finality & transaction proofs"
+                ],
+                stack: ["TypeScript", "Solidity", "USDC", "Ethers.js", "Arc Network"],
+                live: "https://bridgr-usdc-bridge.vercel.app",
+                github: "https://github.com/Asadlee24/arcshift-usdc-bridge"
+            },
+            instarip: {
+                badge: "Media Web App",
+                title: "InstaRip Downloader",
+                desc: "InstaRip is a high-performance, watermark-free Instagram Reel & TikTok HD video downloader built with Next.js. Supports batch downloads, audio extraction, and HD quality output.",
+                features: [
+                    "Instagram Reels & TikTok HD download",
+                    "100% watermark-free output",
+                    "Audio-only extraction (MP3)",
+                    "No account login required"
+                ],
+                stack: ["TypeScript", "Next.js", "Node.js", "FFmpeg", "yt-dlp"],
+                live: "https://insta-delta-three.vercel.app",
+                github: "https://github.com/Asadlee24/insta"
+            },
+            mdk: {
+                badge: "E-Commerce",
+                title: "MDK Electronics",
+                desc: "MDK Electronics is a professional surveillance & electronics e-commerce store designed and developed by Asad Lee. Features a full product catalog, secure payment gateway, and performance-optimized architecture.",
+                features: [
+                    "Full surveillance product catalog",
+                    "Secure payment gateway integration",
+                    "Custom e-commerce theme architecture",
+                    "SEO-optimized product pages"
+                ],
+                stack: ["JavaScript", "PHP", "MySQL", "Custom CSS", "Payment Gateway"],
+                live: "https://mdkelectronics.com",
+                github: null
+            }
         };
 
-        const statsSection = document.querySelector('#stats-counter-section');
-        if (statsSection) {
-            let animated = false;
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !animated) {
-                        animateCounters();
-                        animated = true;
-                    }
-                });
-            }, { threshold: 0.2 });
-            observer.observe(statsSection);
-        }
+        function openModal(id) {
+            const p = projectData[id];
+            if (!p) return;
 
-        // Typing Effect
-        const typingPhrases = [
-            "Full-Stack Coder",
-            "Cyber Security Researcher",
-            "Web3 & USDC Architect",
-            "TypeScript Developer",
-            "E-Commerce Specialist"
-        ];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingElement = document.getElementById("typing-text");
+            document.getElementById('modal-badge').textContent = p.badge;
+            document.getElementById('modal-title').textContent = p.title;
+            document.getElementById('modal-desc').textContent = p.desc;
 
-        function typeEffect() {
-            if (!typingElement) return;
-            const currentPhrase = typingPhrases[phraseIndex];
-            if (isDeleting) {
-                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
+            const featuresList = document.getElementById('modal-features');
+            featuresList.innerHTML = p.features.map(f => `
+                <li class="flex items-start gap-2">
+                    <span class="text-cherry-600 dark:text-cherry-400 font-bold">✓</span>
+                    <span>${f}</span>
+                </li>
+            `).join('');
+
+            const stackList = document.getElementById('modal-stack');
+            stackList.innerHTML = p.stack.map(s => `
+                <span class="text-[10px] px-2.5 py-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-gray-700 dark:text-white/70 font-mono">${s}</span>
+            `).join('');
+
+            document.getElementById('modal-live-btn').href = p.live;
+            document.getElementById('modal-live-url').textContent = p.live.replace('https://', '');
+
+            const ghBtn = document.getElementById('modal-github-btn');
+            if (p.github) {
+                ghBtn.href = p.github;
+                ghBtn.style.display = 'inline-flex';
             } else {
-                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
+                ghBtn.style.display = 'none';
             }
 
-            let speed = isDeleting ? 35 : 70;
+            document.getElementById('modal-iframe').src = p.live;
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                speed = 2200;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % typingPhrases.length;
-                speed = 400;
-            }
-
-            setTimeout(typeEffect, speed);
+            const modal = document.getElementById('project-modal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
-        typeEffect();
 
-        // Terminal Logic
-        const terminalOutput = document.getElementById("terminal-output");
-        const terminalInput = document.getElementById("terminal-input");
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.style.display = 'none';
+            document.getElementById('modal-iframe').src = 'about:blank';
+            document.body.style.overflow = '';
+        }
 
+        function handleModalBackdrop(e) {
+            if (e.target === document.getElementById('project-modal')) {
+                closeModal();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // --- 5. PROJECT FILTER ---
+        function filterProjects(cat) {
+            const items = document.querySelectorAll('.project-item');
+            const btns = document.querySelectorAll('.proj-filter-btn');
+
+            btns.forEach(b => {
+                b.classList.remove('active', 'bg-gray-900', 'dark:bg-white', 'text-white', 'dark:text-gray-900');
+                b.classList.add('bg-black/5', 'dark:bg-white/5', 'text-gray-600', 'dark:text-white/60');
+            });
+
+            event.target.classList.add('active', 'bg-gray-900', 'dark:bg-white', 'text-white', 'dark:text-gray-900');
+            event.target.classList.remove('bg-black/5', 'dark:bg-white/5', 'text-gray-600', 'dark:text-white/60');
+
+            items.forEach(item => {
+                if (cat === 'all' || item.getAttribute('data-category') === cat) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // --- 6. TERMINAL LOGIC ---
         const termCommands = {
             help: `Available commands:
-  - <span class="text-yellow-400 font-bold">whoami</span>   : Developer & Security profile details
+  - <span class="text-yellow-400 font-bold">whoami</span>   : Developer identity & background
   - <span class="text-yellow-400 font-bold">skills</span>   : Technical stack & competencies
-  - <span class="text-yellow-400 font-bold">projects</span> : Highlighted Technocore, Web3 & P2P apps
-  - <span class="text-yellow-400 font-bold">contact</span>  : Get in touch via WhatsApp & socials
-  - <span class="text-yellow-400 font-bold">clear</span>    : Clear terminal screen`,
-            whoami: `<span class="text-cyan-400 font-bold">ASAD LEE</span> | Full-Stack Developer & Cyber Security Researcher
-Specializing in TypeScript architectures, Web3 USDC integrations, and security penetration testing.`,
-            skills: `Technical Stack:
+  - <span class="text-yellow-400 font-bold">projects</span> : Shipped Technocore, Web3 & P2P apps
+  - <span class="text-yellow-400 font-bold">contact</span>  : WhatsApp & social direct channels
+  - <span class="text-yellow-400 font-bold">clear</span>    : Reset terminal window`,
+            whoami: `<span class="text-cherry-400 font-bold">ASAD LEE</span> (@asadleo416)
+Full-Stack Developer & Cyber Security Researcher.
+Specializing in TypeScript architectures, Web3 USDC settlement, and penetration testing.`,
+            skills: `Proficiency Breakdown:
   [✔] TypeScript — Next.js, Technocore, Bridgr, MinterBot (96%)
   [✔] JavaScript — Frontend apps, browser logic, Web3 (95%)
   [✔] Python — ML, data analysis, pandas, NumPy (88%)
   [✔] Solidity — Smart contracts, Web3 protocols (85%)
-  [✔] HTML5 / CSS3 / SQL — Backend & Database (92%)`,
-            projects: `Featured Live Projects:
+  [✔] SQL & Databases — PostgreSQL, MySQL, API endpoints (92%)`,
+            projects: `Highlighted Live Deployments:
   1. Technocore Console (https://technocore-console.vercel.app)
   2. Technocore Explorer (https://technocore-explorer-coral.vercel.app)
   3. Technocore Agent Kit (https://technocore-agent-kit.vercel.app)
   4. MinterBot V1 (https://minterbot.vercel.app)
-  5. Arc Pay Platform (https://arc-pay-inky.vercel.app)`,
-            contact: `Contact Options:
+  5. Arc Pay Platform (https://arc-pay-inky.vercel.app)
+  6. Warp P2P Transfer (https://warp-transfer.vercel.app)`,
+            contact: `Direct Communication:
   - WhatsApp: +92 340 0194591
-  - Instagram: @asadlee24
   - Twitter/X: @asadleo416
+  - Instagram: @asadlee24
   - LinkedIn: Asad Ali`
         };
+
+        const terminalOutput = document.getElementById('terminal-output');
+        const terminalInput = document.getElementById('terminal-input');
 
         function runTermCmd(cmd) {
             if (!terminalOutput) return;
             cmd = cmd.trim().toLowerCase();
-            
+
             if (cmd === 'clear') {
-                terminalOutput.innerHTML = `<p class="text-cyan-400 font-bold">Screen cleared. Type 'help' for available commands.</p>`;
+                terminalOutput.innerHTML = `<p class="text-cherry-400 font-bold">Screen cleared. Type 'help' for available commands.</p>`;
                 return;
             }
-            
+
             const pCmd = document.createElement('p');
-            pCmd.className = 'text-emerald-400 font-bold';
+            pCmd.className = 'text-green-400 font-bold';
             pCmd.innerHTML = `asad@sec:~# ${cmd}`;
             terminalOutput.appendChild(pCmd);
 
             const pAns = document.createElement('div');
-            pAns.className = 'text-slate-300 leading-relaxed pl-3 border-l-2 border-cyan-500/40 my-1.5';
-            
+            pAns.className = 'text-gray-300 pl-3 border-l border-cherry-500/50 my-1 leading-relaxed';
+
             if (termCommands[cmd]) {
                 pAns.innerHTML = termCommands[cmd].replace(/\n/g, '<br>');
             } else {
-                pAns.innerHTML = `<span class="text-red-400">Command not found: '${cmd}'. Type <span class="text-yellow-400 font-bold">'help'</span> for valid commands.</span>`;
+                pAns.innerHTML = `<span class="text-red-400">Command not recognized: '${cmd}'. Type <span class="text-yellow-400 font-bold">'help'</span> for list.</span>`;
             }
-            
+
             terminalOutput.appendChild(pAns);
             terminalOutput.scrollTop = terminalOutput.scrollHeight;
         }
@@ -954,293 +1436,28 @@ Specializing in TypeScript architectures, Web3 USDC integrations, and security p
             }
         }
 
-        // Project Filter
-        function filterProjects(cat) {
-            const cards = document.querySelectorAll('.project-card');
-            const btns = document.querySelectorAll('.project-filter-btn');
-
-            btns.forEach(btn => {
-                btn.classList.remove('border-cyan-400', 'bg-cyan-500/20', 'text-cyan-400', 'shadow-lg', 'shadow-cyan-500/10');
-                btn.classList.add('border-white/10', 'bg-white/5', 'text-slate-400');
-                if (btn.getAttribute('onclick').includes(`'${cat}'`)) {
-                    btn.classList.add('border-cyan-400', 'bg-cyan-500/20', 'text-cyan-400', 'shadow-lg', 'shadow-cyan-500/10');
-                    btn.classList.remove('border-white/10', 'bg-white/5', 'text-slate-400');
-                }
-            });
-
-            cards.forEach(card => {
-                if (cat === 'all' || card.getAttribute('data-category') === cat) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Theme Toggle
-        function initTheme() {
-            const savedTheme = localStorage.getItem('portfolio-theme');
-            const themeIcon = document.getElementById('theme-icon');
-            if (savedTheme === 'light') {
-                document.body.classList.add('light-theme');
-                document.body.classList.remove('dark');
-                if (themeIcon) themeIcon.className = 'bx bx-moon text-xl';
-            } else {
-                document.body.classList.remove('light-theme');
-                document.body.classList.add('dark');
-                if (themeIcon) themeIcon.className = 'bx bx-sun text-xl';
+        // --- 7. FORMSPREE INTEGRATION ---
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', {
+            formElement: '#contact-form',
+            formId: 'mzdkgzjg',
+            onSuccess: function() {
+                document.getElementById('contact-form').style.display = 'none';
+                document.getElementById('form-success-banner').style.display = 'block';
             }
-        }
-
-        function toggleTheme() {
-            const themeIcon = document.getElementById('theme-icon');
-            document.body.classList.toggle('light-theme');
-            document.body.classList.toggle('dark');
-            if (document.body.classList.contains('light-theme')) {
-                localStorage.setItem('portfolio-theme', 'light');
-                if (themeIcon) themeIcon.className = 'bx bx-moon text-xl';
-            } else {
-                localStorage.setItem('portfolio-theme', 'dark');
-                if (themeIcon) themeIcon.className = 'bx bx-sun text-xl';
-            }
-        }
-        initTheme();
-
-        // Project Modal Database
-        const projectData = {
-            technocoreConsole: {
-                icon: "<i class='bx bx-terminal text-cyan-400'></i>",
-                badge: "IDENTITY CONSOLE",
-                badgeClass: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
-                title: "Technocore Console",
-                desc: "A browser-based identity and messaging console for Technocore with in-memory Ed25519 identities, signed messaging, live room monitoring and cryptographic verification tools.",
-                features: [
-                    "In-browser Ed25519 did:key identity generation",
-                    "Private keys remain secure in browser memory",
-                    "Signed message dispatch & anonymous dispatch",
-                    "Live room monitoring & public registry publishing",
-                    "Memory Vault for signed structured memory & 3D network visualization"
-                ],
-                stack: ["TypeScript", "JavaScript", "Ed25519", "DID", "Cryptography", "Technocore", "Web3", "Browser APIs"],
-                live: "https://technocore-console.vercel.app",
-                github: "https://github.com/Asadlee24/technocore-console"
-            },
-            technocoreExplorer: {
-                icon: "<i class='bx bx-radar text-cyan-400'></i>",
-                badge: "NETWORK EXPLORER",
-                badgeClass: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
-                title: "Technocore Explorer",
-                desc: "A public network explorer and historical archive layer for the Technocore protocol, making network activity searchable, inspectable and independently verifiable.",
-                features: [
-                    "Live network overview & room/DID explorers",
-                    "Sequence lookup & network radar patterns",
-                    "Merkle-based verification & cryptographic snapshots",
-                    "Continuum archival layer & historical message archive",
-                    "No-login public dashboard with MCP quick-connect"
-                ],
-                stack: ["TypeScript", "Next.js", "React", "Technocore", "Cryptography", "Merkle Trees", "GitHub Actions", "Vercel"],
-                live: "https://technocore-explorer-coral.vercel.app",
-                github: "https://github.com/Asadlee24/technocore-explorer"
-            },
-            technocoreAgentKit: {
-                icon: "<i class='bx bx-bot text-purple-400'></i>",
-                badge: "AUTONOMOUS AGENTS",
-                badgeClass: "bg-purple-500/10 text-purple-400 border-purple-500/30",
-                title: "Technocore Agent Kit",
-                desc: "A TypeScript toolkit and autonomous multi-agent system for building cryptographically verifiable agent-to-agent workflows on the Technocore protocol.",
-                features: [
-                    "Autonomous agent workflows & TypeScript SDK",
-                    "Agent-to-agent messaging & TASK → RESULT orchestration",
-                    "DAG workflow engine with Ed25519 signatures",
-                    "Claude, OpenAI, and local AI provider support",
-                    "MCP integration, CLI tools, and room watching"
-                ],
-                stack: ["TypeScript", "Node.js", "AI Agents", "Ed25519", "Technocore", "MCP", "Claude", "OpenAI", "Cryptography"],
-                live: "https://technocore-agent-kit.vercel.app",
-                github: "https://github.com/Asadlee24/technocore-agent-kit"
-            },
-            minterbot: {
-                icon: "<i class='bx bx-bot text-cyan-400'></i>",
-                badge: "Web3 & NFT Bot",
-                badgeClass: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
-                title: "MinterBot V1",
-                desc: "MinterBot is built to make NFT minting faster, easier and more automated. Execute public mints across Ethereum, Base, Arbitrum, Polygon, and Robinhood Chain with auto-timers and local encryption security.",
-                features: [
-                    "Mint from multiple wallets at once",
-                    "Auto-Mint Timer for scheduled mint execution",
-                    "Real-time transaction monitoring dashboard",
-                    "Secure wallet data with local AES-256 encryption",
-                    "Multi-chain support (Ethereum, Base, Arbitrum, Polygon, Robinhood)"
-                ],
-                stack: ["TypeScript", "Next.js", "Web3.js", "AES-256", "Tailwind CSS", "Vercel"],
-                live: "https://minterbot.vercel.app",
-                github: "https://github.com/Asadlee24/minterbot"
-            },
-            arcpay: {
-                icon: "<i class='bx bx-credit-card text-blue-400'></i>",
-                badge: "Fintech & USDC",
-                badgeClass: "bg-blue-500/10 text-blue-400 border-blue-500/30",
-                title: "Arc Pay Platform",
-                desc: "Arc Pay is an open-source, no-code USDC payment layer built for merchants on the Arc Network. It integrates directly with Circle's APIs to enable instant, on-chain USDC settlement with zero transaction friction.",
-                features: [
-                    "No-code merchant onboarding dashboard",
-                    "Circle API integration for real USDC settlement",
-                    "Instant payment confirmation & QR checkout",
-                    "Multi-wallet support (MetaMask, Phantom)",
-                    "On-chain transaction history & export"
-                ],
-                stack: ["TypeScript", "Next.js", "Circle API", "USDC", "Web3.js", "Tailwind CSS", "Vercel"],
-                live: "https://arc-pay-inky.vercel.app",
-                github: "https://github.com/Asadlee24/arc-pay"
-            },
-            warp: {
-                icon: "<i class='bx bx-transfer text-cyan-400'></i>",
-                badge: "WebRTC P2P",
-                badgeClass: "bg-cyan-500/10 text-cyan-400 border-cyan-500/30",
-                title: "Warp P2P Transfer",
-                desc: "Warp is a blazing-fast, browser-native peer-to-peer file transfer app built entirely on WebRTC data channels. No server ever touches your files — everything flows directly between browsers.",
-                features: [
-                    "100% serverless P2P via WebRTC DataChannels",
-                    "QR code scanner for instant peer pairing",
-                    "Multi-file batch transfer in a single session",
-                    "Real-time progress bar & transfer speed stats",
-                    "TURN/STUN fallback for NAT traversal"
-                ],
-                stack: ["TypeScript", "Next.js", "WebRTC", "QR Scanner", "Node.js", "Tailwind CSS", "Vercel"],
-                live: "https://warp-transfer.vercel.app",
-                github: "https://github.com/Asadlee24/warp-transfer"
-            },
-            bridgr: {
-                icon: "<i class='bx bx-git-compare text-purple-400'></i>",
-                badge: "Web3 & Bridge",
-                badgeClass: "bg-purple-500/10 text-purple-400 border-purple-500/30",
-                title: "Bridgr USDC Bridge",
-                desc: "Bridgr is a cross-chain USDC liquidity bridge and asset transfer protocol engineered for Arc Network. It enables users to move USDC seamlessly across blockchain networks with minimal gas overhead.",
-                features: [
-                    "Cross-chain USDC liquidity bridging",
-                    "Asset transfer protocol for Arc Network",
-                    "Minimal gas fee optimization engine",
-                    "Cryptographic finality & transaction proofs"
-                ],
-                stack: ["TypeScript", "Solidity", "USDC", "Ethers.js", "Arc Network", "Vercel"],
-                live: "https://bridgr-usdc-bridge.vercel.app",
-                github: "https://github.com/Asadlee24/arcshift-usdc-bridge"
-            },
-            instarip: {
-                icon: "<i class='bx bx-cloud-download text-pink-400'></i>",
-                badge: "Web App",
-                badgeClass: "bg-pink-500/10 text-pink-400 border-pink-500/30",
-                title: "InstaRip Downloader",
-                desc: "InstaRip is a high-performance, watermark-free Instagram Reel & TikTok HD video downloader built with Next.js. Supports batch downloads, audio extraction, and HD quality output.",
-                features: [
-                    "Instagram Reels & TikTok HD download",
-                    "100% watermark-free output",
-                    "Audio-only extraction (MP3)",
-                    "No account login required"
-                ],
-                stack: ["TypeScript", "Next.js", "Node.js", "FFmpeg", "yt-dlp", "Tailwind CSS", "Vercel"],
-                live: "https://insta-delta-three.vercel.app",
-                github: "https://github.com/Asadlee24/insta"
-            },
-            mdk: {
-                icon: "<i class='bx bx-store text-amber-400'></i>",
-                badge: "E-Commerce",
-                badgeClass: "bg-amber-500/10 text-amber-400 border-amber-500/30",
-                title: "MDK Electronics",
-                desc: "MDK Electronics is a professional surveillance & electronics e-commerce store designed and developed by Asad Lee. Features a full product catalog, secure payment gateway, and performance-optimized architecture.",
-                features: [
-                    "Full surveillance product catalog",
-                    "Secure payment gateway integration",
-                    "Custom e-commerce theme architecture",
-                    "SEO-optimized product pages"
-                ],
-                stack: ["JavaScript", "PHP", "MySQL", "Custom CSS", "cPanel"],
-                live: "https://mdkelectronics.com",
-                github: null
-            }
-        };
-
-        function openModal(id) {
-            const p = projectData[id];
-            if (!p) return;
-            document.getElementById('modal-icon').innerHTML = p.icon;
-            const badge = document.getElementById('modal-badge');
-            badge.textContent = p.badge;
-            badge.className = `text-[9px] font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full border inline-block mb-1.5 ${p.badgeClass}`;
-            document.getElementById('modal-title').textContent = p.title;
-            document.getElementById('modal-desc').textContent = p.desc;
-
-            const featuresList = document.getElementById('modal-features');
-            featuresList.innerHTML = p.features.map(f =>
-                `<li class="flex items-start gap-2.5 text-sm text-slate-300"><i class='bx bxs-check-circle text-cyan-400 mt-0.5 shrink-0 text-base'></i>${f}</li>`
-            ).join('');
-
-            const stackDiv = document.getElementById('modal-stack');
-            const stackColors = ['bg-blue-500/10 text-blue-300 border-blue-500/20', 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20', 'bg-purple-500/10 text-purple-300 border-purple-500/20', 'bg-green-500/10 text-green-300 border-green-500/20', 'bg-yellow-500/10 text-yellow-300 border-yellow-500/20', 'bg-slate-500/10 text-slate-300 border-slate-500/20'];
-            stackDiv.innerHTML = p.stack.map((s, i) =>
-                `<span class="text-[10px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full border ${stackColors[i % stackColors.length]}">${s}</span>`
-            ).join('');
-
-            const liveBtn = document.getElementById('modal-live-btn');
-            liveBtn.href = p.live;
-            document.getElementById('modal-live-url').textContent = p.live.replace('https://', '');
-
-            const ghBtn = document.getElementById('modal-github-btn');
-            if (p.github) {
-                ghBtn.href = p.github;
-                ghBtn.style.display = 'flex';
-            } else {
-                ghBtn.style.display = 'none';
-            }
-
-            const iframe = document.getElementById('modal-iframe');
-            iframe.src = p.live;
-
-            const modal = document.getElementById('project-modal');
-            modal.style.display = 'flex';
-            requestAnimationFrame(() => {
-                modal.style.opacity = '0';
-                modal.style.transition = 'opacity 0.3s ease';
-                requestAnimationFrame(() => { modal.style.opacity = '1'; });
-            });
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('project-modal');
-            modal.style.opacity = '0';
-            setTimeout(() => {
-                modal.style.display = 'none';
-                document.getElementById('modal-iframe').src = 'about:blank';
-                document.body.style.overflow = '';
-            }, 300);
-        }
-
-        function handleModalBackdrop(e) {
-            if (e.target === document.getElementById('project-modal')) closeModal();
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
         });
 
-        // Visitor counter & location simulator
+        // --- 8. VISITOR COUNTER & REAL-TIME LOCATION SIMULATION ---
         (function() {
-            let count = parseInt(localStorage.getItem('asadlee_visits') || '1924', 10);
+            let count = parseInt(localStorage.getItem('asad_visits') || '1942', 10);
             count++;
-            localStorage.setItem('asadlee_visits', count);
+            localStorage.setItem('asad_visits', count);
 
             const countEl = document.getElementById('visitor-count');
             const flagEl = document.getElementById('visitor-flag');
             const locEl = document.getElementById('visitor-location');
 
-            const startVal = Math.max(1, count - 25);
-            let current = startVal;
-            const timer = setInterval(() => {
-                current += Math.ceil((count - current) / 5);
-                if (current >= count) { current = count; clearInterval(timer); }
-                if (countEl) countEl.textContent = current.toLocaleString();
-            }, 40);
+            if (countEl) countEl.textContent = count.toLocaleString();
 
             fetch('https://ipapi.co/json/')
                 .then(r => r.json())
@@ -1253,7 +1470,7 @@ Specializing in TypeScript architectures, Web3 USDC integrations, and security p
                         : '🌍';
                     if (flagEl) flagEl.textContent = flag;
                     if (locEl && city && country) {
-                        locEl.textContent = `📍 Visitor session active from ${city}, ${country}`;
+                        locEl.textContent = `(${city}, ${country})`;
                     }
                 })
                 .catch(() => {
