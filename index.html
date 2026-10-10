@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asad Lee — Developer & Security Architect</title>
+    <title>Asad Lee — Developer, Security Architect & Web3 Engineer</title>
     <meta name="description" content="Portfolio of Asad Lee (@asadleo416) — Cyber Security Researcher & Professional Full-Stack Developer specializing in TypeScript, Web3 protocols, and resilient digital architectures.">
     <link rel="icon" type="image/png" href="./profile.png">
 
@@ -50,6 +50,7 @@
                         soft: '0 18px 50px rgba(0, 0, 0, 0.06)',
                         'soft-hover': '0 25px 70px rgba(0, 0, 0, 0.1)',
                         glass: '0 8px 32px 0 rgba(0, 0, 0, 0.06)',
+                        glow: '0 0 25px rgba(243, 185, 200, 0.25)',
                     }
                 }
             }
@@ -95,7 +96,7 @@
             background-color: #c2185b;
         }
 
-        /* Subtle project grid pattern from palakonweb */
+        /* Ambient project grid */
         .bg-project-grid {
             background-image: 
                 linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
@@ -117,6 +118,22 @@
             background: radial-gradient(circle at 80% 20%, rgba(58, 31, 40, 0.4) 0%, transparent 60%);
         }
 
+        /* Smooth Cursor Spotlight */
+        #cursor-glow {
+            position: fixed;
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(243, 185, 200, 0.14) 0%, transparent 65%);
+            transition: opacity 0.3s ease;
+        }
+        .dark #cursor-glow {
+            background: radial-gradient(circle, rgba(194, 24, 91, 0.12) 0%, transparent 65%);
+        }
+
         /* Dashed Border Animation */
         .dashed-border-anim {
             background: transparent;
@@ -133,15 +150,41 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
+        /* 3D Holographic Foil & Tilt Card */
+        .holo-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+            position: relative;
+        }
+        .holo-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(550px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(243, 185, 200, 0.16), transparent 50%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        .dark .holo-card::after {
+            background: radial-gradient(550px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(194, 24, 91, 0.18), transparent 50%);
+        }
+        .holo-card:hover::after {
+            opacity: 1;
+        }
+
         /* Glare Button Effect */
         .glare-button {
             position: relative;
             overflow: hidden;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
         }
         .glare-button:after {
             content: "";
             pointer-events: none;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
             width: 50%;
             height: 100%;
             transition: left 0.65s;
@@ -183,21 +226,18 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Scrollbars */
-        ::-webkit-scrollbar {
-            width: 7px;
-            height: 7px;
+        /* Floating Bob Animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-7px) rotate(1.5deg); }
         }
-        ::-webkit-scrollbar-track {
-            background: var(--scrollbar-track);
+        @keyframes floatFast {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(-2deg); }
         }
-        ::-webkit-scrollbar-thumb {
-            background: var(--scrollbar-thumb);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--scrollbar-thumb-hover);
-        }
+        .float-badge-1 { animation: floatSlow 5s ease-in-out infinite; }
+        .float-badge-2 { animation: floatFast 4.2s ease-in-out infinite 0.6s; }
+        .float-badge-3 { animation: floatSlow 6s ease-in-out infinite 1.2s; }
 
         /* Floating WhatsApp Button */
         .whatsapp-float {
@@ -218,60 +258,115 @@
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .whatsapp-float:hover {
-            transform: scale(1.1) rotate(6deg);
+            transform: scale(1.12) rotate(6deg);
             box-shadow: 0 16px 36px rgba(37, 211, 102, 0.6);
         }
+
+        /* Floating Toast */
+        #floating-toast {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            z-index: 9999;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+        #floating-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Click Particles Canvas */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 99999;
+        }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar { width: 7px; height: 7px; }
+        ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
     </style>
 </head>
 
-<body class="bg-project-grid selection:bg-cherry-accent selection:text-[#181818]">
+<body class="bg-project-grid selection:bg-cherry-accent selection:text-[#181818] relative">
+
+    <!-- Ambient Cursor Spotlight Follower -->
+    <div id="cursor-glow"></div>
+
+    <!-- Click Particles Canvas -->
+    <canvas id="particle-canvas"></canvas>
 
     <!-- Ambient Glow Background -->
     <div class="fixed inset-0 bg-radial-blush pointer-events-none z-[-1]"></div>
+
+    <!-- Floating Toast Notification -->
+    <div id="floating-toast" class="bg-black/90 dark:bg-white/95 text-white dark:text-gray-950 px-5 py-2.5 rounded-full shadow-2xl backdrop-blur-xl border border-white/20 dark:border-black/20 text-xs font-semibold tracking-wide flex items-center gap-2">
+        <i class='bx bx-check-circle text-cherry-deep dark:text-cherry-accent text-base'></i>
+        <span id="toast-text">Copied to clipboard!</span>
+    </div>
 
     <!-- Floating WhatsApp CTA -->
     <a href="https://wa.me/923400194591" class="whatsapp-float group" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
         <i class='bx bxl-whatsapp group-hover:scale-110 transition-transform'></i>
     </a>
 
-    <!-- Top Left Fixed Signature Logo (Palak Style) -->
-    <button onclick="scrollToTop()" class="fixed top-3.5 left-6 md:top-4 md:left-10 z-50 hover:opacity-70 transition-opacity duration-150 cursor-pointer">
-        <span class="font-signature text-xl md:text-2xl text-black dark:text-white">asadlee</span>
+    <!-- Top Left Fixed Signature Logo with Decryption Scramble -->
+    <button onclick="scrollToTop()" class="fixed top-3.5 left-6 md:top-4 md:left-10 z-50 hover:opacity-70 transition-opacity duration-150 cursor-pointer group flex items-center gap-1.5">
+        <span class="font-signature text-xl md:text-2xl text-black dark:text-white scramble-hover" data-scramble="asadlee">asadlee</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-cherry-deep dark:bg-cherry-accent group-hover:scale-125 transition-transform"></span>
     </button>
 
-    <!-- Top Right Mobile Theme Toggle -->
-    <div class="md:hidden fixed top-3 right-6 z-50">
+    <!-- Top Right Mobile Theme Toggle & Quick Palette Button -->
+    <div class="md:hidden fixed top-3 right-6 z-50 flex items-center gap-2">
+        <button onclick="openCommandPalette()" class="flex items-center justify-center w-9 h-9 rounded-full bg-white dark:bg-dark-surface3 shadow-[0_2px_6px_rgba(0,0,0,0.2)] text-gray-800 dark:text-white transition cursor-pointer" aria-label="Open command palette">
+            <i class='bx bx-search text-base'></i>
+        </button>
         <button onclick="toggleTheme()" class="flex items-center justify-center w-9 h-9 rounded-full bg-white dark:bg-dark-surface3 shadow-[0_2px_6px_rgba(0,0,0,0.2)] text-gray-800 dark:text-white transition cursor-pointer" aria-label="Toggle theme">
             <i id="theme-icon-mobile" class='bx bx-sun text-lg'></i>
         </button>
     </div>
 
     <!-- Top Right Desktop Floating Navigation Bar (Palak Style) -->
-    <nav class="hidden md:flex fixed top-4 right-10 md:right-12 z-50 items-center gap-8 text-sm font-medium">
+    <nav class="hidden md:flex fixed top-4 right-10 md:right-12 z-50 items-center gap-7 text-sm font-medium">
         <a href="#home" class="group relative py-1 text-gray-700 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors duration-150">
-            Home
+            <span class="scramble-hover" data-scramble="Home">Home</span>
             <span class="absolute -bottom-1 left-0 h-[1.5px] bg-[#F3B9C8] transition-all duration-150 ease-out w-0 opacity-0 group-hover:w-full group-hover:opacity-100"></span>
         </a>
         <a href="#about" class="group relative py-1 text-gray-700 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors duration-150">
-            About
+            <span class="scramble-hover" data-scramble="About">About</span>
             <span class="absolute -bottom-1 left-0 h-[1.5px] bg-[#F3B9C8] transition-all duration-150 ease-out w-0 opacity-0 group-hover:w-full group-hover:opacity-100"></span>
         </a>
         <a href="#winter-arc" class="group relative py-1 text-gray-700 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors duration-150">
-            Winter Arc
+            <span class="scramble-hover" data-scramble="Winter Arc">Winter Arc</span>
             <span class="absolute -bottom-1 left-0 h-[1.5px] bg-[#F3B9C8] transition-all duration-150 ease-out w-0 opacity-0 group-hover:w-full group-hover:opacity-100"></span>
         </a>
         <a href="#work" class="group relative py-1 text-gray-700 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors duration-150">
-            Projects
+            <span class="scramble-hover" data-scramble="Projects">Projects</span>
             <span class="absolute -bottom-1 left-0 h-[1.5px] bg-[#F3B9C8] transition-all duration-150 ease-out w-0 opacity-0 group-hover:w-full group-hover:opacity-100"></span>
         </a>
         <a href="#experience" class="group relative py-1 text-gray-700 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors duration-150">
-            Experience
+            <span class="scramble-hover" data-scramble="Experience">Experience</span>
             <span class="absolute -bottom-1 left-0 h-[1.5px] bg-[#F3B9C8] transition-all duration-150 ease-out w-0 opacity-0 group-hover:w-full group-hover:opacity-100"></span>
         </a>
         <a href="#contact" class="group relative py-1 text-gray-700 dark:text-white/70 hover:text-black dark:hover:text-white transition-colors duration-150">
-            let's talk
+            <span class="scramble-hover" data-scramble="let's talk">let's talk</span>
             <span class="absolute -bottom-1 left-0 h-[1.5px] bg-[#F3B9C8] transition-all duration-150 ease-out w-0 opacity-0 group-hover:w-full group-hover:opacity-100"></span>
         </a>
+
+        <!-- Command Palette Trigger Badge (Cmd+K / Ctrl+K) -->
+        <button onclick="openCommandPalette()" class="px-2.5 py-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] hover:bg-black/[0.08] dark:hover:bg-white/[0.12] border border-black/5 dark:border-white/10 text-xs font-mono text-gray-600 dark:text-white/60 flex items-center gap-1.5 transition cursor-pointer shadow-sm" title="Quick Command Palette (Ctrl+K)">
+            <i class='bx bx-search text-xs'></i>
+            <span>⌘K</span>
+        </button>
 
         <!-- Desktop Theme Toggle Button -->
         <button onclick="toggleTheme()" class="flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-dark-surface3 shadow-[0_2px_6px_rgba(0,0,0,0.2)] text-gray-800 dark:text-white hover:scale-105 transition cursor-pointer" aria-label="Toggle theme">
@@ -302,7 +397,7 @@
     </div>
 
 
-    <!-- ================= MASTER BENTO PAGE CONTAINER (Palak's Exact Architecture) ================= -->
+    <!-- ================= MASTER BENTO PAGE CONTAINER ================= -->
     <section class="w-full relative z-20 flex flex-col items-center bg-gradient-to-b from-[#FFFEFD] via-[#F3B9C8]/10 to-[#FFFEFD] dark:from-dark-bg dark:via-dark-bg dark:to-dark-bg min-h-screen transition-colors duration-150">
         <div class="max-w-[1000px] w-full mx-auto px-4 md:px-12 relative z-10 pt-16 md:pt-20 pb-24">
             
@@ -310,8 +405,24 @@
             <div class="dashed-border-anim rounded-3xl w-full">
                 <div class="bg-white/40 dark:bg-dark-surface/60 backdrop-blur-sm rounded-3xl p-4 md:p-10 transition-colors duration-150">
 
-                    <!-- ================= 1. HERO VIDEO BANNER & AVATAR ================= -->
+                    <!-- ================= 1. HERO VIDEO BANNER & FLOATING MAGNETIC BADGES ================= -->
                     <div class="relative w-full mb-6 md:mb-16" id="home">
+                        
+                        <!-- Floating Parallax Spring Badges (Unique Elite Feature) -->
+                        <div class="hidden sm:flex absolute -top-5 right-6 z-30 float-badge-1 items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 dark:bg-dark-surface2/90 border border-black/5 dark:border-white/10 shadow-lg text-[11px] font-mono font-semibold text-gray-800 dark:text-white pointer-events-none">
+                            <span class="w-2 h-2 rounded-full bg-cherry-deep dark:bg-cherry-accent"></span>
+                            <span>AES-256 Validated</span>
+                        </div>
+                        <div class="hidden sm:flex absolute top-12 -left-4 z-30 float-badge-2 items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 dark:bg-dark-surface2/90 border border-black/5 dark:border-white/10 shadow-lg text-[11px] font-mono font-semibold text-gray-800 dark:text-white pointer-events-none">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            <span>Ed25519 Native</span>
+                        </div>
+                        <div class="hidden md:flex absolute top-28 right-8 z-30 float-badge-3 items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 dark:bg-dark-surface2/90 border border-black/5 dark:border-white/10 shadow-lg text-[11px] font-mono font-semibold text-gray-800 dark:text-white pointer-events-none">
+                            <i class='bx bx-cube text-purple-400'></i>
+                            <span>Web3 Protocol</span>
+                        </div>
+
+                        <!-- Video Container -->
                         <div class="rounded-[20px] w-full">
                             <div class="relative w-full aspect-[21/9] md:aspect-[3/1] rounded-[20px] overflow-hidden bg-gray-950">
                                 <!-- Light Video Banner -->
@@ -333,7 +444,7 @@
                         <!-- Desktop Top-Right Action Buttons (Overlapping Bottom-Right of Banner) -->
                         <div class="hidden md:flex absolute -bottom-14 right-0 flex-wrap justify-end gap-3 z-30">
                             <a href="#work" class="glare-button group flex items-center gap-2 px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black rounded-full shadow-soft font-medium text-xs md:text-sm hover:shadow-soft-hover transition-all duration-150">
-                                <span>View Projects</span>
+                                <span class="scramble-hover" data-scramble="View Projects">View Projects</span>
                                 <i class='bx bx-arrow-back rotate-[135deg] text-xs transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5'></i>
                             </a>
                             <a href="https://wa.me/923400194591" target="_blank" rel="noopener noreferrer" class="glare-button group flex items-center gap-2 px-5 py-2.5 bg-white dark:bg-dark-surface3 border border-black/10 dark:border-white/10 rounded-full shadow-soft font-medium text-xs md:text-sm text-gray-800 dark:text-white hover:shadow-soft-hover transition-all duration-150">
@@ -360,17 +471,17 @@
                     <div class="w-full mb-16 pt-2 md:pt-2">
                         <div class="flex items-center justify-between gap-4">
                             <div class="flex items-center gap-2.5">
-                                <h2 class="font-instrument font-semibold text-3xl md:text-4xl text-gray-800 dark:text-white tracking-tight">Asad Lee</h2>
+                                <h2 class="font-instrument font-semibold text-3xl md:text-4xl text-gray-800 dark:text-white tracking-tight scramble-hover cursor-default" data-scramble="Asad Lee">Asad Lee</h2>
                                 <!-- Verified Badge -->
-                                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#3B9EF3]/15 text-[#3B9EF3] shrink-0" title="Verified Developer & Security Architect">
+                                <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#3B9EF3]/15 text-[#3B9EF3] shrink-0 hover:rotate-12 transition-transform cursor-pointer" title="Verified Developer & Security Architect">
                                     <i class='bx bxs-badge-check text-xl'></i>
                                 </span>
                             </div>
 
-                            <!-- Live Counter Pill (Palak style) -->
-                            <div class="flex items-center gap-1.5 text-xs sm:text-sm text-cherry-textSecondary dark:text-white/40 font-mono">
-                                <i class='bx bx-show text-base'></i>
-                                <span id="visitor-stat-count">1,942</span> views
+                            <!-- Live Counter Pill with 1-Click Copy Trigger -->
+                            <div onclick="copyText('+923400194591', 'WhatsApp: +92 340 0194591')" class="flex items-center gap-1.5 text-xs sm:text-sm text-cherry-textSecondary dark:text-white/40 font-mono hover:text-cherry-deep dark:hover:text-cherry-accent transition cursor-pointer" title="Click to copy WhatsApp">
+                                <i class='bx bx-copy text-sm'></i>
+                                <span>+92 340 0194591</span>
                             </div>
                         </div>
 
@@ -390,8 +501,8 @@
 
                     <!-- ================= 3. WINTER ARC (HEATMAP CALENDAR) ================= -->
                     <div class="w-full mb-16" id="winter-arc">
-                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6">Winter Arc</h3>
-                        <div class="dashed-border-anim rounded-2xl w-full">
+                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6 scramble-hover" data-scramble="Winter Arc">Winter Arc</h3>
+                        <div class="dashed-border-anim rounded-2xl w-full holo-card">
                             <div class="relative bg-white dark:bg-dark-surface rounded-2xl p-6 md:p-8 overflow-x-auto transition-colors duration-150">
                                 
                                 <!-- Heatmap Header Stats -->
@@ -433,7 +544,7 @@
 
                     <!-- ================= 4. WHO IS ASAD LEE? ================= -->
                     <div class="w-full mb-16" id="about">
-                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6">Who is Asad Lee?</h3>
+                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6 scramble-hover" data-scramble="Who is Asad Lee?">Who is Asad Lee?</h3>
                         <div class="space-y-4 font-instrument-sans text-base md:text-[17px] text-gray-700 dark:text-white/60 leading-relaxed">
                             <p>
                                 I am an independent <strong class="font-semibold text-gray-900 dark:text-white">Cyber Security Researcher</strong> and <strong class="font-semibold text-gray-900 dark:text-white">Full-Stack Engineer</strong> who builds software where security and intuitive design reinforce each other. Over the last 4+ years, I have engineered decentralized systems, high-throughput web applications, and mission-critical payment workflows.
@@ -448,53 +559,73 @@
                     </div>
 
 
-                    <!-- ================= 5. TECH STACK (INFINITE MARQUEE) ================= -->
+                    <!-- ================= 5. LIVE CRYPTOGRAPHIC HASH & VERIFIER ENGINE (PROOF OF SECURITY) ================= -->
+                    <div class="w-full mb-16">
+                        <div class="flex items-baseline justify-between mb-6">
+                            <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white scramble-hover" data-scramble="Live Security Proof">Live Security Engine</h3>
+                            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-cherry-pink dark:bg-cherry-deep/40 text-cherry-deep dark:text-cherry-accent">Interactive Cryptography</span>
+                        </div>
+                        <div class="dashed-border-anim rounded-2xl w-full holo-card">
+                            <div class="bg-white dark:bg-dark-surface rounded-2xl p-6 md:p-8 transition-colors duration-150">
+                                <p class="text-xs sm:text-sm text-cherry-textSecondary dark:text-white/50 mb-4 font-sans">
+                                    Test my in-browser cryptographic hashing engine. Type any string to compute real-time SHA-256 digests and simulated Ed25519 signatures:
+                                </p>
+                                <div class="space-y-3 font-mono text-xs">
+                                    <div class="flex items-center gap-2 bg-black/[0.03] dark:bg-white/[0.05] p-3 rounded-xl border border-black/5 dark:border-white/10">
+                                        <span class="text-cherry-deep dark:text-cherry-accent font-bold">INPUT:</span>
+                                        <input type="text" id="crypto-input" value="Asad Lee Security Protocol" placeholder="Type here to test live hashing..." oninput="updateLiveHash()" class="w-full bg-transparent border-none outline-none text-gray-900 dark:text-white font-mono text-xs">
+                                    </div>
+                                    <div class="p-3 rounded-xl bg-black/[0.02] dark:bg-black/30 border border-black/5 dark:border-white/5 flex flex-col gap-1">
+                                        <div class="flex items-center justify-between text-[11px] text-gray-400">
+                                            <span>SHA-256 DIGEST:</span>
+                                            <button onclick="copyHashDigest()" class="hover:text-cherry-deep dark:hover:text-cherry-accent transition flex items-center gap-1"><i class='bx bx-copy'></i> Copy</button>
+                                        </div>
+                                        <span id="crypto-output" class="text-emerald-600 dark:text-emerald-400 font-mono text-[11px] break-all">Generating...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- ================= 6. TECH STACK (INFINITE MARQUEE) ================= -->
                     <div class="w-full mb-16" id="skills">
-                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6">Tech Stack</h3>
+                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6 scramble-hover" data-scramble="Tech Stack">Tech Stack</h3>
                         <div class="w-full overflow-hidden" style="mask-image: linear-gradient(90deg, transparent 0, black 60px, black calc(100% - 60px), transparent 100%); -webkit-mask-image: linear-gradient(90deg, transparent 0, black 60px, black calc(100% - 60px), transparent 100%);">
                             <div class="marquee-track py-2">
                                 <div class="flex items-center gap-4 px-4">
-                                    <!-- TypeScript -->
                                     <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
                                         <i class='bx bxl-typescript text-blue-500 text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">TypeScript (96%)</span>
                                     </div>
-                                    <!-- JavaScript -->
                                     <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
                                         <i class='bx bxl-javascript text-yellow-500 text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">JavaScript (95%)</span>
                                     </div>
-                                    <!-- Next.js / React -->
                                     <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
                                         <i class='bx bxl-react text-cyan-400 text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">Next.js & React</span>
                                     </div>
-                                    <!-- Python / ML -->
                                     <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
                                         <i class='bx bxl-python text-amber-500 text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">Python & Data (88%)</span>
                                     </div>
-                                    <!-- Solidity / Web3 -->
                                     <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
                                         <i class='bx bx-cube text-purple-400 text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">Solidity & Web3 (85%)</span>
                                     </div>
-                                    <!-- WebRTC P2P -->
                                     <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
                                         <i class='bx bx-transfer text-emerald-400 text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">WebRTC & P2P</span>
                                     </div>
-                                    <!-- Cryptography -->
                                     <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
                                         <i class='bx bx-shield-quarter text-cherry-deep dark:text-[#ffb7c5] text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">Ed25519 & AES-256</span>
                                     </div>
-                                    <!-- Tailwind CSS -->
                                     <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
                                         <i class='bx bxl-tailwind-css text-sky-400 text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">Tailwind CSS</span>
                                     </div>
-                                    <!-- SQL & DB -->
                                     <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
                                         <i class='bx bxl-postgresql text-blue-400 text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">SQL / PostgreSQL (92%)</span>
@@ -513,24 +644,16 @@
                                         <i class='bx bxl-react text-cyan-400 text-lg'></i>
                                         <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">Next.js & React</span>
                                     </div>
-                                    <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
-                                        <i class='bx bxl-python text-amber-500 text-lg'></i>
-                                        <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">Python & Data (88%)</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 bg-white dark:bg-dark-surface2 rounded-full px-3 py-2 border border-black/5 dark:border-white/10 mx-2 shadow-sm">
-                                        <i class='bx bx-cube text-purple-400 text-lg'></i>
-                                        <span class="text-[13px] md:text-sm font-medium text-[#181818] dark:text-white">Solidity & Web3 (85%)</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <!-- ================= 6. FREELANCING CALLOUT (PALAK STYLE) ================= -->
+                    <!-- ================= 7. FREELANCING CALLOUT (PALAK STYLE) ================= -->
                     <div class="w-full mb-16">
-                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6">Freelancing</h3>
-                        <div class="dashed-border-anim rounded-2xl w-full">
+                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6 scramble-hover" data-scramble="Freelancing">Freelancing</h3>
+                        <div class="dashed-border-anim rounded-2xl w-full holo-card">
                             <div class="bg-[#FCE7EC]/50 dark:bg-white/[0.04] rounded-2xl p-7 md:p-9 flex flex-col md:flex-row md:items-center justify-between gap-6 transition-colors duration-150">
                                 <p class="font-sans text-gray-700 dark:text-white/70 text-[15px] md:text-base leading-relaxed max-w-lg">
                                     I partner with high-growth teams and founders to build resilient full-stack applications, conduct comprehensive smart contract audits, and integrate cutting-edge decentralized protocols.
@@ -544,18 +667,27 @@
                     </div>
 
 
-                    <!-- ================= 7. SELECTED WORKS (PALAK PROJECT CARDS) ================= -->
+                    <!-- ================= 8. SELECTED WORKS (PALAK PROJECT CARDS + 3D TILT) ================= -->
                     <div class="w-full mb-16" id="work">
-                        <div class="flex items-baseline justify-between mb-6">
-                            <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white">Selected Works</h3>
-                            <span class="text-xs text-cherry-textSecondary dark:text-white/40 font-mono">9 Shipped Projects</span>
+                        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-6 gap-3">
+                            <div>
+                                <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white scramble-hover" data-scramble="Selected Works">Selected Works</h3>
+                                <p class="text-xs text-cherry-textSecondary dark:text-white/40 font-mono mt-0.5">9 Shipped Projects with verifiable source & live demo</p>
+                            </div>
+
+                            <!-- Category Filter Tabs -->
+                            <div class="flex items-center gap-1.5 p-1 rounded-full bg-black/[0.04] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 text-xs font-mono">
+                                <button onclick="filterCategory('all', this)" class="category-pill active px-3 py-1 rounded-full bg-black dark:bg-white text-white dark:text-black transition">All</button>
+                                <button onclick="filterCategory('web3', this)" class="category-pill px-3 py-1 rounded-full text-gray-600 dark:text-white/60 hover:text-black dark:hover:text-white transition">Web3</button>
+                                <button onclick="filterCategory('p2p', this)" class="category-pill px-3 py-1 rounded-full text-gray-600 dark:text-white/60 hover:text-black dark:hover:text-white transition">P2P</button>
+                            </div>
                         </div>
 
                         <!-- Palak Style Project Bento Cards Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[880px] mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[880px] mx-auto" id="projects-grid">
 
                             <!-- Project 1: Technocore Console -->
-                            <div class="dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full">
+                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
                                 <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
                                     <div onclick="openModal('technocoreConsole')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
                                         <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
@@ -569,7 +701,7 @@
                                     <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
                                         <div>
                                             <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl">Technocore Console</h4>
+                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Technocore Console">Technocore Console</h4>
                                                 <a href="https://technocore-console.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
                                                     <span>Live</span>
                                                     <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
@@ -589,7 +721,7 @@
                             </div>
 
                             <!-- Project 2: Technocore Explorer -->
-                            <div class="dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full">
+                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
                                 <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
                                     <div onclick="openModal('technocoreExplorer')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
                                         <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
@@ -603,7 +735,7 @@
                                     <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
                                         <div>
                                             <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl">Technocore Explorer</h4>
+                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Technocore Explorer">Technocore Explorer</h4>
                                                 <a href="https://technocore-explorer-coral.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
                                                     <span>Live</span>
                                                     <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
@@ -623,7 +755,7 @@
                             </div>
 
                             <!-- Project 3: Technocore Agent Kit -->
-                            <div class="dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full">
+                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
                                 <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
                                     <div onclick="openModal('technocoreAgentKit')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
                                         <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
@@ -637,7 +769,7 @@
                                     <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
                                         <div>
                                             <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl">Technocore Agent Kit</h4>
+                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Technocore Agent Kit">Technocore Agent Kit</h4>
                                                 <a href="https://technocore-agent-kit.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
                                                     <span>Live</span>
                                                     <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
@@ -657,7 +789,7 @@
                             </div>
 
                             <!-- Project 4: MinterBot V1 -->
-                            <div class="dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full">
+                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
                                 <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
                                     <div onclick="openModal('minterbot')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
                                         <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
@@ -671,7 +803,7 @@
                                     <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
                                         <div>
                                             <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl">MinterBot V1</h4>
+                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="MinterBot V1">MinterBot V1</h4>
                                                 <a href="https://minterbot.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
                                                     <span>Live</span>
                                                     <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
@@ -691,7 +823,7 @@
                             </div>
 
                             <!-- Project 5: Arc Pay Platform -->
-                            <div class="dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full">
+                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
                                 <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
                                     <div onclick="openModal('arcpay')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
                                         <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
@@ -705,7 +837,7 @@
                                     <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
                                         <div>
                                             <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl">Arc Pay Platform</h4>
+                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Arc Pay Platform">Arc Pay Platform</h4>
                                                 <a href="https://arc-pay-inky.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
                                                     <span>Live</span>
                                                     <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
@@ -725,7 +857,7 @@
                             </div>
 
                             <!-- Project 6: Warp P2P Transfer -->
-                            <div class="dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full">
+                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="p2p">
                                 <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
                                     <div onclick="openModal('warp')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
                                         <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
@@ -739,7 +871,7 @@
                                     <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
                                         <div>
                                             <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl">Warp P2P Transfer</h4>
+                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Warp P2P Transfer">Warp P2P Transfer</h4>
                                                 <a href="https://warp-transfer.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
                                                     <span>Live</span>
                                                     <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
@@ -762,17 +894,17 @@
                     </div>
 
 
-                    <!-- ================= 8. EXPERIENCE ACCORDION (PALAK STYLE) ================= -->
+                    <!-- ================= 9. EXPERIENCE ACCORDION (PALAK STYLE) ================= -->
                     <div class="w-full mb-16" id="experience">
-                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6">Experience</h3>
-                        <div class="dashed-border-anim rounded-2xl w-full">
+                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6 scramble-hover" data-scramble="Experience">Experience</h3>
+                        <div class="dashed-border-anim rounded-2xl w-full holo-card">
                             <div class="bg-white dark:bg-dark-surface rounded-2xl divide-y divide-black/5 dark:divide-white/10 transition-colors duration-150">
                                 
                                 <!-- Exp 1 -->
                                 <div>
                                     <button onclick="toggleExp(1)" class="w-full flex flex-col md:flex-row md:items-center justify-between gap-2 p-5 md:p-6 text-left hover:bg-[#FCE7EC]/20 dark:hover:bg-white/5 transition-colors duration-150 cursor-pointer">
                                         <div>
-                                            <h4 class="font-sans font-semibold text-base md:text-lg text-gray-800 dark:text-white">Technocore & Web3 Architecture</h4>
+                                            <h4 class="font-sans font-semibold text-base md:text-lg text-gray-800 dark:text-white scramble-hover" data-scramble="Technocore & Web3 Architecture">Technocore & Web3 Architecture</h4>
                                             <p class="text-xs md:text-sm text-cherry-textSecondary dark:text-white/40">Protocol Engineer & Full-Stack Developer · Remote</p>
                                         </div>
                                         <div class="flex items-center gap-3">
@@ -807,7 +939,7 @@
                                 <div>
                                     <button onclick="toggleExp(2)" class="w-full flex flex-col md:flex-row md:items-center justify-between gap-2 p-5 md:p-6 text-left hover:bg-[#FCE7EC]/20 dark:hover:bg-white/5 transition-colors duration-150 cursor-pointer">
                                         <div>
-                                            <h4 class="font-sans font-semibold text-base md:text-lg text-gray-800 dark:text-white">Cyber Security & Vulnerability Research</h4>
+                                            <h4 class="font-sans font-semibold text-base md:text-lg text-gray-800 dark:text-white scramble-hover" data-scramble="Cyber Security & Vulnerability Research">Cyber Security & Vulnerability Research</h4>
                                             <p class="text-xs md:text-sm text-cherry-textSecondary dark:text-white/40">Security Auditor & Penetration Tester · Independent</p>
                                         </div>
                                         <div class="flex items-center gap-3">
@@ -841,7 +973,7 @@
                                 <div>
                                     <button onclick="toggleExp(3)" class="w-full flex flex-col md:flex-row md:items-center justify-between gap-2 p-5 md:p-6 text-left hover:bg-[#FCE7EC]/20 dark:hover:bg-white/5 transition-colors duration-150 cursor-pointer">
                                         <div>
-                                            <h4 class="font-sans font-semibold text-base md:text-lg text-gray-800 dark:text-white">Full-Stack Development & E-Commerce</h4>
+                                            <h4 class="font-sans font-semibold text-base md:text-lg text-gray-800 dark:text-white scramble-hover" data-scramble="Full-Stack Development & E-Commerce">Full-Stack Development & E-Commerce</h4>
                                             <p class="text-xs md:text-sm text-cherry-textSecondary dark:text-white/40">Full-Stack Specialist · Freelance & Client Delivery</p>
                                         </div>
                                         <div class="flex items-center gap-3">
@@ -872,13 +1004,13 @@
                     </div>
 
 
-                    <!-- ================= 9. ASADSEC CLI TERMINAL ================= -->
+                    <!-- ================= 10. ASADSEC CLI TERMINAL ================= -->
                     <div class="w-full mb-16">
                         <div class="flex items-baseline justify-between mb-6">
-                            <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white">AsadSec Terminal</h3>
+                            <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white scramble-hover" data-scramble="AsadSec Terminal">AsadSec Terminal</h3>
                             <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-cherry-pink dark:bg-cherry-deep/40 text-cherry-deep dark:text-cherry-accent">Interactive CLI</span>
                         </div>
-                        <div class="dashed-border-anim rounded-2xl w-full">
+                        <div class="dashed-border-anim rounded-2xl w-full holo-card">
                             <div class="bg-gray-950 text-gray-200 rounded-2xl overflow-hidden font-mono text-xs shadow-2xl border border-white/10">
                                 <div class="bg-[#14151a] px-5 py-3 border-b border-white/10 flex items-center justify-between flex-wrap gap-2">
                                     <div class="flex items-center gap-2">
@@ -907,37 +1039,37 @@
                     </div>
 
 
-                    <!-- ================= 10. SOCIALS PILL ROW (PALAK STYLE) ================= -->
+                    <!-- ================= 11. SOCIALS PILL ROW (PALAK STYLE) ================= -->
                     <div class="w-full mb-16">
                         <div class="flex flex-nowrap justify-center items-center gap-2.5 md:gap-4 overflow-x-auto py-2">
                             <a href="https://github.com/Asadlee24" target="_blank" rel="noreferrer" aria-label="GitHub" class="glare-button flex items-center justify-center md:justify-start gap-2.5 bg-white dark:bg-dark-surface2 border border-black/5 dark:border-white/10 shadow-glass dark:shadow-none rounded-2xl w-12 h-12 md:w-auto md:h-auto md:px-5 md:py-3.5 group transition-all duration-150">
                                 <i class='bx bxl-github text-xl text-[#181818] dark:text-white'></i>
-                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white">GitHub</span>
+                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white scramble-hover" data-scramble="GitHub">GitHub</span>
                             </a>
                             <a href="https://x.com/asadleo416?s=21" target="_blank" rel="noreferrer" aria-label="X (Twitter)" class="glare-button flex items-center justify-center md:justify-start gap-2.5 bg-white dark:bg-dark-surface2 border border-black/5 dark:border-white/10 shadow-glass dark:shadow-none rounded-2xl w-12 h-12 md:w-auto md:h-auto md:px-5 md:py-3.5 group transition-all duration-150">
                                 <i class='bx bxl-twitter text-xl text-[#181818] dark:text-white'></i>
-                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white">X (Twitter)</span>
+                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white scramble-hover" data-scramble="X (Twitter)">X (Twitter)</span>
                             </a>
                             <a href="https://www.linkedin.com/in/asad-ali-3355273ba" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="glare-button flex items-center justify-center md:justify-start gap-2.5 bg-white dark:bg-dark-surface2 border border-black/5 dark:border-white/10 shadow-glass dark:shadow-none rounded-2xl w-12 h-12 md:w-auto md:h-auto md:px-5 md:py-3.5 group transition-all duration-150">
                                 <i class='bx bxl-linkedin text-xl text-[#181818] dark:text-white'></i>
-                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white">LinkedIn</span>
+                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white scramble-hover" data-scramble="LinkedIn">LinkedIn</span>
                             </a>
                             <a href="https://www.instagram.com/asadlee24" target="_blank" rel="noreferrer" aria-label="Instagram" class="glare-button flex items-center justify-center md:justify-start gap-2.5 bg-white dark:bg-dark-surface2 border border-black/5 dark:border-white/10 shadow-glass dark:shadow-none rounded-2xl w-12 h-12 md:w-auto md:h-auto md:px-5 md:py-3.5 group transition-all duration-150">
                                 <i class='bx bxl-instagram text-xl text-[#181818] dark:text-white'></i>
-                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white">Instagram</span>
+                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white scramble-hover" data-scramble="Instagram">Instagram</span>
                             </a>
                             <a href="https://wa.me/923400194591" target="_blank" rel="noreferrer" aria-label="WhatsApp" class="glare-button flex items-center justify-center md:justify-start gap-2.5 bg-white dark:bg-dark-surface2 border border-black/5 dark:border-white/10 shadow-glass dark:shadow-none rounded-2xl w-12 h-12 md:w-auto md:h-auto md:px-5 md:py-3.5 group transition-all duration-150">
                                 <i class='bx bxl-whatsapp text-xl text-green-500'></i>
-                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white">WhatsApp</span>
+                                <span class="hidden md:inline text-[13px] font-semibold text-[#181818] dark:text-white scramble-hover" data-scramble="WhatsApp">WhatsApp</span>
                             </a>
                         </div>
                     </div>
 
 
-                    <!-- ================= 11. LET'S TALK (CONTACT SECTION) ================= -->
+                    <!-- ================= 12. LET'S TALK (CONTACT SECTION) ================= -->
                     <div class="w-full mb-8" id="contact">
-                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6">Let's talk</h3>
-                        <div class="dashed-border-anim rounded-2xl w-full">
+                        <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6 scramble-hover" data-scramble="Let's talk">Let's talk</h3>
+                        <div class="dashed-border-anim rounded-2xl w-full holo-card">
                             <div class="bg-white dark:bg-dark-surface rounded-2xl p-6 md:p-8 transition-colors duration-150">
                                 <div id="form-success-alert" class="hidden p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-700 dark:text-green-300 text-sm font-semibold mb-6 text-center">
                                     ✓ Message sent successfully! Asad Lee will respond shortly.
@@ -952,9 +1084,14 @@
                                         <button type="submit" class="glare-button px-7 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black font-semibold text-xs tracking-wider uppercase shadow-soft hover:shadow-soft-hover transition">
                                             Send Message
                                         </button>
-                                        <a href="https://wa.me/923400194591" target="_blank" rel="noopener noreferrer" class="text-xs text-cherry-deep dark:text-cherry-accent font-mono flex items-center gap-1 hover:underline">
-                                            <i class='bx bxl-whatsapp text-green-500 text-sm'></i> Chat directly on WhatsApp →
-                                        </a>
+                                        <div class="flex items-center gap-3">
+                                            <button type="button" onclick="copyText('asadleo416@gmail.com', 'Email copied!')" class="text-xs text-cherry-deep dark:text-cherry-accent font-mono flex items-center gap-1 hover:underline cursor-pointer">
+                                                <i class='bx bx-envelope'></i> Copy Email
+                                            </button>
+                                            <a href="https://wa.me/923400194591" target="_blank" rel="noopener noreferrer" class="text-xs text-cherry-deep dark:text-cherry-accent font-mono flex items-center gap-1 hover:underline">
+                                                <i class='bx bxl-whatsapp text-green-500 text-sm'></i> WhatsApp →
+                                            </a>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -966,12 +1103,65 @@
 
             <!-- Footer -->
             <footer class="mt-14 text-center font-mono text-[11px] text-gray-500 dark:text-white/40 uppercase tracking-widest">
-                <span class="font-signature text-2xl text-black dark:text-white normal-case block mb-2">asadlee</span>
+                <span class="font-signature text-2xl text-black dark:text-white normal-case block mb-2 scramble-hover" data-scramble="asadlee">asadlee</span>
                 © 2026 Crafted by Asad Lee · All rights reserved
             </footer>
 
         </div>
     </section>
+
+
+    <!-- ================= COMMAND PALETTE MODAL (CTRL + K / CMD + K) ================= -->
+    <div id="cmd-palette-backdrop" onclick="closeCommandPalette(event)" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+        <div id="cmd-palette-box" class="relative w-full max-w-lg rounded-2xl bg-white dark:bg-dark-surface border border-black/10 dark:border-white/15 shadow-2xl overflow-hidden flex flex-col font-sans" onclick="event.stopPropagation()">
+            
+            <!-- Input Row -->
+            <div class="flex items-center gap-3 px-4 py-3.5 border-b border-black/5 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
+                <i class='bx bx-search text-gray-400 text-lg'></i>
+                <input type="text" id="cmd-search-input" placeholder="Type a command, project, or action..." oninput="handleCmdSearch(this.value)" class="w-full bg-transparent border-none outline-none text-xs sm:text-sm text-gray-900 dark:text-white placeholder-gray-400 font-sans focus:ring-0">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-black/5 dark:bg-white/10 text-gray-500">ESC</span>
+            </div>
+
+            <!-- Command List -->
+            <div id="cmd-list" class="max-h-80 overflow-y-auto p-2 text-xs space-y-1">
+                <!-- Navigation Items -->
+                <div onclick="executeCmd('navigate', '#home')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-cherry-pink/50 dark:hover:bg-white/5 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bx-home text-base text-cherry-deep dark:text-cherry-accent'></i><span>Jump to Home</span></div>
+                    <span class="text-[10px] text-gray-400 font-mono">Navigation</span>
+                </div>
+                <div onclick="executeCmd('navigate', '#work')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-cherry-pink/50 dark:hover:bg-white/5 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bx-briefcase text-base text-cherry-deep dark:text-cherry-accent'></i><span>Browse Selected Works</span></div>
+                    <span class="text-[10px] text-gray-400 font-mono">Projects</span>
+                </div>
+                <div onclick="executeCmd('navigate', '#winter-arc')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-cherry-pink/50 dark:hover:bg-white/5 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bx-calendar text-base text-cherry-deep dark:text-cherry-accent'></i><span>Winter Arc Activity Grid</span></div>
+                    <span class="text-[10px] text-gray-400 font-mono">Activity</span>
+                </div>
+                <div onclick="executeCmd('navigate', '#experience')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-cherry-pink/50 dark:hover:bg-white/5 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bx-time-five text-base text-cherry-deep dark:text-cherry-accent'></i><span>Experience Timeline</span></div>
+                    <span class="text-[10px] text-gray-400 font-mono">Career</span>
+                </div>
+                <div onclick="executeCmd('theme')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-cherry-pink/50 dark:hover:bg-white/5 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bx-sun text-base text-amber-500'></i><span>Toggle Dark / Light Theme</span></div>
+                    <span class="text-[10px] text-gray-400 font-mono">Appearance</span>
+                </div>
+                <div onclick="executeCmd('copy-whatsapp')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-cherry-pink/50 dark:hover:bg-white/5 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bxl-whatsapp text-base text-green-500'></i><span>Copy WhatsApp (+92 340 0194591)</span></div>
+                    <span class="text-[10px] text-gray-400 font-mono">Contact</span>
+                </div>
+                <div onclick="executeCmd('copy-email')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-cherry-pink/50 dark:hover:bg-white/5 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bx-envelope text-base text-blue-500'></i><span>Copy Email Address</span></div>
+                    <span class="text-[10px] text-gray-400 font-mono">Contact</span>
+                </div>
+            </div>
+
+            <!-- Footer of palette -->
+            <div class="px-4 py-2 border-t border-black/5 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] flex items-center justify-between text-[11px] text-gray-400 font-mono">
+                <span>Navigate: ↑ ↓</span>
+                <span>Select: Enter</span>
+            </div>
+        </div>
+    </div>
 
 
     <!-- ================= PROJECT DETAIL MODAL ================= -->
@@ -1022,10 +1212,270 @@
     </div>
 
 
-    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <!-- ================= ADVANCED JAVASCRIPT ANIMATIONS & SCRIPTS ================= -->
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     <script>
-        // --- 1. THEME SWITCHING (Dark / Light) ---
+        // --- 1. AMBIENT CURSOR GLOW FOLLOW (SMOOTH INTERPOLATION) ---
+        const cursorGlow = document.getElementById('cursor-glow');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let glowX = mouseX;
+        let glowY = mouseY;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursorGlow() {
+            glowX += (mouseX - glowX) * 0.12;
+            glowY += (mouseY - glowY) * 0.12;
+            if (cursorGlow) {
+                cursorGlow.style.left = `${glowX}px`;
+                cursorGlow.style.top = `${glowY}px`;
+            }
+            requestAnimationFrame(animateCursorGlow);
+        }
+        animateCursorGlow();
+
+        // --- 2. HACKER CIPHER DECRYPT SCRAMBLE TEXT EFFECT ---
+        const cipherChars = "0101_!<>-\\/[]{}—=+*^?#%&@";
+        function setupScrambleEffect() {
+            document.querySelectorAll('.scramble-hover').forEach(el => {
+                const originalText = el.getAttribute('data-scramble') || el.innerText;
+                let interval = null;
+
+                el.addEventListener('mouseenter', () => {
+                    let iteration = 0;
+                    clearInterval(interval);
+
+                    interval = setInterval(() => {
+                        el.innerText = originalText
+                            .split("")
+                            .map((char, index) => {
+                                if (index < iteration) {
+                                    return originalText[index];
+                                }
+                                if (char === " ") return " ";
+                                return cipherChars[Math.floor(Math.random() * cipherChars.length)];
+                            })
+                            .join("");
+
+                        if (iteration >= originalText.length) {
+                            clearInterval(interval);
+                        }
+                        iteration += 1 / 2;
+                    }, 28);
+                });
+            });
+        }
+        setupScrambleEffect();
+
+        // --- 3. 3D CARD TILT & HOLOGRAPHIC GLARE ---
+        document.querySelectorAll('.holo-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+
+        // --- 4. CLICK PARTICLES MICRO-EXPLOSION ---
+        const pCanvas = document.getElementById('particle-canvas');
+        const pCtx = pCanvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            pCanvas.width = window.innerWidth;
+            pCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 4 + 1.5;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.alpha = 1;
+                this.size = Math.random() * 3.5 + 1.5;
+                const colors = ['#f3b9c8', '#ffb7c5', '#c2185b', '#ffffff', '#3b9ef3'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.08; // subtle gravity
+                this.alpha -= 0.025;
+            }
+            draw() {
+                pCtx.save();
+                pCtx.globalAlpha = Math.max(0, this.alpha);
+                pCtx.fillStyle = this.color;
+                pCtx.beginPath();
+                pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                pCtx.fill();
+                pCtx.restore();
+            }
+        }
+
+        window.addEventListener('click', (e) => {
+            for (let i = 0; i < 12; i++) {
+                particles.push(new Particle(e.clientX, e.clientY));
+            }
+        });
+
+        function animateParticles() {
+            pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+            particles = particles.filter(p => p.alpha > 0);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // --- 5. COMMAND PALETTE (CTRL + K / ⌘K) ---
+        function openCommandPalette() {
+            const modal = document.getElementById('cmd-palette-backdrop');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.getElementById('cmd-search-input').value = '';
+            document.getElementById('cmd-search-input').focus();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCommandPalette(e) {
+            const modal = document.getElementById('cmd-palette-backdrop');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                const modal = document.getElementById('cmd-palette-backdrop');
+                if (modal.classList.contains('hidden')) {
+                    openCommandPalette();
+                } else {
+                    closeCommandPalette();
+                }
+            }
+            if (e.key === 'Escape') {
+                closeCommandPalette();
+                closeModal();
+            }
+        });
+
+        function handleCmdSearch(query) {
+            const q = query.toLowerCase().trim();
+            const items = document.querySelectorAll('.cmd-item');
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                item.style.display = text.includes(q) ? 'flex' : 'none';
+            });
+        }
+
+        function executeCmd(type, target) {
+            closeCommandPalette();
+            if (type === 'navigate') {
+                const el = document.querySelector(target);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            } else if (type === 'theme') {
+                toggleTheme();
+            } else if (type === 'copy-whatsapp') {
+                copyText('+923400194591', 'WhatsApp copied!');
+            } else if (type === 'copy-email') {
+                copyText('asadleo416@gmail.com', 'Email copied!');
+            }
+        }
+
+        // --- 6. TOAST NOTIFICATIONS ---
+        function showToast(msg) {
+            const toast = document.getElementById('floating-toast');
+            const text = document.getElementById('toast-text');
+            text.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2400);
+        }
+
+        function copyText(val, successMsg) {
+            navigator.clipboard.writeText(val).then(() => {
+                showToast(successMsg || 'Copied to clipboard!');
+            }).catch(() => {
+                showToast('Copied: ' + val);
+            });
+        }
+
+        // --- 7. LIVE CRYPTOGRAPHIC HASH ENGINE (SHA-256) ---
+        async function sha256(str) {
+            const buffer = new TextEncoder().encode(str);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function updateLiveHash() {
+            const input = document.getElementById('crypto-input').value;
+            const output = document.getElementById('crypto-output');
+            if (!input) {
+                output.innerText = '0000000000000000000000000000000000000000000000000000000000000000';
+                return;
+            }
+            try {
+                const hash = await sha256(input);
+                output.innerText = '0x' + hash;
+            } catch (e) {
+                output.innerText = 'Error computing SHA-256';
+            }
+        }
+        updateLiveHash();
+
+        function copyHashDigest() {
+            const digest = document.getElementById('crypto-output').innerText;
+            copyText(digest, 'SHA-256 Digest copied!');
+        }
+
+        // --- 8. PROJECT CATEGORY FILTER ---
+        function filterCategory(cat, btn) {
+            document.querySelectorAll('.category-pill').forEach(p => {
+                p.classList.remove('active', 'bg-black', 'dark:bg-white', 'text-white', 'dark:text-black');
+                p.classList.add('text-gray-600', 'dark:text-white/60');
+            });
+            btn.classList.add('active', 'bg-black', 'dark:bg-white', 'text-white', 'dark:text-black');
+            btn.classList.remove('text-gray-600', 'dark:text-white/60');
+
+            document.querySelectorAll('.project-card-item').forEach(item => {
+                if (cat === 'all' || item.getAttribute('data-cat') === cat) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // --- 9. THEME SWITCHING ---
         function applyTheme(theme) {
             const isDark = theme === 'dark';
             if (isDark) {
@@ -1034,13 +1484,11 @@
                 document.documentElement.classList.remove('dark');
             }
 
-            // Sync Icons
             const iconD = document.getElementById('theme-icon-desktop');
             const iconM = document.getElementById('theme-icon-mobile');
             if (iconD) iconD.className = isDark ? 'bx bx-sun text-base' : 'bx bx-moon text-base';
             if (iconM) iconM.className = isDark ? 'bx bx-sun text-lg' : 'bx bx-moon text-lg';
 
-            // Sync Video Banners
             const vLight = document.querySelector('.hero-video-light');
             const vDark = document.querySelector('.hero-video-dark');
             if (vLight && vDark) {
@@ -1068,7 +1516,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- 2. TYPING TAGLINE EFFECT (Palak ds component style) ---
+        // --- 10. TYPING TAGLINE EFFECT ---
         const phrases = [
             "Cyber Security Researcher",
             "Full-Stack Web Developer",
@@ -1104,7 +1552,7 @@
         }
         typeLoop();
 
-        // --- 3. HEATMAP GENERATION (Palak's Exact Color Tiers) ---
+        // --- 11. WINTER ARC HEATMAP GRID ---
         function renderHeatmap() {
             const grid = document.getElementById('palak-heatmap-grid');
             if (!grid) return;
@@ -1134,14 +1582,13 @@
         }
         renderHeatmap();
 
-        // --- 4. EXPERIENCE ACCORDION TOGGLE ---
+        // --- 12. EXPERIENCE ACCORDION TOGGLE ---
         function toggleExp(id) {
             const body = document.getElementById(`exp-body-${id}`);
             const icon = document.getElementById(`exp-icon-${id}`);
             if (!body) return;
 
             const isHidden = body.classList.contains('hidden');
-            // Close all
             for (let i = 1; i <= 3; i++) {
                 const b = document.getElementById(`exp-body-${i}`);
                 const ic = document.getElementById(`exp-icon-${i}`);
@@ -1156,7 +1603,7 @@
             }
         }
 
-        // --- 5. PROJECT MODAL DATABASE ---
+        // --- 13. PROJECT MODAL DATABASE ---
         const projectData = {
             technocoreConsole: {
                 badge: "Identity Console",
@@ -1299,11 +1746,7 @@
             if (e.target === document.getElementById('project-modal')) closeModal();
         }
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // --- 6. TERMINAL LOGIC ---
+        // --- 14. TERMINAL LOGIC ---
         const termCommands = {
             help: `Available commands:
   - <span class="text-yellow-400 font-bold">whoami</span>   : Developer identity & background
@@ -1374,7 +1817,7 @@ Specializing in TypeScript architectures, Web3 USDC settlement, and penetration 
             }
         }
 
-        // --- 7. FORMSPREE INTEGRATION ---
+        // --- 15. FORMSPREE INTEGRATION ---
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', {
             formElement: '#contact-form',
@@ -1384,15 +1827,6 @@ Specializing in TypeScript architectures, Web3 USDC settlement, and penetration 
                 document.getElementById('form-success-alert').style.display = 'block';
             }
         });
-
-        // --- 8. COUNTER SIMULATION ---
-        (function() {
-            let count = parseInt(localStorage.getItem('asad_visits') || '1942', 10);
-            count++;
-            localStorage.setItem('asad_visits', count);
-            const countEl = document.getElementById('visitor-stat-count');
-            if (countEl) countEl.textContent = count.toLocaleString();
-        })();
     </script>
 </body>
 </html>
