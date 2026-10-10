@@ -289,6 +289,76 @@
             z-index: 99999;
         }
 
+        /* Scroll Reading Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2.5px;
+            width: 0%;
+            background: linear-gradient(90deg, #c2185b 0%, #ffb7c5 50%, #3b9ef3 100%);
+            box-shadow: 0 0 12px rgba(232, 121, 163, 0.85);
+            z-index: 100000;
+            transition: width 0.08s ease-out;
+        }
+
+        /* Full-Screen Matrix Digital Rain Overlay */
+        #matrix-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99998;
+            background: #030806;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        #matrix-canvas.active {
+            opacity: 0.96;
+            pointer-events: auto;
+        }
+        #matrix-exit-btn {
+            position: fixed;
+            top: 24px;
+            right: 28px;
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        #matrix-exit-btn.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        /* Sound FX Equalizer Animation */
+        .sfx-bar {
+            width: 2px;
+            background: currentColor;
+            border-radius: 1px;
+            transition: height 0.15s ease;
+        }
+        .sfx-active .sfx-bar:nth-child(1) { animation: sfxBarAnim 0.7s infinite alternate ease-in-out; }
+        .sfx-active .sfx-bar:nth-child(2) { animation: sfxBarAnim 0.5s infinite alternate ease-in-out 0.2s; }
+        .sfx-active .sfx-bar:nth-child(3) { animation: sfxBarAnim 0.8s infinite alternate ease-in-out 0.4s; }
+        @keyframes sfxBarAnim {
+            0% { height: 3px; }
+            100% { height: 11px; }
+        }
+        .sfx-muted .sfx-bar {
+            height: 2px !important;
+            opacity: 0.35;
+        }
+
+        /* Magnetic button spring transition */
+        .magnetic-item {
+            transition: transform 0.18s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
         /* Scrollbars */
         ::-webkit-scrollbar { width: 7px; height: 7px; }
         ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
@@ -298,6 +368,16 @@
 </head>
 
 <body class="bg-project-grid selection:bg-cherry-accent selection:text-[#181818] relative">
+
+    <!-- Scroll Reading Progress Line -->
+    <div id="scroll-progress"></div>
+
+    <!-- Fullscreen Interactive Matrix Rain Canvas & Exit Pill -->
+    <canvas id="matrix-canvas"></canvas>
+    <button id="matrix-exit-btn" onclick="closeMatrixMode()" class="px-4 py-2 rounded-full bg-black/90 text-green-400 font-mono text-xs border border-green-500/40 shadow-2xl flex items-center gap-2 hover:bg-black transition cursor-pointer backdrop-blur-md">
+        <i class='bx bx-x text-base'></i>
+        <span>EXIT MATRIX (ESC)</span>
+    </button>
 
     <!-- Ambient Cursor Spotlight Follower -->
     <div id="cursor-glow"></div>
@@ -315,18 +395,21 @@
     </div>
 
     <!-- Floating WhatsApp CTA -->
-    <a href="https://wa.me/923400194591" class="whatsapp-float group" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/923400194591" class="whatsapp-float group magnetic-item" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
         <i class='bx bxl-whatsapp group-hover:scale-110 transition-transform'></i>
     </a>
 
     <!-- Top Left Fixed Signature Logo with Decryption Scramble -->
-    <button onclick="scrollToTop()" class="fixed top-3.5 left-6 md:top-4 md:left-10 z-50 hover:opacity-70 transition-opacity duration-150 cursor-pointer group flex items-center gap-1.5">
+    <button onclick="scrollToTop()" class="fixed top-3.5 left-6 md:top-4 md:left-10 z-50 hover:opacity-70 transition-opacity duration-150 cursor-pointer group flex items-center gap-1.5 magnetic-item">
         <span class="font-signature text-xl md:text-2xl text-black dark:text-white scramble-hover" data-scramble="asadlee">asadlee</span>
         <span class="w-1.5 h-1.5 rounded-full bg-cherry-deep dark:bg-cherry-accent group-hover:scale-125 transition-transform"></span>
     </button>
 
-    <!-- Top Right Mobile Theme Toggle & Quick Palette Button -->
+    <!-- Top Right Mobile Quick Controls -->
     <div class="md:hidden fixed top-3 right-6 z-50 flex items-center gap-2">
+        <button onclick="toggleAudioSFX()" id="sfx-btn-mobile" class="flex items-center justify-center w-9 h-9 rounded-full bg-white dark:bg-dark-surface3 shadow-[0_2px_6px_rgba(0,0,0,0.2)] text-gray-800 dark:text-white transition cursor-pointer" aria-label="Toggle SFX">
+            <i id="sfx-icon-mobile" class='bx bx-volume-full text-base'></i>
+        </button>
         <button onclick="openCommandPalette()" class="flex items-center justify-center w-9 h-9 rounded-full bg-white dark:bg-dark-surface3 shadow-[0_2px_6px_rgba(0,0,0,0.2)] text-gray-800 dark:text-white transition cursor-pointer" aria-label="Open command palette">
             <i class='bx bx-search text-base'></i>
         </button>
@@ -362,14 +445,25 @@
             <span class="absolute -bottom-1 left-0 h-[1.5px] bg-[#F3B9C8] transition-all duration-150 ease-out w-0 opacity-0 group-hover:w-full group-hover:opacity-100"></span>
         </a>
 
+        <!-- Audio SFX Toggle Button -->
+        <button id="sfx-toggle-desktop" onclick="toggleAudioSFX()" class="magnetic-item px-2.5 py-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] hover:bg-black/[0.08] dark:hover:bg-white/[0.12] border border-black/5 dark:border-white/10 text-xs font-mono text-gray-600 dark:text-white/60 flex items-center gap-1.5 transition cursor-pointer shadow-sm" title="Toggle Cybernetic Audio SFX">
+            <i id="sfx-icon-desktop" class='bx bx-volume-full text-xs'></i>
+            <span id="sfx-label-desktop">SFX</span>
+            <span id="sfx-bars-container" class="sfx-bars sfx-active flex items-end gap-0.5 h-3">
+                <span class="sfx-bar h-1"></span>
+                <span class="sfx-bar h-2"></span>
+                <span class="sfx-bar h-1.5"></span>
+            </span>
+        </button>
+
         <!-- Command Palette Trigger Badge (Cmd+K / Ctrl+K) -->
-        <button onclick="openCommandPalette()" class="px-2.5 py-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] hover:bg-black/[0.08] dark:hover:bg-white/[0.12] border border-black/5 dark:border-white/10 text-xs font-mono text-gray-600 dark:text-white/60 flex items-center gap-1.5 transition cursor-pointer shadow-sm" title="Quick Command Palette (Ctrl+K)">
+        <button onclick="openCommandPalette()" class="magnetic-item px-2.5 py-1 rounded-full bg-black/[0.04] dark:bg-white/[0.06] hover:bg-black/[0.08] dark:hover:bg-white/[0.12] border border-black/5 dark:border-white/10 text-xs font-mono text-gray-600 dark:text-white/60 flex items-center gap-1.5 transition cursor-pointer shadow-sm" title="Quick Command Palette (Ctrl+K)">
             <i class='bx bx-search text-xs'></i>
             <span>⌘K</span>
         </button>
 
         <!-- Desktop Theme Toggle Button -->
-        <button onclick="toggleTheme()" class="flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-dark-surface3 shadow-[0_2px_6px_rgba(0,0,0,0.2)] text-gray-800 dark:text-white hover:scale-105 transition cursor-pointer" aria-label="Toggle theme">
+        <button onclick="toggleTheme()" class="magnetic-item flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-dark-surface3 shadow-[0_2px_6px_rgba(0,0,0,0.2)] text-gray-800 dark:text-white hover:scale-105 transition cursor-pointer" aria-label="Toggle theme">
             <i id="theme-icon-desktop" class='bx bx-sun text-base'></i>
         </button>
     </nav>
@@ -404,6 +498,35 @@
             <!-- MASTER DASHED BORDER BENTO CARD -->
             <div class="dashed-border-anim rounded-3xl w-full">
                 <div class="bg-white/40 dark:bg-dark-surface/60 backdrop-blur-sm rounded-3xl p-4 md:p-10 transition-colors duration-150">
+
+                    <!-- ================= REAL-TIME CYBER TELEMETRY HUD ================= -->
+                    <div class="w-full mb-6 pb-4 border-b border-black/5 dark:border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+                        <div class="flex items-center flex-wrap gap-2.5">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-500/20 shadow-xs">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                <span>SEC-NET: ONLINE</span>
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.04] text-gray-600 dark:text-white/60">
+                                <i class='bx bx-pulse text-cherry-deep dark:text-cherry-accent'></i>
+                                <span>LATENCY:</span>
+                                <span id="hud-ping" class="text-gray-900 dark:text-white font-bold">18ms</span>
+                            </span>
+                            <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.04] text-gray-600 dark:text-white/60">
+                                <i class='bx bx-shield-quarter text-blue-500'></i>
+                                <span>AES-256-GCM · TLS 1.3</span>
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/[0.03] dark:bg-white/[0.04] text-gray-600 dark:text-white/60">
+                                <i class='bx bx-time-five text-cherry-deep dark:text-cherry-accent'></i>
+                                <span id="hud-clock" class="font-bold tracking-wider text-gray-900 dark:text-white">00:00:00 PKT</span>
+                            </span>
+                            <button onclick="triggerSecurityAudit()" class="magnetic-item px-3 py-1 rounded-full bg-cherry-pink dark:bg-cherry-deep/40 hover:bg-cherry-deep hover:text-white dark:hover:bg-cherry-accent dark:hover:text-black text-cherry-deep dark:text-cherry-accent font-semibold transition cursor-pointer text-[11px] shadow-xs active:scale-95" title="Run diagnostic security handshake">
+                                <span>[ DIAGNOSTIC ]</span>
+                            </button>
+                        </div>
+                    </div>
 
                     <!-- ================= 1. HERO VIDEO BANNER & FLOATING MAGNETIC BADGES ================= -->
                     <div class="relative w-full mb-6 md:mb-16" id="home">
@@ -1019,7 +1142,9 @@
                                         <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
                                         <span class="text-[11px] text-gray-400 font-sans ml-2">asad@sec-terminal:~</span>
                                     </div>
-                                    <div class="flex gap-1.5 font-sans">
+                                    <div class="flex gap-1.5 font-sans flex-wrap">
+                                        <button onclick="runTermCmd('matrix')" class="px-2.5 py-1 rounded bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-[11px] transition font-bold">matrix</button>
+                                        <button onclick="runTermCmd('scan')" class="px-2.5 py-1 rounded bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 text-[11px] transition font-bold">scan</button>
                                         <button onclick="runTermCmd('whoami')" class="px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 text-gray-300 text-[11px] transition">whoami</button>
                                         <button onclick="runTermCmd('skills')" class="px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 text-gray-300 text-[11px] transition">skills</button>
                                         <button onclick="runTermCmd('projects')" class="px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 text-gray-300 text-[11px] transition">projects</button>
@@ -1101,8 +1226,28 @@
                 </div>
             </div>
 
+            <!-- Interactive World-Class Controls & Hotkeys Footer Dock -->
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-2 font-mono text-[11px] text-gray-500 dark:text-white/40">
+                <button onclick="openCommandPalette()" class="px-2.5 py-1 rounded-lg bg-black/[0.03] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 hover:border-cherry-deep/40 dark:hover:border-cherry-accent/40 text-gray-700 dark:text-white/70 transition flex items-center gap-1.5 cursor-pointer">
+                    <kbd class="font-bold text-cherry-deep dark:text-cherry-accent">⌘K / Ctrl+K</kbd>
+                    <span>Spotlight</span>
+                </button>
+                <button onclick="toggleMatrixMode()" class="px-2.5 py-1 rounded-lg bg-black/[0.03] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 hover:border-emerald-500/40 text-gray-700 dark:text-white/70 transition flex items-center gap-1.5 cursor-pointer">
+                    <kbd class="font-bold text-emerald-500">Alt+M</kbd>
+                    <span>Matrix Rain</span>
+                </button>
+                <button onclick="toggleTheme()" class="px-2.5 py-1 rounded-lg bg-black/[0.03] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 hover:border-amber-500/40 text-gray-700 dark:text-white/70 transition flex items-center gap-1.5 cursor-pointer">
+                    <kbd class="font-bold text-amber-500">T</kbd>
+                    <span>Theme</span>
+                </button>
+                <button onclick="toggleAudioSFX()" class="px-2.5 py-1 rounded-lg bg-black/[0.03] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 hover:border-blue-500/40 text-gray-700 dark:text-white/70 transition flex items-center gap-1.5 cursor-pointer">
+                    <kbd class="font-bold text-blue-500">S</kbd>
+                    <span>Audio SFX</span>
+                </button>
+            </div>
+
             <!-- Footer -->
-            <footer class="mt-14 text-center font-mono text-[11px] text-gray-500 dark:text-white/40 uppercase tracking-widest">
+            <footer class="mt-10 text-center font-mono text-[11px] text-gray-500 dark:text-white/40 uppercase tracking-widest">
                 <span class="font-signature text-2xl text-black dark:text-white normal-case block mb-2 scramble-hover" data-scramble="asadlee">asadlee</span>
                 © 2026 Crafted by Asad Lee · All rights reserved
             </footer>
@@ -1124,6 +1269,20 @@
 
             <!-- Command List -->
             <div id="cmd-list" class="max-h-80 overflow-y-auto p-2 text-xs space-y-1">
+                <!-- Special Actions -->
+                <div onclick="executeCmd('matrix')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-emerald-500/10 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bx-code-block text-base text-emerald-500'></i><span>Launch Matrix Digital Rain (Alt+M)</span></div>
+                    <span class="text-[10px] text-emerald-500 font-mono font-bold">Easter Egg</span>
+                </div>
+                <div onclick="executeCmd('sfx')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-blue-500/10 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bx-volume-full text-base text-blue-500'></i><span>Toggle Cybernetic Audio SFX</span></div>
+                    <span class="text-[10px] text-blue-500 font-mono">Sound</span>
+                </div>
+                <div onclick="executeCmd('audit')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-cherry-pink/50 dark:hover:bg-white/5 cursor-pointer text-gray-800 dark:text-gray-200 transition">
+                    <div class="flex items-center gap-2.5"><i class='bx bx-shield-quarter text-base text-cherry-deep dark:text-cherry-accent'></i><span>Run Security Diagnostic Handshake</span></div>
+                    <span class="text-[10px] text-gray-400 font-mono">Security</span>
+                </div>
+
                 <!-- Navigation Items -->
                 <div onclick="executeCmd('navigate', '#home')" class="cmd-item flex items-center justify-between p-2.5 rounded-xl hover:bg-cherry-pink/50 dark:hover:bg-white/5 cursor-pointer text-gray-800 dark:text-gray-200 transition">
                     <div class="flex items-center gap-2.5"><i class='bx bx-home text-base text-cherry-deep dark:text-cherry-accent'></i><span>Jump to Home</span></div>
@@ -1215,7 +1374,283 @@
     <!-- ================= ADVANCED JAVASCRIPT ANIMATIONS & SCRIPTS ================= -->
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
     <script>
-        // --- 1. AMBIENT CURSOR GLOW FOLLOW (SMOOTH INTERPOLATION) ---
+        // --- 1. PROCEDURAL WEB AUDIO API SYNTHESIS ENGINE (TACTILE HAPTICS) ---
+        let audioCtx = null;
+        let isSoundMuted = localStorage.getItem('portfolio_sfx') === 'false';
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) audioCtx = new AudioContextClass();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        function playClickSound() {
+            if (isSoundMuted) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(820, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + 0.035);
+                gain.gain.setValueAtTime(0.07, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.035);
+            } catch(e) {}
+        }
+
+        let lastBlipTime = 0;
+        function playBlipSound() {
+            if (isSoundMuted) return;
+            const now = Date.now();
+            if (now - lastBlipTime < 55) return;
+            lastBlipTime = now;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'triangle';
+                const freq = 1200 + Math.random() * 450;
+                osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                gain.gain.setValueAtTime(0.025, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.025);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + 0.025);
+            } catch(e) {}
+        }
+
+        function playChordSound(isDark) {
+            if (isSoundMuted) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                const baseFreq = isDark ? 523.25 : 659.25;
+                const freqs = [baseFreq, baseFreq * 1.5];
+                freqs.forEach((f, idx) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(f, ctx.currentTime + idx * 0.05);
+                    gain.gain.setValueAtTime(0.05, ctx.currentTime + idx * 0.05);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.28 + idx * 0.05);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + idx * 0.05);
+                    osc.stop(ctx.currentTime + 0.32 + idx * 0.05);
+                });
+            } catch(e) {}
+        }
+
+        function playSuccessSound() {
+            if (isSoundMuted) return;
+            try {
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                [523.25, 659.25, 783.99, 1046.50].forEach((f, idx) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(f, ctx.currentTime + idx * 0.04);
+                    gain.gain.setValueAtTime(0.045, ctx.currentTime + idx * 0.04);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.16 + idx * 0.04);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(ctx.currentTime + idx * 0.04);
+                    osc.stop(ctx.currentTime + 0.2 + idx * 0.04);
+                });
+            } catch(e) {}
+        }
+
+        function updateSfxUI() {
+            const container = document.getElementById('sfx-bars-container');
+            const iconD = document.getElementById('sfx-icon-desktop');
+            const iconM = document.getElementById('sfx-icon-mobile');
+            const labelD = document.getElementById('sfx-label-desktop');
+
+            if (isSoundMuted) {
+                if (container) { container.classList.remove('sfx-active'); container.classList.add('sfx-muted'); }
+                if (iconD) iconD.className = 'bx bx-volume-mute text-xs';
+                if (iconM) iconM.className = 'bx bx-volume-mute text-base';
+                if (labelD) labelD.innerText = 'MUTED';
+            } else {
+                if (container) { container.classList.remove('sfx-muted'); container.classList.add('sfx-active'); }
+                if (iconD) iconD.className = 'bx bx-volume-full text-xs';
+                if (iconM) iconM.className = 'bx bx-volume-full text-base';
+                if (labelD) labelD.innerText = 'SFX';
+            }
+        }
+
+        function toggleAudioSFX() {
+            isSoundMuted = !isSoundMuted;
+            localStorage.setItem('portfolio_sfx', isSoundMuted ? 'false' : 'true');
+            updateSfxUI();
+            if (!isSoundMuted) {
+                playSuccessSound();
+                showToast('Cybernetic Sound FX Enabled');
+            } else {
+                showToast('Sound Effects Muted');
+            }
+        }
+        updateSfxUI();
+
+        // Global Tactile Click Sound Listener
+        window.addEventListener('click', (e) => {
+            if (e.target.closest('button, a, .glare-button, .category-pill, .cmd-item, .holo-card, input[type="submit"]')) {
+                playClickSound();
+            }
+        });
+
+        // --- 2. FULLSCREEN MATRIX DIGITAL RAIN ENGINE ---
+        const matrixCanvas = document.getElementById('matrix-canvas');
+        const matrixCtx = matrixCanvas ? matrixCanvas.getContext('2d') : null;
+        let matrixActive = false;
+        let matrixInterval = null;
+        const matrixChars = "0101ｦｱｳｴｵｶｷｹｺｻｼｽｾｿﾀﾂﾃﾅﾆﾇﾈﾊﾋﾎﾏﾐﾑﾒﾓﾔﾕﾗﾘﾜ#@!&%<>$^*";
+        let matrixDrops = [];
+
+        function resizeMatrixCanvas() {
+            if (!matrixCanvas) return;
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            const columns = Math.floor(matrixCanvas.width / 18);
+            matrixDrops = [];
+            for (let i = 0; i < columns; i++) {
+                matrixDrops[i] = Math.floor(Math.random() * -40);
+            }
+        }
+        window.addEventListener('resize', resizeMatrixCanvas);
+
+        function drawMatrix() {
+            if (!matrixCtx || !matrixActive) return;
+            matrixCtx.fillStyle = 'rgba(3, 8, 6, 0.08)';
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            matrixCtx.font = '13px monospace';
+
+            for (let i = 0; i < matrixDrops.length; i++) {
+                const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                const x = i * 18;
+                const y = matrixDrops[i] * 18;
+
+                if (Math.random() > 0.88) {
+                    matrixCtx.fillStyle = '#ffb7c5';
+                } else if (Math.random() > 0.65) {
+                    matrixCtx.fillStyle = '#c2185b';
+                } else {
+                    matrixCtx.fillStyle = '#00ff66';
+                }
+
+                matrixCtx.fillText(text, x, y);
+
+                if (y > matrixCanvas.height && Math.random() > 0.975) {
+                    matrixDrops[i] = 0;
+                }
+                matrixDrops[i]++;
+            }
+        }
+
+        function openMatrixMode() {
+            matrixActive = true;
+            resizeMatrixCanvas();
+            const c = document.getElementById('matrix-canvas');
+            const b = document.getElementById('matrix-exit-btn');
+            if (c) c.classList.add('active');
+            if (b) b.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (!matrixInterval) {
+                matrixInterval = setInterval(drawMatrix, 38);
+            }
+            playSuccessSound();
+            showToast('Matrix Rain Mode Active · Press ESC to exit');
+        }
+
+        function closeMatrixMode() {
+            matrixActive = false;
+            const c = document.getElementById('matrix-canvas');
+            const b = document.getElementById('matrix-exit-btn');
+            if (c) c.classList.remove('active');
+            if (b) b.classList.remove('active');
+            document.body.style.overflow = '';
+            if (matrixInterval) {
+                clearInterval(matrixInterval);
+                matrixInterval = null;
+            }
+            playClickSound();
+        }
+
+        function toggleMatrixMode() {
+            if (matrixActive) closeMatrixMode();
+            else openMatrixMode();
+        }
+
+        // --- 3. SCROLL READING PROGRESS LINE ---
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+            const prog = document.getElementById('scroll-progress');
+            if (prog) prog.style.width = scrolled + '%';
+        });
+
+        // --- 4. REAL-TIME CYBER TELEMETRY HUD (PKT CLOCK & PING) ---
+        function updateHudClock() {
+            const clockEl = document.getElementById('hud-clock');
+            if (!clockEl) return;
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const pktDate = new Date(utc + (3600000 * 5));
+            const hours = String(pktDate.getHours()).padStart(2, '0');
+            const minutes = String(pktDate.getMinutes()).padStart(2, '0');
+            const seconds = String(pktDate.getSeconds()).padStart(2, '0');
+            clockEl.innerText = `${hours}:${minutes}:${seconds} PKT`;
+        }
+        setInterval(updateHudClock, 1000);
+        updateHudClock();
+
+        function updateHudPing() {
+            const pingEl = document.getElementById('hud-ping');
+            if (!pingEl) return;
+            const ping = 14 + Math.floor(Math.sin(Date.now() / 3500) * 6 + Math.random() * 4);
+            pingEl.innerText = `${ping}ms`;
+        }
+        setInterval(updateHudPing, 3200);
+        updateHudPing();
+
+        function triggerSecurityAudit() {
+            playSuccessSound();
+            showToast('Security Handshake: TLS 1.3 / AES-256 Validated · Zero Flaws');
+            const pingEl = document.getElementById('hud-ping');
+            if (pingEl) pingEl.innerText = '9ms (Edge Cache)';
+        }
+
+        // --- 5. TRUE MAGNETIC BUTTON PHYSICS ---
+        function initMagneticElements() {
+            document.querySelectorAll('.magnetic-item, .glare-button').forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    el.style.transform = `translate3d(${x * 0.26}px, ${y * 0.26}px, 0)`;
+                });
+                el.addEventListener('mouseleave', () => {
+                    el.style.transform = 'translate3d(0, 0, 0)';
+                });
+            });
+        }
+        initMagneticElements();
+
+        // --- 6. AMBIENT CURSOR GLOW FOLLOW ---
         const cursorGlow = document.getElementById('cursor-glow');
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
@@ -1238,7 +1673,7 @@
         }
         animateCursorGlow();
 
-        // --- 2. HACKER CIPHER DECRYPT SCRAMBLE TEXT EFFECT ---
+        // --- 7. HACKER CIPHER DECRYPT SCRAMBLE TEXT EFFECT ---
         const cipherChars = "0101_!<>-\\/[]{}—=+*^?#%&@";
         function setupScrambleEffect() {
             document.querySelectorAll('.scramble-hover').forEach(el => {
@@ -1248,6 +1683,7 @@
                 el.addEventListener('mouseenter', () => {
                     let iteration = 0;
                     clearInterval(interval);
+                    playBlipSound();
 
                     interval = setInterval(() => {
                         el.innerText = originalText
@@ -1261,6 +1697,8 @@
                             })
                             .join("");
 
+                        if (iteration % 2 === 0) playBlipSound();
+
                         if (iteration >= originalText.length) {
                             clearInterval(interval);
                         }
@@ -1271,7 +1709,7 @@
         }
         setupScrambleEffect();
 
-        // --- 3. 3D CARD TILT & HOLOGRAPHIC GLARE ---
+        // --- 8. 3D CARD TILT & HOLOGRAPHIC GLARE ---
         document.querySelectorAll('.holo-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
@@ -1294,7 +1732,7 @@
             });
         });
 
-        // --- 4. CLICK PARTICLES MICRO-EXPLOSION ---
+        // --- 9. CLICK PARTICLES MICRO-EXPLOSION ---
         const pCanvas = document.getElementById('particle-canvas');
         const pCtx = pCanvas.getContext('2d');
         let particles = [];
@@ -1322,7 +1760,7 @@
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.vy += 0.08; // subtle gravity
+                this.vy += 0.08;
                 this.alpha -= 0.025;
             }
             draw() {
@@ -1353,7 +1791,7 @@
         }
         animateParticles();
 
-        // --- 5. COMMAND PALETTE (CTRL + K / ⌘K) ---
+        // --- 10. COMMAND PALETTE (CTRL + K / ⌘K) ---
         function openCommandPalette() {
             const modal = document.getElementById('cmd-palette-backdrop');
             modal.classList.remove('hidden');
@@ -1361,6 +1799,7 @@
             document.getElementById('cmd-search-input').value = '';
             document.getElementById('cmd-search-input').focus();
             document.body.style.overflow = 'hidden';
+            playClickSound();
         }
 
         function closeCommandPalette(e) {
@@ -1371,6 +1810,9 @@
         }
 
         window.addEventListener('keydown', (e) => {
+            // Check if typing inside input / textarea
+            const isInput = ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName);
+
             if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
                 e.preventDefault();
                 const modal = document.getElementById('cmd-palette-backdrop');
@@ -1379,10 +1821,20 @@
                 } else {
                     closeCommandPalette();
                 }
-            }
-            if (e.key === 'Escape') {
-                closeCommandPalette();
-                closeModal();
+            } else if (e.altKey && e.key.toLowerCase() === 'm') {
+                e.preventDefault();
+                toggleMatrixMode();
+            } else if (!isInput && e.key.toLowerCase() === 't') {
+                toggleTheme();
+            } else if (!isInput && e.key.toLowerCase() === 's') {
+                toggleAudioSFX();
+            } else if (e.key === 'Escape') {
+                if (matrixActive) {
+                    closeMatrixMode();
+                } else {
+                    closeCommandPalette();
+                    closeModal();
+                }
             }
         });
 
@@ -1402,6 +1854,12 @@
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
             } else if (type === 'theme') {
                 toggleTheme();
+            } else if (type === 'matrix') {
+                openMatrixMode();
+            } else if (type === 'sfx') {
+                toggleAudioSFX();
+            } else if (type === 'audit') {
+                triggerSecurityAudit();
             } else if (type === 'copy-whatsapp') {
                 copyText('+923400194591', 'WhatsApp copied!');
             } else if (type === 'copy-email') {
@@ -1409,7 +1867,7 @@
             }
         }
 
-        // --- 6. TOAST NOTIFICATIONS ---
+        // --- 11. TOAST NOTIFICATIONS ---
         function showToast(msg) {
             const toast = document.getElementById('floating-toast');
             const text = document.getElementById('toast-text');
@@ -1417,18 +1875,20 @@
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 2400);
+            }, 2600);
         }
 
         function copyText(val, successMsg) {
             navigator.clipboard.writeText(val).then(() => {
+                playSuccessSound();
                 showToast(successMsg || 'Copied to clipboard!');
             }).catch(() => {
+                playSuccessSound();
                 showToast('Copied: ' + val);
             });
         }
 
-        // --- 7. LIVE CRYPTOGRAPHIC HASH ENGINE (SHA-256) ---
+        // --- 12. LIVE CRYPTOGRAPHIC HASH ENGINE (SHA-256) ---
         async function sha256(str) {
             const buffer = new TextEncoder().encode(str);
             const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
@@ -1457,8 +1917,9 @@
             copyText(digest, 'SHA-256 Digest copied!');
         }
 
-        // --- 8. PROJECT CATEGORY FILTER ---
+        // --- 13. PROJECT CATEGORY FILTER ---
         function filterCategory(cat, btn) {
+            playClickSound();
             document.querySelectorAll('.category-pill').forEach(p => {
                 p.classList.remove('active', 'bg-black', 'dark:bg-white', 'text-white', 'dark:text-black');
                 p.classList.add('text-gray-600', 'dark:text-white/60');
@@ -1475,7 +1936,7 @@
             });
         }
 
-        // --- 9. THEME SWITCHING ---
+        // --- 14. THEME SWITCHING ---
         function applyTheme(theme) {
             const isDark = theme === 'dark';
             if (isDark) {
@@ -1504,6 +1965,7 @@
             const nextTheme = currentDark ? 'light' : 'dark';
             localStorage.setItem('portfolio_theme', nextTheme);
             applyTheme(nextTheme);
+            playChordSound(nextTheme === 'dark');
         }
 
         function initTheme() {
@@ -1513,10 +1975,11 @@
         initTheme();
 
         function scrollToTop() {
+            playClickSound();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- 10. TYPING TAGLINE EFFECT ---
+        // --- 15. TYPING TAGLINE EFFECT ---
         const phrases = [
             "Cyber Security Researcher",
             "Full-Stack Web Developer",
@@ -1552,7 +2015,7 @@
         }
         typeLoop();
 
-        // --- 11. WINTER ARC HEATMAP GRID ---
+        // --- 16. WINTER ARC HEATMAP GRID ---
         function renderHeatmap() {
             const grid = document.getElementById('palak-heatmap-grid');
             if (!grid) return;
@@ -1582,8 +2045,9 @@
         }
         renderHeatmap();
 
-        // --- 12. EXPERIENCE ACCORDION TOGGLE ---
+        // --- 17. EXPERIENCE ACCORDION TOGGLE ---
         function toggleExp(id) {
+            playClickSound();
             const body = document.getElementById(`exp-body-${id}`);
             const icon = document.getElementById(`exp-icon-${id}`);
             if (!body) return;
@@ -1603,7 +2067,7 @@
             }
         }
 
-        // --- 13. PROJECT MODAL DATABASE ---
+        // --- 18. PROJECT MODAL DATABASE ---
         const projectData = {
             technocoreConsole: {
                 badge: "Identity Console",
@@ -1698,6 +2162,7 @@
         };
 
         function openModal(id) {
+            playClickSound();
             const p = projectData[id];
             if (!p) return;
 
@@ -1736,6 +2201,7 @@
         }
 
         function closeModal() {
+            playClickSound();
             const modal = document.getElementById('project-modal');
             modal.style.display = 'none';
             document.getElementById('modal-iframe').src = 'about:blank';
@@ -1746,12 +2212,16 @@
             if (e.target === document.getElementById('project-modal')) closeModal();
         }
 
-        // --- 14. TERMINAL LOGIC ---
+        // --- 19. ADVANCED ASADSEC CLI TERMINAL LOGIC ---
         const termCommands = {
             help: `Available commands:
   - <span class="text-yellow-400 font-bold">whoami</span>   : Developer identity & background
   - <span class="text-yellow-400 font-bold">skills</span>   : Technical stack & competencies
   - <span class="text-yellow-400 font-bold">projects</span> : Shipped Technocore, Web3 & P2P apps
+  - <span class="text-emerald-400 font-bold">matrix</span>   : Launch fullscreen Matrix rain mode
+  - <span class="text-cyan-400 font-bold">scan</span>     : Execute security diagnostic handshake
+  - <span class="text-blue-400 font-bold">sfx</span>      : Toggle cybernetic audio haptics
+  - <span class="text-amber-400 font-bold">theme</span>    : Toggle dark / light interface
   - <span class="text-yellow-400 font-bold">contact</span>  : WhatsApp & social direct channels
   - <span class="text-yellow-400 font-bold">clear</span>    : Reset terminal window`,
             whoami: `<span class="text-cherry-accent font-bold">ASAD LEE</span> (@asadleo416)
@@ -1774,7 +2244,8 @@ Specializing in TypeScript architectures, Web3 USDC settlement, and penetration 
   - WhatsApp: +92 340 0194591
   - Twitter/X: @asadleo416
   - Instagram: @asadlee24
-  - LinkedIn: Asad Ali`
+  - LinkedIn: Asad Ali`,
+            sudo: `<span class="text-red-400">Permission denied: Asad Lee has cryptographic ownership of this session.</span>`
         };
 
         const terminalOutput = document.getElementById('terminal-output');
@@ -1785,6 +2256,7 @@ Specializing in TypeScript architectures, Web3 USDC settlement, and penetration 
             cmd = cmd.trim().toLowerCase();
 
             if (cmd === 'clear') {
+                playClickSound();
                 terminalOutput.innerHTML = `<p class="text-cherry-accent font-bold">Screen cleared. Type 'help' for available commands.</p>`;
                 return;
             }
@@ -1794,10 +2266,67 @@ Specializing in TypeScript architectures, Web3 USDC settlement, and penetration 
             pCmd.innerHTML = `asad@sec:~# ${cmd}`;
             terminalOutput.appendChild(pCmd);
 
+            if (cmd === 'matrix') {
+                openMatrixMode();
+                const pAns = document.createElement('div');
+                pAns.className = 'text-emerald-400 pl-3 border-l border-emerald-500 my-1 leading-relaxed';
+                pAns.innerHTML = `[✓] Fullscreen Matrix Digital Rain initialized. Press <span class="font-bold text-white">ESC</span> or click [EXIT MATRIX] to close.`;
+                terminalOutput.appendChild(pAns);
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                return;
+            }
+
+            if (cmd === 'sfx') {
+                toggleAudioSFX();
+                const pAns = document.createElement('div');
+                pAns.className = 'text-blue-400 pl-3 border-l border-blue-500 my-1 leading-relaxed';
+                pAns.innerHTML = `[✓] Audio SFX state toggled to: <span class="font-bold text-white">${isSoundMuted ? 'MUTED' : 'ENABLED'}</span>`;
+                terminalOutput.appendChild(pAns);
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                return;
+            }
+
+            if (cmd === 'theme') {
+                toggleTheme();
+                const pAns = document.createElement('div');
+                pAns.className = 'text-amber-400 pl-3 border-l border-amber-500 my-1 leading-relaxed';
+                pAns.innerHTML = `[✓] Interface theme switched.`;
+                terminalOutput.appendChild(pAns);
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                return;
+            }
+
+            if (cmd === 'scan') {
+                playSuccessSound();
+                const steps = [
+                    '<span class="text-cyan-400 font-bold">[i] Initializing AsadSec Security Scanner v4.2...</span>',
+                    '<span class="text-yellow-400">[+] Auditing network perimeter & Edge DNS nodes... [OK]</span>',
+                    '<span class="text-blue-400">[+] Validating TLS 1.3 Cipher Suites (AES-256-GCM, ChaCha20-Poly1305)... [OK]</span>',
+                    '<span class="text-purple-400">[+] Inspecting Smart Contract RPC endpoints & Ed25519 signatures... [OK]</span>',
+                    '<span class="text-emerald-400 font-bold">[✔] 0 Vulnerabilities Identified. Security Integrity Score: 100/100 A+</span>'
+                ];
+                let i = 0;
+                const interval = setInterval(() => {
+                    if (i < steps.length) {
+                        const line = document.createElement('p');
+                        line.className = 'pl-3 border-l border-cyan-500 my-0.5 text-xs';
+                        line.innerHTML = steps[i];
+                        terminalOutput.appendChild(line);
+                        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                        playBlipSound();
+                        i++;
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 380);
+                return;
+            }
+
             const pAns = document.createElement('div');
             pAns.className = 'text-gray-300 pl-3 border-l border-cherry-deep my-1 leading-relaxed';
 
             if (termCommands[cmd]) {
+                playSuccessSound();
                 pAns.innerHTML = termCommands[cmd].replace(/\n/g, '<br>');
             } else {
                 pAns.innerHTML = `<span class="text-red-400">Command not recognized: '${cmd}'. Type <span class="text-yellow-400 font-bold">'help'</span> for list.</span>`;
@@ -1817,12 +2346,13 @@ Specializing in TypeScript architectures, Web3 USDC settlement, and penetration 
             }
         }
 
-        // --- 15. FORMSPREE INTEGRATION ---
+        // --- 20. FORMSPREE INTEGRATION ---
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', {
             formElement: '#contact-form',
             formId: 'mzdkgzjg',
             onSuccess: function() {
+                playSuccessSound();
                 document.getElementById('contact-form').style.display = 'none';
                 document.getElementById('form-success-alert').style.display = 'block';
             }
