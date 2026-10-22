@@ -795,7 +795,7 @@
                         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-6 gap-3">
                             <div>
                                 <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white scramble-hover" data-scramble="Selected Works">Selected Works</h3>
-                                <p class="text-xs text-cherry-textSecondary dark:text-white/40 font-mono mt-0.5">9 Shipped Projects with verifiable source & live demo</p>
+                                <p class="text-xs text-cherry-textSecondary dark:text-white/40 font-mono mt-0.5">Selected shipped projects with source & live demos</p>
                             </div>
 
                             <!-- Category Filter Tabs -->
@@ -808,6 +808,33 @@
 
                         <!-- Palak Style Project Bento Cards Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[880px] mx-auto" id="projects-grid">
+
+                            <!-- Featured Project: Qadam Flex -->
+                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
+                                <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
+                                    <div onclick="openModal('qadamFlex')" class="group relative block overflow-hidden rounded-t-2xl bg-[#e9e6e0] dark:bg-[#242321] cursor-pointer">
+                                        <img src="https://raw.githubusercontent.com/Asadlee24/shoes/main/docs/images/storefront-light.jpg" alt="Qadam Flex footwear storefront preview" loading="lazy" class="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-[1.03]">
+                                    </div>
+                                    <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
+                                        <div>
+                                            <div class="flex items-center justify-between mb-2 gap-3">
+                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Qadam Flex">Qadam Flex</h4>
+                                                <a href="https://www.qadamflex.bond/" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-sm">
+                                                    <span>Live</span><i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
+                                                </a>
+                                            </div>
+                                            <p class="text-xs sm:text-sm text-cherry-textSecondary dark:text-white/60 leading-relaxed font-sans">
+                                                Full-stack footwear storefront with an interactive shoe display, responsive product catalog, customer accounts, order tracking and a protected inventory dashboard.
+                                            </p>
+                                        </div>
+                                        <div class="flex flex-wrap gap-1.5 mt-5 pt-3 border-t border-black/5 dark:border-white/10">
+                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">React</span>
+                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">TypeScript</span>
+                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Three.js</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- Project 1: Technocore Console -->
                             <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
@@ -2069,6 +2096,21 @@
 
         // --- 18. PROJECT MODAL DATABASE ---
         const projectData = {
+            qadamFlex: {
+                badge: "Full-Stack Commerce",
+                title: "Qadam Flex",
+                desc: "A complete footwear shopping experience featuring an interactive 3D shoe display, searchable catalog, customer accounts, order management, receipt-based payments, inventory controls and delivery tracking.",
+                features: [
+                    "Interactive shoe display with mouse, touch and keyboard support",
+                    "Product galleries, size and color filters, and persistent shopping bag",
+                    "Customer accounts with private order and payment history",
+                    "Protected store dashboard with stock management and review moderation",
+                    "Order notifications, manual receipt verification and courier tracking"
+                ],
+                stack: ["React", "TypeScript", "Three.js", "Vite", "Node.js", "Neon Postgres", "Vercel"],
+                live: "https://www.qadamflex.bond/",
+                github: "https://github.com/Asadlee24/shoes"
+            },
             technocoreConsole: {
                 badge: "Identity Console",
                 title: "Technocore Console",
