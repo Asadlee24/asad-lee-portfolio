@@ -668,16 +668,10 @@
                     <!-- ================= 4. WHO IS ASAD LEE? ================= -->
                     <div class="w-full mb-16" id="about">
                         <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white mb-6 scramble-hover" data-scramble="Who is Asad Lee?">Who is Asad Lee?</h3>
-                        <div class="space-y-4 font-instrument-sans text-base md:text-[17px] text-gray-700 dark:text-white/60 leading-relaxed">
-                            <p>
-                                I am an independent <strong class="font-semibold text-gray-900 dark:text-white">Cyber Security Researcher</strong> and <strong class="font-semibold text-gray-900 dark:text-white">Full-Stack Engineer</strong> who builds software where security and intuitive design reinforce each other. Over the last 4+ years, I have engineered decentralized systems, high-throughput web applications, and mission-critical payment workflows.
-                            </p>
-                            <p>
-                                My primary focus lies in <strong class="font-semibold text-gray-900 dark:text-white">TypeScript, Next.js, and Web3 architectures</strong>. Whether designing in-browser Ed25519 identity engines (Technocore Console), autonomous multi-agent orchestration frameworks (Technocore Agent Kit), or seamless Circle API payment channels (Arc Pay Platform), I build systems that operate reliably under intense loads.
-                            </p>
-                            <p>
-                                Every interface I deploy adheres to rigorous <strong class="font-semibold text-gray-900 dark:text-white">penetration testing, cryptographic verification, and minimalist aesthetics</strong> — turning complex cryptographic protocols into frictionless user experiences.
-                            </p>
+                        <div class="space-y-4 font-instrument-sans text-base md:text-[17px] text-gray-700 dark:text-white/70 leading-relaxed">
+                            <p>I'm Asad, a developer based in Pakistan. I build websites, online stores and browser tools, with a focus on making them useful and easy to navigate.</p>
+                            <p>My recent work includes QadamFlex, a footwear store, and MDK Electronics, a storefront for a local business. I work on the customer-facing pages as well as the tools needed to manage products and orders.</p>
+                            <p>I also contribute to open-source projects and build tools for the Technocore community. You can explore the live work and source code below.</p>
                         </div>
                     </div>
 
@@ -779,7 +773,7 @@
                         <div class="dashed-border-anim rounded-2xl w-full holo-card">
                             <div class="bg-[#FCE7EC]/50 dark:bg-white/[0.04] rounded-2xl p-7 md:p-9 flex flex-col md:flex-row md:items-center justify-between gap-6 transition-colors duration-150">
                                 <p class="font-sans text-gray-700 dark:text-white/70 text-[15px] md:text-base leading-relaxed max-w-lg">
-                                    I partner with high-growth teams and founders to build resilient full-stack applications, conduct comprehensive smart contract audits, and integrate cutting-edge decentralized protocols.
+                                    I build online stores, business websites and custom web tools. If you need a site built or an existing one improved, send me a message and tell me what you have in mind.
                                 </p>
                                 <a href="https://wa.me/923400194591" target="_blank" rel="noopener noreferrer" class="glare-button group flex items-center justify-center gap-2 px-7 py-3.5 bg-white dark:bg-dark-surface3 border border-black/10 dark:border-white/10 rounded-full shadow-soft font-medium text-sm text-gray-800 dark:text-white shrink-0 hover:shadow-soft-hover transition-all duration-150">
                                     <span>Hire Me Direct</span>
@@ -791,265 +785,79 @@
 
 
                     <!-- ================= 8. SELECTED WORKS (PALAK PROJECT CARDS + 3D TILT) ================= -->
-                    <div class="w-full mb-16" id="work">
+                    <div class="w-full mb-16" id="work" style="scroll-margin-top: 100px">
                         <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-6 gap-3">
                             <div>
                                 <h3 class="font-instrument font-semibold text-[26px] md:text-3xl text-gray-800 dark:text-white scramble-hover" data-scramble="Selected Works">Selected Works</h3>
-                                <p class="text-xs text-cherry-textSecondary dark:text-white/40 font-mono mt-0.5">Selected shipped projects with source & live demos</p>
+                                <p class="text-xs text-cherry-textSecondary dark:text-white/40 font-mono mt-0.5">Two storefronts and a community tool. Real screens, live sites and source code.</p>
                             </div>
 
                             <!-- Category Filter Tabs -->
                             <div class="flex items-center gap-1.5 p-1 rounded-full bg-black/[0.04] dark:bg-white/[0.05] border border-black/5 dark:border-white/10 text-xs font-mono">
                                 <button onclick="filterCategory('all', this)" class="category-pill active px-3 py-1 rounded-full bg-black dark:bg-white text-white dark:text-black transition">All</button>
-                                <button onclick="filterCategory('web3', this)" class="category-pill px-3 py-1 rounded-full text-gray-600 dark:text-white/60 hover:text-black dark:hover:text-white transition">Web3</button>
-                                <button onclick="filterCategory('p2p', this)" class="category-pill px-3 py-1 rounded-full text-gray-600 dark:text-white/60 hover:text-black dark:hover:text-white transition">P2P</button>
+                                <button onclick="filterCategory('tools', this)" class="category-pill px-3 py-1 rounded-full text-gray-600 dark:text-white/60 hover:text-black dark:hover:text-white transition">Tools</button>
                                 <button onclick="filterCategory('commerce', this)" class="category-pill px-3 py-1 rounded-full text-gray-600 dark:text-white/60 hover:text-black dark:hover:text-white transition">Commerce</button>
                             </div>
                         </div>
 
-                        <!-- Palak Style Project Bento Cards Grid -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[880px] mx-auto" id="projects-grid">
-
-                            <!-- Featured Project: Qadam Flex -->
-                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="commerce">
-                                <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
-                                    <div onclick="openModal('qadamFlex')" class="group relative block overflow-hidden rounded-t-2xl bg-[#e9e6e0] dark:bg-[#242321] cursor-pointer">
-                                        <img src="https://raw.githubusercontent.com/Asadlee24/shoes/main/docs/images/storefront-light.jpg" alt="Qadam Flex footwear storefront preview" loading="lazy" class="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-[1.03]">
-                                    </div>
-                                    <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
-                                        <div>
-                                            <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Qadam Flex — Online Shoe Store">Qadam Flex — Online Shoe Store</h4>
-                                                <a href="https://www.qadamflex.bond/" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-sm">
-                                                    <span>Live</span><i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
-                                                </a>
-                                            </div>
-                                            <p class="text-xs sm:text-sm text-cherry-textSecondary dark:text-white/60 leading-relaxed font-sans">
-                                                Full-stack online shoe store with an interactive shoe display, responsive product catalog, customer accounts, order tracking and a protected inventory dashboard.
-                                            </p>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1.5 mt-5 pt-3 border-t border-black/5 dark:border-white/10">
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">React</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">TypeScript</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Three.js</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 1: Technocore Console -->
-                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
-                                <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
-                                    <div onclick="openModal('technocoreConsole')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
-                                        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22960%22%20height%3D%22480%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%2311243a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080b12%22%2F%3E%3C%2FlinearGradient%3E%3Cpattern%20id%3D%22p%22%20width%3D%2232%22%20height%3D%2232%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath%20d%3D%22M32%200H0V32%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.08%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23g)%22%2F%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23p)%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%2255%22%20width%3D%22850%22%20height%3D%22370%22%20rx%3D%2224%22%20fill%3D%22white%22%20fill-opacity%3D%22.04%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.18%22%2F%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22%2355c4eb%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22white%22%20fill-opacity%3D%22.2%22%2F%3E%3Crect%20x%3D%2290%22%20y%3D%22130%22%20width%3D%22550%22%20height%3D%22240%22%20rx%3D%2220%22%20fill%3D%22black%22%20fill-opacity%3D%22.32%22%20stroke%3D%22%2355c4eb%22%20stroke-opacity%3D%22.5%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22180%22%20fill%3D%22%2355c4eb%22%20font-size%3D%2221%22%20font-family%3D%22monospace%22%20letter-spacing%3D%225%22%3EASAD%20LEE%20%2F%20PROJECT%3C%2Ftext%3E%3Ctext%20x%3D%22120%22%20y%3D%22235%22%20fill%3D%22white%22%20font-size%3D%2233%22%20font-family%3D%22Arial%22%20font-weight%3D%22bold%22%3ETECHNOCORE%20CONSOLE%3C%2Ftext%3E%3Cpath%20d%3D%22M120%20266H595%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.25%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22310%22%20fill%3D%22white%22%20fill-opacity%3D%22.65%22%20font-size%3D%2220%22%20font-family%3D%22monospace%22%3ELIVE%20PROJECT%20%E2%80%A2%20OPEN%20SOURCE%3C%2Ftext%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%22112%22%20fill%3D%22none%22%20stroke%3D%22%2355c4eb%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2273%22%20fill%3D%22none%22%20stroke%3D%22%2355c4eb%22%20stroke-opacity%3D%22.7%22%20stroke-dasharray%3D%2212%2010%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2235%22%20fill%3D%22%2355c4eb%22%20fill-opacity%3D%22.2%22%20stroke%3D%22%2355c4eb%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2210%22%20fill%3D%22%2355c4eb%22%2F%3E%3C%2Fsvg%3E" alt="TECHNOCORE CONSOLE illustrative project thumbnail" class="absolute inset-0 z-10 w-full h-full object-cover" loading="lazy">
-                                        <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
-                                            <div class="flex items-center justify-between">
-                                                <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-white/80 dark:bg-dark-surface2 text-gray-800 dark:text-white font-bold">Ed25519 Keys</span>
-                                                <i class='bx bx-terminal text-2xl text-cherry-deep dark:text-cherry-accent'></i>
-                                            </div>
-                                            <p class="text-xs font-mono text-gray-600 dark:text-white/70">technocore-console.vercel.app</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
-                                        <div>
-                                            <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Technocore Console">Technocore Console</h4>
-                                                <a href="https://technocore-console.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
-                                                    <span>Live</span>
-                                                    <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
-                                                </a>
-                                            </div>
-                                            <p class="text-xs sm:text-sm text-cherry-textSecondary dark:text-white/60 leading-relaxed font-sans">
-                                                Browser-based identity and messaging console for Technocore with in-memory Ed25519 keys, signed messaging, live room monitoring, and cryptographic verification tools.
-                                            </p>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1.5 mt-5 pt-3 border-t border-black/5 dark:border-white/10">
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">TypeScript</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Ed25519</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Web3</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 2: Technocore Explorer -->
-                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
-                                <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
-                                    <div onclick="openModal('technocoreExplorer')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
-                                        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22960%22%20height%3D%22480%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23231a2a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080b12%22%2F%3E%3C%2FlinearGradient%3E%3Cpattern%20id%3D%22p%22%20width%3D%2232%22%20height%3D%2232%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath%20d%3D%22M32%200H0V32%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.08%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23g)%22%2F%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23p)%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%2255%22%20width%3D%22850%22%20height%3D%22370%22%20rx%3D%2224%22%20fill%3D%22white%22%20fill-opacity%3D%22.04%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.18%22%2F%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22%23e69bb8%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22white%22%20fill-opacity%3D%22.2%22%2F%3E%3Crect%20x%3D%2290%22%20y%3D%22130%22%20width%3D%22550%22%20height%3D%22240%22%20rx%3D%2220%22%20fill%3D%22black%22%20fill-opacity%3D%22.32%22%20stroke%3D%22%23e69bb8%22%20stroke-opacity%3D%22.5%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22180%22%20fill%3D%22%23e69bb8%22%20font-size%3D%2221%22%20font-family%3D%22monospace%22%20letter-spacing%3D%225%22%3EASAD%20LEE%20%2F%20PROJECT%3C%2Ftext%3E%3Ctext%20x%3D%22120%22%20y%3D%22235%22%20fill%3D%22white%22%20font-size%3D%2233%22%20font-family%3D%22Arial%22%20font-weight%3D%22bold%22%3ETECHNOCORE%20EXPLORER%3C%2Ftext%3E%3Cpath%20d%3D%22M120%20266H595%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.25%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22310%22%20fill%3D%22white%22%20fill-opacity%3D%22.65%22%20font-size%3D%2220%22%20font-family%3D%22monospace%22%3ELIVE%20PROJECT%20%E2%80%A2%20OPEN%20SOURCE%3C%2Ftext%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%22112%22%20fill%3D%22none%22%20stroke%3D%22%23e69bb8%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2273%22%20fill%3D%22none%22%20stroke%3D%22%23e69bb8%22%20stroke-opacity%3D%22.7%22%20stroke-dasharray%3D%2212%2010%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2235%22%20fill%3D%22%23e69bb8%22%20fill-opacity%3D%22.2%22%20stroke%3D%22%23e69bb8%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2210%22%20fill%3D%22%23e69bb8%22%2F%3E%3C%2Fsvg%3E" alt="TECHNOCORE EXPLORER illustrative project thumbnail" class="absolute inset-0 z-10 w-full h-full object-cover" loading="lazy">
-                                        <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
-                                            <div class="flex items-center justify-between">
-                                                <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-white/80 dark:bg-dark-surface2 text-gray-800 dark:text-white font-bold">Merkle Archive</span>
-                                                <i class='bx bx-radar text-2xl text-cherry-deep dark:text-cherry-accent'></i>
-                                            </div>
-                                            <p class="text-xs font-mono text-gray-600 dark:text-white/70">technocore-explorer.vercel.app</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
-                                        <div>
-                                            <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Technocore Explorer">Technocore Explorer</h4>
-                                                <a href="https://technocore-explorer-coral.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
-                                                    <span>Live</span>
-                                                    <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
-                                                </a>
-                                            </div>
-                                            <p class="text-xs sm:text-sm text-cherry-textSecondary dark:text-white/60 leading-relaxed font-sans">
-                                                Public network explorer and historical archive layer for Technocore protocol, making network activity searchable, inspectable and independently verifiable.
-                                            </p>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1.5 mt-5 pt-3 border-t border-black/5 dark:border-white/10">
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Next.js</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Merkle Trees</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Archive</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 3: Technocore Agent Kit -->
-                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
-                                <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
-                                    <div onclick="openModal('technocoreAgentKit')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
-                                        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22960%22%20height%3D%22480%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%2312312c%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080b12%22%2F%3E%3C%2FlinearGradient%3E%3Cpattern%20id%3D%22p%22%20width%3D%2232%22%20height%3D%2232%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath%20d%3D%22M32%200H0V32%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.08%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23g)%22%2F%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23p)%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%2255%22%20width%3D%22850%22%20height%3D%22370%22%20rx%3D%2224%22%20fill%3D%22white%22%20fill-opacity%3D%22.04%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.18%22%2F%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22%2368e2bd%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22white%22%20fill-opacity%3D%22.2%22%2F%3E%3Crect%20x%3D%2290%22%20y%3D%22130%22%20width%3D%22550%22%20height%3D%22240%22%20rx%3D%2220%22%20fill%3D%22black%22%20fill-opacity%3D%22.32%22%20stroke%3D%22%2368e2bd%22%20stroke-opacity%3D%22.5%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22180%22%20fill%3D%22%2368e2bd%22%20font-size%3D%2221%22%20font-family%3D%22monospace%22%20letter-spacing%3D%225%22%3EASAD%20LEE%20%2F%20PROJECT%3C%2Ftext%3E%3Ctext%20x%3D%22120%22%20y%3D%22235%22%20fill%3D%22white%22%20font-size%3D%2233%22%20font-family%3D%22Arial%22%20font-weight%3D%22bold%22%3ETECHNOCORE%20AGENT%20KIT%3C%2Ftext%3E%3Cpath%20d%3D%22M120%20266H595%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.25%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22310%22%20fill%3D%22white%22%20fill-opacity%3D%22.65%22%20font-size%3D%2220%22%20font-family%3D%22monospace%22%3ELIVE%20PROJECT%20%E2%80%A2%20OPEN%20SOURCE%3C%2Ftext%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%22112%22%20fill%3D%22none%22%20stroke%3D%22%2368e2bd%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2273%22%20fill%3D%22none%22%20stroke%3D%22%2368e2bd%22%20stroke-opacity%3D%22.7%22%20stroke-dasharray%3D%2212%2010%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2235%22%20fill%3D%22%2368e2bd%22%20fill-opacity%3D%22.2%22%20stroke%3D%22%2368e2bd%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2210%22%20fill%3D%22%2368e2bd%22%2F%3E%3C%2Fsvg%3E" alt="TECHNOCORE AGENT KIT illustrative project thumbnail" class="absolute inset-0 z-10 w-full h-full object-cover" loading="lazy">
-                                        <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
-                                            <div class="flex items-center justify-between">
-                                                <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-white/80 dark:bg-dark-surface2 text-gray-800 dark:text-white font-bold">Autonomous SDK</span>
-                                                <i class='bx bx-bot text-2xl text-purple-500'></i>
-                                            </div>
-                                            <p class="text-xs font-mono text-gray-600 dark:text-white/70">technocore-agent-kit.vercel.app</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
-                                        <div>
-                                            <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Technocore Agent Kit">Technocore Agent Kit</h4>
-                                                <a href="https://technocore-agent-kit.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
-                                                    <span>Live</span>
-                                                    <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
-                                                </a>
-                                            </div>
-                                            <p class="text-xs sm:text-sm text-cherry-textSecondary dark:text-white/60 leading-relaxed font-sans">
-                                                TypeScript toolkit and multi-agent system for building cryptographically verifiable agent workflows with DAG orchestration and MCP connectivity.
-                                            </p>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1.5 mt-5 pt-3 border-t border-black/5 dark:border-white/10">
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">TypeScript</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">AI Agents</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">DAG Engine</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 4: MinterBot V1 -->
-                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
-                                <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
-                                    <div onclick="openModal('minterbot')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
-                                        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22960%22%20height%3D%22480%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23241d38%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080b12%22%2F%3E%3C%2FlinearGradient%3E%3Cpattern%20id%3D%22p%22%20width%3D%2232%22%20height%3D%2232%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath%20d%3D%22M32%200H0V32%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.08%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23g)%22%2F%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23p)%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%2255%22%20width%3D%22850%22%20height%3D%22370%22%20rx%3D%2224%22%20fill%3D%22white%22%20fill-opacity%3D%22.04%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.18%22%2F%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22%23c9a3ef%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22white%22%20fill-opacity%3D%22.2%22%2F%3E%3Crect%20x%3D%2290%22%20y%3D%22130%22%20width%3D%22550%22%20height%3D%22240%22%20rx%3D%2220%22%20fill%3D%22black%22%20fill-opacity%3D%22.32%22%20stroke%3D%22%23c9a3ef%22%20stroke-opacity%3D%22.5%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22180%22%20fill%3D%22%23c9a3ef%22%20font-size%3D%2221%22%20font-family%3D%22monospace%22%20letter-spacing%3D%225%22%3EASAD%20LEE%20%2F%20PROJECT%3C%2Ftext%3E%3Ctext%20x%3D%22120%22%20y%3D%22235%22%20fill%3D%22white%22%20font-size%3D%2233%22%20font-family%3D%22Arial%22%20font-weight%3D%22bold%22%3EMINTERBOT%20NFT%20AUTOMATION%3C%2Ftext%3E%3Cpath%20d%3D%22M120%20266H595%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.25%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22310%22%20fill%3D%22white%22%20fill-opacity%3D%22.65%22%20font-size%3D%2220%22%20font-family%3D%22monospace%22%3ELIVE%20PROJECT%20%E2%80%A2%20OPEN%20SOURCE%3C%2Ftext%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%22112%22%20fill%3D%22none%22%20stroke%3D%22%23c9a3ef%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2273%22%20fill%3D%22none%22%20stroke%3D%22%23c9a3ef%22%20stroke-opacity%3D%22.7%22%20stroke-dasharray%3D%2212%2010%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2235%22%20fill%3D%22%23c9a3ef%22%20fill-opacity%3D%22.2%22%20stroke%3D%22%23c9a3ef%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2210%22%20fill%3D%22%23c9a3ef%22%2F%3E%3C%2Fsvg%3E" alt="MINTERBOT NFT AUTOMATION illustrative project thumbnail" class="absolute inset-0 z-10 w-full h-full object-cover" loading="lazy">
-                                        <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
-                                            <div class="flex items-center justify-between">
-                                                <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-white/80 dark:bg-dark-surface2 text-gray-800 dark:text-white font-bold">Multi-Chain Bot</span>
-                                                <i class='bx bx-cube-alt text-2xl text-blue-500'></i>
-                                            </div>
-                                            <p class="text-xs font-mono text-gray-600 dark:text-white/70">minterbot.vercel.app</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
-                                        <div>
-                                            <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="MinterBot V1">MinterBot V1</h4>
-                                                <a href="https://minterbot.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
-                                                    <span>Live</span>
-                                                    <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
-                                                </a>
-                                            </div>
-                                            <p class="text-xs sm:text-sm text-cherry-textSecondary dark:text-white/60 leading-relaxed font-sans">
-                                                Automated multi-wallet NFT minting platform with scheduled timers and AES-256 local encryption across Ethereum, Base, Arbitrum, and Polygon.
-                                            </p>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1.5 mt-5 pt-3 border-t border-black/5 dark:border-white/10">
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Next.js</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Web3.js</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">AES-256</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 5: Arc Pay Platform -->
-                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="web3">
-                                <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
-                                    <div onclick="openModal('arcpay')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
-                                        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22960%22%20height%3D%22480%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%2310243a%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080b12%22%2F%3E%3C%2FlinearGradient%3E%3Cpattern%20id%3D%22p%22%20width%3D%2232%22%20height%3D%2232%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath%20d%3D%22M32%200H0V32%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.08%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23g)%22%2F%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23p)%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%2255%22%20width%3D%22850%22%20height%3D%22370%22%20rx%3D%2224%22%20fill%3D%22white%22%20fill-opacity%3D%22.04%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.18%22%2F%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22%236db8f1%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22white%22%20fill-opacity%3D%22.2%22%2F%3E%3Crect%20x%3D%2290%22%20y%3D%22130%22%20width%3D%22550%22%20height%3D%22240%22%20rx%3D%2220%22%20fill%3D%22black%22%20fill-opacity%3D%22.32%22%20stroke%3D%22%236db8f1%22%20stroke-opacity%3D%22.5%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22180%22%20fill%3D%22%236db8f1%22%20font-size%3D%2221%22%20font-family%3D%22monospace%22%20letter-spacing%3D%225%22%3EASAD%20LEE%20%2F%20PROJECT%3C%2Ftext%3E%3Ctext%20x%3D%22120%22%20y%3D%22235%22%20fill%3D%22white%22%20font-size%3D%2233%22%20font-family%3D%22Arial%22%20font-weight%3D%22bold%22%3EARC%20PAY%20USDC%20CHECKOUT%3C%2Ftext%3E%3Cpath%20d%3D%22M120%20266H595%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.25%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22310%22%20fill%3D%22white%22%20fill-opacity%3D%22.65%22%20font-size%3D%2220%22%20font-family%3D%22monospace%22%3ELIVE%20PROJECT%20%E2%80%A2%20OPEN%20SOURCE%3C%2Ftext%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%22112%22%20fill%3D%22none%22%20stroke%3D%22%236db8f1%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2273%22%20fill%3D%22none%22%20stroke%3D%22%236db8f1%22%20stroke-opacity%3D%22.7%22%20stroke-dasharray%3D%2212%2010%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2235%22%20fill%3D%22%236db8f1%22%20fill-opacity%3D%22.2%22%20stroke%3D%22%236db8f1%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2210%22%20fill%3D%22%236db8f1%22%2F%3E%3C%2Fsvg%3E" alt="ARC PAY USDC CHECKOUT illustrative project thumbnail" class="absolute inset-0 z-10 w-full h-full object-cover" loading="lazy">
-                                        <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
-                                            <div class="flex items-center justify-between">
-                                                <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-white/80 dark:bg-dark-surface2 text-gray-800 dark:text-white font-bold">Circle USDC</span>
-                                                <i class='bx bx-credit-card text-2xl text-emerald-500'></i>
-                                            </div>
-                                            <p class="text-xs font-mono text-gray-600 dark:text-white/70">arc-pay-inky.vercel.app</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
-                                        <div>
-                                            <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Arc Pay Platform">Arc Pay Platform</h4>
-                                                <a href="https://arc-pay-inky.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
-                                                    <span>Live</span>
-                                                    <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
-                                                </a>
-                                            </div>
-                                            <p class="text-xs sm:text-sm text-cherry-textSecondary dark:text-white/60 leading-relaxed font-sans">
-                                                Open-source no-code USDC payment layer for merchants on Arc Network with Circle API integration and instant on-chain settlement.
-                                            </p>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1.5 mt-5 pt-3 border-t border-black/5 dark:border-white/10">
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Circle API</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">USDC</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">FinTech</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Project 6: Warp P2P Transfer -->
-                            <div class="project-card-item dashed-border-anim rounded-2xl shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)] w-full h-full holo-card" data-cat="p2p">
-                                <div class="relative flex flex-col bg-white dark:bg-dark-surface rounded-[14px] overflow-hidden transition-colors duration-150 h-full">
-                                    <div onclick="openModal('warp')" class="group relative block overflow-hidden rounded-t-2xl pt-8 md:pt-10 px-5 md:px-6 bg-gradient-to-br from-[#F9D3DD] via-[#F7E8EC] to-white dark:from-[#3a1f28]/60 dark:via-[#1a1215]/40 dark:to-dark-surface cursor-pointer">
-                                        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22960%22%20height%3D%22480%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%232a2224%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23080b12%22%2F%3E%3C%2FlinearGradient%3E%3Cpattern%20id%3D%22p%22%20width%3D%2232%22%20height%3D%2232%22%20patternUnits%3D%22userSpaceOnUse%22%3E%3Cpath%20d%3D%22M32%200H0V32%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.08%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23g)%22%2F%3E%3Crect%20width%3D%22960%22%20height%3D%22480%22%20fill%3D%22url(%23p)%22%2F%3E%3Crect%20x%3D%2255%22%20y%3D%2255%22%20width%3D%22850%22%20height%3D%22370%22%20rx%3D%2224%22%20fill%3D%22white%22%20fill-opacity%3D%22.04%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.18%22%2F%3E%3Ccircle%20cx%3D%2292%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22%23f5c18e%22%2F%3E%3Ccircle%20cx%3D%22120%22%20cy%3D%2288%22%20r%3D%228%22%20fill%3D%22white%22%20fill-opacity%3D%22.2%22%2F%3E%3Crect%20x%3D%2290%22%20y%3D%22130%22%20width%3D%22550%22%20height%3D%22240%22%20rx%3D%2220%22%20fill%3D%22black%22%20fill-opacity%3D%22.32%22%20stroke%3D%22%23f5c18e%22%20stroke-opacity%3D%22.5%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22180%22%20fill%3D%22%23f5c18e%22%20font-size%3D%2221%22%20font-family%3D%22monospace%22%20letter-spacing%3D%225%22%3EASAD%20LEE%20%2F%20PROJECT%3C%2Ftext%3E%3Ctext%20x%3D%22120%22%20y%3D%22235%22%20fill%3D%22white%22%20font-size%3D%2233%22%20font-family%3D%22Arial%22%20font-weight%3D%22bold%22%3EWARP%20P2P%20TRANSFER%3C%2Ftext%3E%3Cpath%20d%3D%22M120%20266H595%22%20stroke%3D%22white%22%20stroke-opacity%3D%22.25%22%2F%3E%3Ctext%20x%3D%22120%22%20y%3D%22310%22%20fill%3D%22white%22%20fill-opacity%3D%22.65%22%20font-size%3D%2220%22%20font-family%3D%22monospace%22%3ELIVE%20PROJECT%20%E2%80%A2%20OPEN%20SOURCE%3C%2Ftext%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%22112%22%20fill%3D%22none%22%20stroke%3D%22%23f5c18e%22%20stroke-opacity%3D%22.45%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2273%22%20fill%3D%22none%22%20stroke%3D%22%23f5c18e%22%20stroke-opacity%3D%22.7%22%20stroke-dasharray%3D%2212%2010%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2235%22%20fill%3D%22%23f5c18e%22%20fill-opacity%3D%22.2%22%20stroke%3D%22%23f5c18e%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%22770%22%20cy%3D%22252%22%20r%3D%2210%22%20fill%3D%22%23f5c18e%22%2F%3E%3C%2Fsvg%3E" alt="WARP P2P TRANSFER illustrative project thumbnail" class="absolute inset-0 z-10 w-full h-full object-cover" loading="lazy">
-                                        <div class="w-full h-44 rounded-t-xl overflow-hidden bg-white/20 dark:bg-white/5 backdrop-blur-md border border-white/50 dark:border-white/10 shadow-lg transition-transform duration-150 origin-top group-hover:scale-[1.03] flex flex-col p-4 justify-between">
-                                            <div class="flex items-center justify-between">
-                                                <span class="text-[10px] font-mono uppercase px-2.5 py-1 rounded-full bg-white/80 dark:bg-dark-surface2 text-gray-800 dark:text-white font-bold">Serverless P2P</span>
-                                                <i class='bx bx-transfer text-2xl text-cyan-500'></i>
-                                            </div>
-                                            <p class="text-xs font-mono text-gray-600 dark:text-white/70">warp-transfer.vercel.app</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col flex-1 p-6 md:p-7 justify-between">
-                                        <div>
-                                            <div class="flex items-center justify-between mb-2 gap-3">
-                                                <h4 class="font-instrument font-semibold text-gray-800 dark:text-white text-xl md:text-2xl scramble-hover" data-scramble="Warp P2P Transfer">Warp P2P Transfer</h4>
-                                                <a href="https://warp-transfer.vercel.app" target="_blank" rel="noopener noreferrer" class="glare-button relative flex items-center gap-1.5 text-xs font-medium text-gray-800 dark:text-white rounded-full px-4 py-2 shrink-0 bg-white dark:bg-dark-surface3 border border-black/5 dark:border-white/10 shadow-[0_2px_6px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.9)]">
-                                                    <span>Live</span>
-                                                    <i class='bx bx-arrow-back rotate-[135deg] text-xs'></i>
-                                                </a>
-                                            </div>
-                                            <p class="text-xs sm:text-sm text-cherry-textSecondary dark:text-white/60 leading-relaxed font-sans">
-                                                Browser-to-browser peer-to-peer file transfer over WebRTC. Zero server touch, no size restrictions, and fast camera QR code pairing.
-                                            </p>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1.5 mt-5 pt-3 border-t border-black/5 dark:border-white/10">
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">WebRTC</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">DataChannel</span>
-                                            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">P2P</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[880px] mx-auto" id="projects-grid">
+<article class="project-card-item rounded-2xl border border-black/10 dark:border-white/10 overflow-hidden bg-white dark:bg-dark-surface " data-cat="commerce">
+      <div class="flex flex-col h-full ">
+        <button type="button" onclick="openModal('qadamFlex')" aria-label="View QadamFlex project details" class="block w-full  overflow-hidden bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cherry-accent">
+          <img src="assets/qadamflex.jpg" alt="Screenshot of the live QadamFlex website" width="1356" height="936" loading="lazy" class="w-full aspect-[1.45] object-cover object-top">
+        </button>
+        <div class="flex flex-col flex-1 p-6 md:p-7">
+          <p class="text-[10px] uppercase tracking-widest font-mono text-cherry-deep dark:text-cherry-accent mb-2">Footwear storefront</p>
+          <h4 class="font-instrument text-3xl text-gray-900 dark:text-white mb-3">QadamFlex</h4>
+          <p class="text-sm text-gray-600 dark:text-white/70 leading-relaxed">An online shoe store with a product display you can rotate, colour choices, a shopping bag and customer order tracking.</p>
+          <div class="flex flex-wrap gap-2 mt-5 mb-6"><span class="text-[10px] font-mono px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">React</span><span class="text-[10px] font-mono px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">TypeScript</span><span class="text-[10px] font-mono px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Three.js</span></div>
+          <div class="flex items-center flex-wrap gap-4 mt-auto pt-4 border-t border-black/5 dark:border-white/10 text-xs font-medium">
+            <a href="https://www.qadamflex.bond/" target="_blank" rel="noopener noreferrer" aria-label="Visit QadamFlex website" class="text-gray-900 dark:text-white underline underline-offset-4">Visit website ↗</a>
+            <button type="button" onclick="openModal('qadamFlex')" class="text-gray-600 dark:text-white/70 underline underline-offset-4">Project details</button>
+            <a href="https://github.com/Asadlee24/shoes" target="_blank" rel="noopener noreferrer" aria-label="View QadamFlex source on GitHub" class="text-gray-600 dark:text-white/70 underline underline-offset-4">Source ↗</a>
+          </div>
+        </div>
+      </div>
+    </article>
+<article class="project-card-item rounded-2xl border border-black/10 dark:border-white/10 overflow-hidden bg-white dark:bg-dark-surface " data-cat="commerce">
+      <div class="flex flex-col h-full ">
+        <button type="button" onclick="openModal('mdkElectronics')" aria-label="View MDK Electronics project details" class="block w-full  overflow-hidden bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cherry-accent">
+          <img src="assets/mdk-electronics.jpg" alt="Screenshot of the live MDK Electronics website" width="1356" height="936" loading="lazy" class="w-full aspect-[1.45] object-cover object-top">
+        </button>
+        <div class="flex flex-col flex-1 p-6 md:p-7">
+          <p class="text-[10px] uppercase tracking-widest font-mono text-cherry-deep dark:text-cherry-accent mb-2">Electronics storefront</p>
+          <h4 class="font-instrument text-3xl text-gray-900 dark:text-white mb-3">MDK Electronics</h4>
+          <p class="text-sm text-gray-600 dark:text-white/70 leading-relaxed">A storefront for a Peshawar electronics shop. Customers can browse cameras and speakers, save products and place an order from their phone.</p>
+          <div class="flex flex-wrap gap-2 mt-5 mb-6"><span class="text-[10px] font-mono px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">React</span><span class="text-[10px] font-mono px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">TypeScript</span><span class="text-[10px] font-mono px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">E-commerce</span></div>
+          <div class="flex items-center flex-wrap gap-4 mt-auto pt-4 border-t border-black/5 dark:border-white/10 text-xs font-medium">
+            <a href="https://www.mdkelectronics.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit MDK Electronics website" class="text-gray-900 dark:text-white underline underline-offset-4">Visit website ↗</a>
+            <button type="button" onclick="openModal('mdkElectronics')" class="text-gray-600 dark:text-white/70 underline underline-offset-4">Project details</button>
+            <a href="https://github.com/Asadlee24/Electronics-Store" target="_blank" rel="noopener noreferrer" aria-label="View MDK Electronics source on GitHub" class="text-gray-600 dark:text-white/70 underline underline-offset-4">Source ↗</a>
+          </div>
+        </div>
+      </div>
+    </article>
+<article class="project-card-item rounded-2xl border border-black/10 dark:border-white/10 overflow-hidden bg-white dark:bg-dark-surface md:col-span-2" data-cat="tools">
+      <div class="flex flex-col h-full md:flex-row">
+        <button type="button" onclick="openModal('technocoreConsole')" aria-label="View Technocore Console project details" class="block w-full md:w-1/2 md:shrink-0 overflow-hidden bg-black/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cherry-accent">
+          <img src="assets/technocore-console.jpg" alt="Screenshot of the live Technocore Console website" width="1356" height="936" loading="lazy" class="w-full aspect-[1.45] object-cover object-top">
+        </button>
+        <div class="flex flex-col flex-1 p-6 md:p-7">
+          <p class="text-[10px] uppercase tracking-widest font-mono text-cherry-deep dark:text-cherry-accent mb-2">Community tool</p>
+          <h4 class="font-instrument text-3xl text-gray-900 dark:text-white mb-3">Technocore Console</h4>
+          <p class="text-sm text-gray-600 dark:text-white/70 leading-relaxed">A browser workspace I built for the Technocore community: create an identity, follow rooms and check signed messages in one place.</p>
+          <div class="flex flex-wrap gap-2 mt-5 mb-6"><span class="text-[10px] font-mono px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">TypeScript</span><span class="text-[10px] font-mono px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Ed25519</span><span class="text-[10px] font-mono px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-gray-600 dark:text-white/60">Technocore</span></div>
+          <div class="flex items-center flex-wrap gap-4 mt-auto pt-4 border-t border-black/5 dark:border-white/10 text-xs font-medium">
+            <a href="https://technocore-console.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Visit Technocore Console website" class="text-gray-900 dark:text-white underline underline-offset-4">Visit website ↗</a>
+            <button type="button" onclick="openModal('technocoreConsole')" class="text-gray-600 dark:text-white/70 underline underline-offset-4">Project details</button>
+            <a href="https://github.com/Asadlee24/technocore-console" target="_blank" rel="noopener noreferrer" aria-label="View Technocore Console source on GitHub" class="text-gray-600 dark:text-white/70 underline underline-offset-4">Source ↗</a>
+          </div>
+        </div>
+      </div>
+    </article>
                         </div>
+                        <p class="mt-6 text-sm leading-relaxed text-gray-600 dark:text-white/60">More experiments and earlier projects are on <a href="https://github.com/Asadlee24?tab=repositories" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 text-gray-900 dark:text-white">my GitHub</a>.</p>
                     </div>
-
 
                     <!-- ================= 9. EXPERIENCE ACCORDION (PALAK STYLE) ================= -->
                     <div class="w-full mb-16" id="experience">
@@ -1358,14 +1166,14 @@
 
 
     <!-- ================= PROJECT DETAIL MODAL ================= -->
-    <div id="project-modal" onclick="handleModalBackdrop(event)" class="fixed inset-0 z-[999] hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md">
+    <div id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="handleModalBackdrop(event)" class="fixed inset-0 z-[999] hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md">
         <div id="modal-box" class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white dark:bg-dark-surface border border-black/10 dark:border-white/15 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
             <div class="flex items-center justify-between px-6 sm:px-8 py-5 border-b border-black/5 dark:border-white/10 sticky top-0 bg-white/95 dark:bg-dark-surface/95 backdrop-blur-md z-10">
                 <div>
                     <span id="modal-badge" class="text-[10px] font-mono uppercase tracking-widest text-cherry-deep dark:text-cherry-accent font-bold px-3 py-1 rounded-full bg-cherry-pink dark:bg-cherry-deep/40 inline-block mb-1">Badge</span>
                     <h3 id="modal-title" class="font-instrument text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">Project Title</h3>
                 </div>
-                <button onclick="closeModal()" class="w-9 h-9 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 flex items-center justify-center text-gray-700 dark:text-white text-xl transition cursor-pointer">
+                <button aria-label="Close project details" onclick="closeModal()" class="w-9 h-9 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 flex items-center justify-center text-gray-700 dark:text-white text-xl transition cursor-pointer">
                     <i class='bx bx-x'></i>
                 </button>
             </div>
@@ -1397,7 +1205,7 @@
                         <span id="modal-live-url" class="text-[10px] text-gray-400 font-mono ml-2 truncate"></span>
                     </div>
                     <div class="flex-1 w-full min-h-[260px] sm:min-h-[320px] rounded-xl overflow-hidden bg-white dark:bg-dark-bg border border-black/5 dark:border-white/10">
-                        <iframe id="modal-iframe" src="about:blank" class="w-full h-full min-h-[260px] sm:min-h-[320px]" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                        <img id="modal-iframe" alt="" class="w-full h-auto rounded-xl" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -2103,112 +1911,64 @@
 
         // --- 18. PROJECT MODAL DATABASE ---
         const projectData = {
-            qadamFlex: {
-                badge: "Full-Stack Commerce",
-                title: "Qadam Flex — Online Shoe Store",
-                desc: "An online shoe store and complete footwear shopping experience featuring an interactive 3D shoe display, searchable catalog, customer accounts, order management, receipt-based payments, inventory controls and delivery tracking.",
-                features: [
-                    "Interactive shoe display with mouse, touch and keyboard support",
-                    "Product galleries, size and color filters, and persistent shopping bag",
-                    "Customer accounts with private order and payment history",
-                    "Protected store dashboard with stock management and review moderation",
-                    "Order notifications, manual receipt verification and courier tracking"
-                ],
-                stack: ["React", "TypeScript", "Three.js", "Vite", "Node.js", "Neon Postgres", "Vercel"],
-                live: "https://www.qadamflex.bond/",
-                github: "https://github.com/Asadlee24/shoes"
-            },
-            technocoreConsole: {
-                badge: "Identity Console",
-                title: "Technocore Console",
-                desc: "A browser-based identity and messaging console for Technocore with in-memory Ed25519 identities, signed messaging, live room monitoring and cryptographic verification tools.",
-                features: [
-                    "In-browser Ed25519 did:key identity generation",
-                    "Private keys remain secure strictly within browser memory",
-                    "Signed message dispatch & anonymous dispatch",
-                    "Live room monitoring & public registry publishing",
-                    "Memory Vault for signed structured memory & 3D network visualization"
-                ],
-                stack: ["TypeScript", "JavaScript", "Ed25519", "DID", "Cryptography", "Technocore", "Web3"],
-                live: "https://technocore-console.vercel.app",
-                github: "https://github.com/Asadlee24/technocore-console"
-            },
-            technocoreExplorer: {
-                badge: "Network Explorer",
-                title: "Technocore Explorer",
-                desc: "A public network explorer and historical archive layer for the Technocore protocol, making network activity searchable, inspectable and independently verifiable.",
-                features: [
-                    "Live network overview & room/DID explorers",
-                    "Sequence lookup & network radar patterns",
-                    "Merkle-based verification & cryptographic snapshots",
-                    "Continuum archival layer & historical message archive",
-                    "No-login public dashboard with MCP quick-connect"
-                ],
-                stack: ["TypeScript", "Next.js", "React", "Technocore", "Cryptography", "Merkle Trees"],
-                live: "https://technocore-explorer-coral.vercel.app",
-                github: "https://github.com/Asadlee24/technocore-explorer"
-            },
-            technocoreAgentKit: {
-                badge: "Autonomous Agents",
-                title: "Technocore Agent Kit",
-                desc: "A TypeScript toolkit and autonomous multi-agent system for building cryptographically verifiable agent-to-agent workflows on the Technocore protocol.",
-                features: [
-                    "Autonomous agent workflows & TypeScript SDK",
-                    "Agent-to-agent messaging & TASK → RESULT orchestration",
-                    "DAG workflow engine with Ed25519 signatures",
-                    "Claude, OpenAI, and local AI provider support",
-                    "MCP integration, CLI tools, and room watching"
-                ],
-                stack: ["TypeScript", "Node.js", "AI Agents", "Ed25519", "Technocore", "MCP"],
-                live: "https://technocore-agent-kit.vercel.app",
-                github: "https://github.com/Asadlee24/technocore-agent-kit"
-            },
-            minterbot: {
-                badge: "Web3 & NFT Bot",
-                title: "MinterBot V1",
-                desc: "MinterBot is built to make NFT minting faster, easier and more automated. Execute public mints across Ethereum, Base, Arbitrum, Polygon, and Robinhood Chain with auto-timers and local encryption security.",
-                features: [
-                    "Mint from multiple wallets at once with parallel execution",
-                    "Auto-Mint Timer for scheduled mint drops",
-                    "Real-time transaction monitoring dashboard",
-                    "Secure wallet data with local AES-256 encryption",
-                    "Multi-chain support (Ethereum, Base, Arbitrum, Polygon, Robinhood)"
-                ],
-                stack: ["TypeScript", "Next.js", "Web3.js", "AES-256", "Tailwind CSS"],
-                live: "https://minterbot.vercel.app",
-                github: "https://github.com/Asadlee24/minterbot"
-            },
-            arcpay: {
-                badge: "FinTech & USDC",
-                title: "Arc Pay Platform",
-                desc: "Arc Pay is an open-source, no-code USDC payment layer built for merchants on the Arc Network. It integrates directly with Circle's APIs to enable instant, on-chain USDC settlement with zero transaction friction.",
-                features: [
-                    "No-code merchant onboarding dashboard",
-                    "Circle API integration for real USDC settlement",
-                    "Instant payment confirmation & QR checkout",
-                    "Multi-wallet support (MetaMask, Phantom)",
-                    "On-chain transaction history & export"
-                ],
-                stack: ["TypeScript", "Next.js", "Circle API", "USDC", "Web3.js", "Tailwind CSS"],
-                live: "https://arc-pay-inky.vercel.app",
-                github: "https://github.com/Asadlee24/arc-pay"
-            },
-            warp: {
-                badge: "WebRTC P2P",
-                title: "Warp P2P Transfer",
-                desc: "Warp is a blazing-fast, browser-native peer-to-peer file transfer app built entirely on WebRTC data channels. No server ever touches your files — everything flows directly between browsers.",
-                features: [
-                    "100% serverless P2P via WebRTC DataChannels",
-                    "QR code scanner for instant peer pairing",
-                    "Multi-file batch transfer in a single session",
-                    "Real-time progress bar & transfer speed stats",
-                    "TURN/STUN fallback for NAT traversal"
-                ],
-                stack: ["TypeScript", "Next.js", "WebRTC", "QR Scanner", "Node.js"],
-                live: "https://warp-transfer.vercel.app",
-                github: "https://github.com/Asadlee24/warp-transfer"
-            }
-        };
+    "qadamFlex": {
+        "badge": "Footwear storefront",
+        "title": "QadamFlex",
+        "desc": "An online shoe store with a product display you can rotate, colour choices, a shopping bag and customer order tracking.",
+        "features": [
+            "Interactive shoe display and product variants",
+            "Product catalogue, shopping bag and customer accounts",
+            "Store dashboard for products, stock and orders"
+        ],
+        "stack": [
+            "React",
+            "TypeScript",
+            "Three.js"
+        ],
+        "live": "https://www.qadamflex.bond/",
+        "github": "https://github.com/Asadlee24/shoes",
+        "image": "assets/qadamflex.jpg",
+        "category": "commerce"
+    },
+    "mdkElectronics": {
+        "badge": "Electronics storefront",
+        "title": "MDK Electronics",
+        "desc": "A storefront for a Peshawar electronics shop. Customers can browse cameras and speakers, save products and place an order from their phone.",
+        "features": [
+            "Product categories, search, wishlist and shopping bag",
+            "Product pages with prices and delivery information",
+            "Store management for products and customer requests"
+        ],
+        "stack": [
+            "React",
+            "TypeScript",
+            "E-commerce"
+        ],
+        "live": "https://www.mdkelectronics.com/",
+        "github": "https://github.com/Asadlee24/Electronics-Store",
+        "image": "assets/mdk-electronics.jpg",
+        "category": "commerce"
+    },
+    "technocoreConsole": {
+        "badge": "Community tool",
+        "title": "Technocore Console",
+        "desc": "A browser workspace I built for the Technocore community: create an identity, follow rooms and check signed messages in one place.",
+        "features": [
+            "Ed25519 identity setup and key backup flow",
+            "Room monitoring and signed-message tools",
+            "Memory Vault and a signature verifier"
+        ],
+        "stack": [
+            "TypeScript",
+            "Ed25519",
+            "Technocore"
+        ],
+        "live": "https://technocore-console.vercel.app",
+        "github": "https://github.com/Asadlee24/technocore-console",
+        "image": "assets/technocore-console.jpg",
+        "category": "tools"
+    }
+};
 
         function openModal(id) {
             playClickSound();
@@ -2243,7 +2003,8 @@
                 ghBtn.style.display = 'none';
             }
 
-            document.getElementById('modal-iframe').src = p.live;
+            document.getElementById('modal-iframe').src = p.image;
+            document.getElementById('modal-iframe').alt = 'Screenshot of ' + p.title;
             const modal = document.getElementById('project-modal');
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -2253,7 +2014,7 @@
             playClickSound();
             const modal = document.getElementById('project-modal');
             modal.style.display = 'none';
-            document.getElementById('modal-iframe').src = 'about:blank';
+            document.getElementById('modal-iframe').removeAttribute('src');
             document.body.style.overflow = '';
         }
 
@@ -2266,7 +2027,7 @@
             help: `Available commands:
   - <span class="text-yellow-400 font-bold">whoami</span>   : Developer identity & background
   - <span class="text-yellow-400 font-bold">skills</span>   : Technical stack & competencies
-  - <span class="text-yellow-400 font-bold">projects</span> : Shipped Technocore, Web3 & P2P apps
+  - <span class="text-yellow-400 font-bold">projects</span> : Storefronts and community tools
   - <span class="text-emerald-400 font-bold">matrix</span>   : Launch fullscreen Matrix rain mode
   - <span class="text-cyan-400 font-bold">scan</span>     : Execute security diagnostic handshake
   - <span class="text-blue-400 font-bold">sfx</span>      : Toggle cybernetic audio haptics
@@ -2282,13 +2043,12 @@ Specializing in TypeScript architectures, Web3 USDC settlement, and penetration 
   [✔] Python — ML, data analysis, pandas, NumPy (88%)
   [✔] Solidity — Smart contracts, Web3 protocols (85%)
   [✔] SQL & Databases — PostgreSQL, MySQL, API endpoints (92%)`,
-            projects: `Highlighted Live Deployments:
-  1. Technocore Console (https://technocore-console.vercel.app)
-  2. Technocore Explorer (https://technocore-explorer-coral.vercel.app)
-  3. Technocore Agent Kit (https://technocore-agent-kit.vercel.app)
-  4. MinterBot V1 (https://minterbot.vercel.app)
-  5. Arc Pay Platform (https://arc-pay-inky.vercel.app)
-  6. Warp P2P Transfer (https://warp-transfer.vercel.app)`,
+            projects: `Selected live projects:
+  1. QadamFlex (https://www.qadamflex.bond/)
+  2. MDK Electronics (https://www.mdkelectronics.com/)
+  3. Technocore Console (https://technocore-console.vercel.app)
+
+Earlier projects: https://github.com/Asadlee24?tab=repositories`,
             contact: `Direct Communication:
   - WhatsApp: +92 340 0194591
   - Twitter/X: @asadleo416
